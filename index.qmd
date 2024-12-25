@@ -5,10 +5,11 @@ subtitle: "A portfolio of my work from Master of Urban Spatial Analytics at the 
 
 ## Welcome!
 
-We can create beautiful websites that describe complex technical analyses in Python using Quarto and deploy them online using GitHub Pages. This combination of tools is a really powerful way to create and share your work. This website is a demo that is meant to be used to create your own Quarto website for the final project in MUSA 550.
+<div>
+  <p><span style="color:red">Hello everyone</span></p>
+  <p>My name is **Ong** Jia Yue, a Master of Urban Spatial Analytics at the University of Pennsylvania student. I am interested in applying spatial analysis and urban-related knowledge to public policy challenges.</p>
+  <p>I graduated with a Bachelor of Science (Honours) in Philosophy, Politics and Economics from University College London.</p>
+  
+</div>
 
-Quarto is a relatively new tool, but is becoming popular quickly. It’s a successor to the Rmarkdown ecosystem that combines functionality into a single tool and also extends its computation power to other languages. Most importantly for us, Quarto supports executing Python code, allowing us to convert Jupyter notebooks to HTML and share them online.
-
-::: {.callout-important}
-This template site, including the layout it uses, is just a suggested place to start! For your final project, you’re welcome (and encouraged) to make as many changes as you like to best fit your project.
-:::
+</div>
