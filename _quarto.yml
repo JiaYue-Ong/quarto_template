@@ -29,10 +29,10 @@ website:
         text: Welcome
       - section: analysis/index.qmd
         contents:
-          - analysis/1.1-Get_Data.qmd
-          - analysis/1.2-Exploratory_Plots.qmd
-          - analysis/1.3-Clustering.qmd
-          - analysis/1.4-PredictiveModelling.qmd
+          - analysis/1.1-Get_Data.ipynb
+          - analysis/1.2-Exploratory_Plots.ipynb
+          - analysis/1.3-Clustering.ipynb
+          - analysis/1.4-PredictiveModelling.ipynb
           - analysis/Python-Final-Project.ipynb
           - analysis/1-python-code-blocks.qmd 
           - analysis/2-static-images.ipynb
