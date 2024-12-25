@@ -1,11 +1,10 @@
-# Analysis 
+# Final Project: MUSA 5500 Geospatial Data Science in Python
 
-This section includes examples of technical analysis done using Jupyter notebooks.
-Each sub-section highlights different types of analyses and visualizations.
-In particular, it highlights that we can easily publish interactive visualizations
-produced with packages such as hvPlot, altair, or Folium, without losing
-any of the interactive features. 
+This section contains my final project for MUSA 5500 Geospatial Data Science in Python. 
 
-On this page, you might want to share more introductory or background information about 
-the analyses to help guide the reader. 
+*Background:*
+The United States of America (USA) is a large country comprising 50 states. Each state is not equal, and it would be interesting to analyse and map out the differences in level of development and socioeconomic indicators between each state as if they were 50 sovereign countries.
 
+My final project's research question is inspired by Gapminder from the Clustering lecture. I aim to apply this in the context of US States to answer these questions: how do socioeconomic variables vary across US states and time? And do they suggest which states are more developed/deprived than others?
+
+*Implication:*
