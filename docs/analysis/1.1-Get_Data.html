@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Getting data and data wrangling – Ong Jia Yue adventures in Master of Urban Spatial Analytics</title>
+<title>1. Getting data and data wrangling – Ong Jia Yue adventures in Master of Urban Spatial Analytics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Getting data and data wrangling</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">1. Getting data and data wrangling</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -164,6 +164,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">analysis/1.1-Get_Data.qmd</span>
   </li>
           <li class="sidebar-item">
+ <span class="menu-text">analysis/1.2-Exploratory_Plots.qmd</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">analysis/1.3-Clustering.qmd</span>
+  </li>
+          <li class="sidebar-item">
+ <span class="menu-text">analysis/1.4-PredictiveModelling.qmd</span>
+  </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/Python-Final-Project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">If US States were individual countries, how do they compare?</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../analysis/1-python-code-blocks.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Python code blocks</span></a>
@@ -200,7 +215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Getting data and data wrangling</h1>
+<h1 class="title">1. Getting data and data wrangling</h1>
 </div>
 
 
@@ -219,44 +234,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="getting-the-data-with-api" class="level2">
 <h2 class="anchored" data-anchor-id="getting-the-data-with-api">1. Getting the data with API</h2>
-<div id="cell-3" class="cell" data-execution_count="1">
+<div id="cell-2" class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install cenpy</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> cenpy</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>np.random.seed(<span class="dv">42</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Requirement already satisfied: cenpy in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (1.0.1)
-Requirement already satisfied: pandas in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from cenpy) (1.5.3)
-Requirement already satisfied: geopandas in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from cenpy) (0.13.2)
-Requirement already satisfied: requests in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from cenpy) (2.31.0)
-Requirement already satisfied: rtree in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from cenpy) (1.3.0)
-Requirement already satisfied: numpy in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from cenpy) (1.24.4)
-Requirement already satisfied: six in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from cenpy) (1.16.0)
-Requirement already satisfied: fuzzywuzzy in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from cenpy) (0.18.0)
-Requirement already satisfied: libpysal in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from cenpy) (4.12.1)
-Requirement already satisfied: fiona&gt;=1.8.19 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from geopandas-&gt;cenpy) (1.9.4)
-Requirement already satisfied: packaging in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from geopandas-&gt;cenpy) (24.1)
-Requirement already satisfied: pyproj&gt;=3.0.1 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from geopandas-&gt;cenpy) (3.6.1)
-Requirement already satisfied: shapely&gt;=1.7.1 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from geopandas-&gt;cenpy) (2.0.1)
-Requirement already satisfied: python-dateutil&gt;=2.8.1 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from pandas-&gt;cenpy) (2.9.0)
-Requirement already satisfied: pytz&gt;=2020.1 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from pandas-&gt;cenpy) (2024.1)
-Requirement already satisfied: beautifulsoup4&gt;=4.10 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from libpysal-&gt;cenpy) (4.12.2)
-Requirement already satisfied: platformdirs&gt;=2.0.2 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from libpysal-&gt;cenpy) (4.2.2)
-Requirement already satisfied: scipy&gt;=1.8 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from libpysal-&gt;cenpy) (1.14.1)
-Requirement already satisfied: scikit-learn&gt;=1.1 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from libpysal-&gt;cenpy) (1.3.0)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from requests-&gt;cenpy) (3.3.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from requests-&gt;cenpy) (3.8)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from requests-&gt;cenpy) (1.26.19)
-Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from requests-&gt;cenpy) (2024.7.4)
-Requirement already satisfied: soupsieve&gt;1.2 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from beautifulsoup4&gt;=4.10-&gt;libpysal-&gt;cenpy) (2.5)
-Requirement already satisfied: attrs&gt;=19.2.0 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from fiona&gt;=1.8.19-&gt;geopandas-&gt;cenpy) (24.2.0)
-Requirement already satisfied: click~=8.0 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from fiona&gt;=1.8.19-&gt;geopandas-&gt;cenpy) (8.1.7)
-Requirement already satisfied: click-plugins&gt;=1.0 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from fiona&gt;=1.8.19-&gt;geopandas-&gt;cenpy) (1.1.1)
-Requirement already satisfied: cligj&gt;=0.5 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from fiona&gt;=1.8.19-&gt;geopandas-&gt;cenpy) (0.7.2)
-Requirement already satisfied: joblib&gt;=1.1.1 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from scikit-learn&gt;=1.1-&gt;libpysal-&gt;cenpy) (1.4.2)
-Requirement already satisfied: threadpoolctl&gt;=2.0.0 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from scikit-learn&gt;=1.1-&gt;libpysal-&gt;cenpy) (3.5.0)
-Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from click~=8.0-&gt;fiona&gt;=1.8.19-&gt;geopandas-&gt;cenpy) (0.4.6)</code></pre>
-</div>
 </div>
 <section id="acs-5-year-estimate-by-us-states" class="level3">
 <h3 class="anchored" data-anchor-id="acs-5-year-estimate-by-us-states"><strong>1.1 ACS 5-Year Estimate by US States</strong></h3>
@@ -268,13 +250,13 @@ Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-5
 <li>Population</li>
 <li>Poverty rate</li>
 </ol>
-<div id="cell-5" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Finding data set</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>available <span class="op">=</span> cenpy.explorer.available()</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>available</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We use data from ACS 5 Year, Monthly Export and Import</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div id="cell-4" class="cell" data-execution_count="38">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Finding data set</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>available <span class="op">=</span> cenpy.explorer.available()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>available.head(n<span class="op">=</span><span class="dv">5</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We use data from ACS 5 Year, Monthly Export and Import</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="38">
 <div>
 
 
@@ -283,24 +265,22 @@ Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-5
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">c_isTimeseries</th>
+<th data-quarto-table-cell-role="th">c_isMicrodata</th>
+<th data-quarto-table-cell-role="th">publisher</th>
 <th data-quarto-table-cell-role="th">temporal</th>
 <th data-quarto-table-cell-role="th">spatial</th>
-<th data-quarto-table-cell-role="th">c_isAggregate</th>
-<th data-quarto-table-cell-role="th">publisher</th>
-<th data-quarto-table-cell-role="th">references</th>
 <th data-quarto-table-cell-role="th">programCode</th>
 <th data-quarto-table-cell-role="th">modified</th>
-<th data-quarto-table-cell-role="th">license</th>
 <th data-quarto-table-cell-role="th">keyword</th>
-<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">contactPoint</th>
+<th data-quarto-table-cell-role="th">distribution</th>
 <th data-quarto-table-cell-role="th">description</th>
 <th data-quarto-table-cell-role="th">bureauCode</th>
 <th data-quarto-table-cell-role="th">accessLevel</th>
 <th data-quarto-table-cell-role="th">title</th>
 <th data-quarto-table-cell-role="th">c_isAvailable</th>
 <th data-quarto-table-cell-role="th">c_isCube</th>
-<th data-quarto-table-cell-role="th">c_isMicrodata</th>
-<th data-quarto-table-cell-role="th">c_documentationLink</th>
+<th data-quarto-table-cell-role="th">c_isAggregate</th>
 <th data-quarto-table-cell-role="th">c_dataset</th>
 <th data-quarto-table-cell-role="th">vintage</th>
 </tr>
@@ -309,278 +289,123 @@ Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-5
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ABSCB2017</td>
 <td>NaN</td>
+<td>NaN</td>
+<td>U.S. Census Bureau</td>
 <td>2017/2017</td>
 <td>United States</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
 <td>006:007</td>
 <td>2020-04-30 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>...</td>
+<td>{'fn': 'ABS Staff', 'hasEmail': 'mailto:adep.a...</td>
+<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
 <td>The Annual Business Survey (ABS) provides info...</td>
 <td>006:07</td>
 <td>public</td>
 <td>Annual Business Survey: Characteristics of Bus...</td>
 <td>True</td>
 <td>NaN</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
+<td>True</td>
 <td>(abscb,)</td>
 <td>2017.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">ABSCB2018</td>
 <td>NaN</td>
+<td>NaN</td>
+<td>U.S. Census Bureau</td>
 <td>2018/2018</td>
 <td>United States</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
 <td>006:007</td>
 <td>2020-10-26 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>...</td>
+<td>{'fn': 'ABS Staff', 'hasEmail': 'mailto:adep.a...</td>
+<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
 <td>The Annual Business Survey (ABS) provides info...</td>
 <td>006:07</td>
 <td>public</td>
 <td>Annual Business Survey: Characteristics of Bus...</td>
 <td>True</td>
 <td>NaN</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
+<td>True</td>
 <td>(abscb,)</td>
 <td>2018.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ABSCB2019</td>
 <td>NaN</td>
+<td>NaN</td>
+<td>U.S. Census Bureau</td>
 <td>2019/2019</td>
 <td>US</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
 <td>006:007</td>
 <td>2021-08-17 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>...</td>
+<td>{'fn': 'ASE Staff', 'hasEmail': 'mailto:ERD.an...</td>
+<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
 <td>The Annual Business Survey (ABS) provides info...</td>
 <td>006:07</td>
 <td>public</td>
 <td>2019 Annual Business Survey: Characteristics o...</td>
 <td>True</td>
 <td>NaN</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
+<td>True</td>
 <td>(abscb,)</td>
 <td>2019.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">ABSCB2020</td>
 <td>NaN</td>
+<td>NaN</td>
+<td>U.S. Census Bureau</td>
 <td>2020/2020</td>
 <td>US</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
 <td>006:007</td>
 <td>2022-08-03 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>...</td>
+<td>{'fn': 'ASE Staff', 'hasEmail': 'mailto:ERD.an...</td>
+<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
 <td>The Annual Business Survey (ABS) provides info...</td>
 <td>006:07</td>
 <td>public</td>
 <td>2020 Annual Business Survey: Characteristics o...</td>
 <td>True</td>
 <td>NaN</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
+<td>True</td>
 <td>(abscb,)</td>
 <td>2020.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ABSCB2021</td>
 <td>NaN</td>
+<td>NaN</td>
+<td>U.S. Census Bureau</td>
 <td>2021/2021</td>
 <td>United States</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
 <td>006:007</td>
 <td>2023-07-24 10:30:52.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>...</td>
+<td>{'fn': 'ABS Staff', 'hasEmail': 'mailto:adep.a...</td>
+<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
 <td>The Annual Business Survey (ABS) provides info...</td>
 <td>006:07</td>
 <td>public</td>
 <td>2021 Annual Business Survey: Characteristics o...</td>
 <td>True</td>
 <td>NaN</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
+<td>True</td>
 <td>(abscb,)</td>
 <td>2021.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ftd16ImpExpHist</td>
-<td>NaN</td>
-<td>2016/2016</td>
-<td>United States</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>http://www.census.gov/developers/</td>
-<td>000:000</td>
-<td>2017-07-13</td>
-<td>http://creativecommons.org/publicdomain/zero/1.0/</td>
-<td>(census,)</td>
-<td>...</td>
-<td>This international trade file provides the ann...</td>
-<td>006:07</td>
-<td>public</td>
-<td>2016 International Trade: Historical Imports a...</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>http://www.census.gov/developer/</td>
-<td>(intltrade, imp_exp)</td>
-<td>2016.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">ftd17ImpExpHist</td>
-<td>NaN</td>
-<td>2017/2017</td>
-<td>United States</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>http://www.census.gov/developers/</td>
-<td>000:000</td>
-<td>2018-03-13</td>
-<td>http://creativecommons.org/publicdomain/zero/1.0/</td>
-<td>(census,)</td>
-<td>...</td>
-<td>This international trade file provides the ann...</td>
-<td>006:07</td>
-<td>public</td>
-<td>2017 International Trade: Historical Imports a...</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>http://www.census.gov/developer/</td>
-<td>(intltrade, imp_exp)</td>
-<td>2017.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ftd18ImpExpHist</td>
-<td>NaN</td>
-<td>2018/2018</td>
-<td>United States</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>http://www.census.gov/developers/</td>
-<td>000:000</td>
-<td>2019-03-13</td>
-<td>http://creativecommons.org/publicdomain/zero/1.0/</td>
-<td>(census,)</td>
-<td>...</td>
-<td>This international trade file provides the ann...</td>
-<td>006:07</td>
-<td>public</td>
-<td>2018 International Trade: Historical Imports a...</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>http://www.census.gov/developer/</td>
-<td>(intltrade, imp_exp)</td>
-<td>2018.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">ftdImpExpHist</td>
-<td>NaN</td>
-<td>2014/2014</td>
-<td>United States</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>http://www.census.gov/developers/</td>
-<td>000:000</td>
-<td>2015-07-20</td>
-<td>http://creativecommons.org/publicdomain/zero/1.0/</td>
-<td>(census,)</td>
-<td>...</td>
-<td>This international trade file provides the ann...</td>
-<td>006:07</td>
-<td>public</td>
-<td>2014 International Trade: Historical Imports a...</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>http://www.census.gov/developer/</td>
-<td>(intltrade, imp_exp)</td>
-<td>2014.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">pubschlfin2012</td>
-<td>NaN</td>
-<td>2012/2012</td>
-<td>United States</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>http://www.census.gov/developers/</td>
-<td>006:000</td>
-<td>2014-09-30</td>
-<td>http://creativecommons.org/publicdomain/zero/1.0/</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The survey covers all public school systems th...</td>
-<td>006:07</td>
-<td>public</td>
-<td>2012 Public Elementary-Secondary Education Fin...</td>
-<td>True</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>http://www.census.gov/developer/</td>
-<td>(pubschlfin,)</td>
-<td>2012.0</td>
 </tr>
 </tbody>
 </table>
 
-<p>1665 rows × 23 columns</p>
 </div>
 </div>
 </div>
-<div id="cell-6" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>acs <span class="op">=</span> available.<span class="bu">filter</span>(regex<span class="op">=</span><span class="st">"^ACS"</span>, axis<span class="op">=</span><span class="dv">0</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>available.<span class="bu">filter</span>(regex<span class="op">=</span><span class="st">"^ACSDT5Y"</span>, axis<span class="op">=</span><span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div id="cell-5" class="cell" data-execution_count="39">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>acs <span class="op">=</span> available.<span class="bu">filter</span>(regex<span class="op">=</span><span class="st">"^ACS"</span>, axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>available.<span class="bu">filter</span>(regex<span class="op">=</span><span class="st">"^ACSDT5Y"</span>, axis<span class="op">=</span><span class="dv">0</span>).head(n<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="39">
 <div>
 
 
@@ -589,24 +414,22 @@ Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-5
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">c_isTimeseries</th>
+<th data-quarto-table-cell-role="th">c_isMicrodata</th>
+<th data-quarto-table-cell-role="th">publisher</th>
 <th data-quarto-table-cell-role="th">temporal</th>
 <th data-quarto-table-cell-role="th">spatial</th>
-<th data-quarto-table-cell-role="th">c_isAggregate</th>
-<th data-quarto-table-cell-role="th">publisher</th>
-<th data-quarto-table-cell-role="th">references</th>
 <th data-quarto-table-cell-role="th">programCode</th>
 <th data-quarto-table-cell-role="th">modified</th>
-<th data-quarto-table-cell-role="th">license</th>
 <th data-quarto-table-cell-role="th">keyword</th>
-<th data-quarto-table-cell-role="th">...</th>
+<th data-quarto-table-cell-role="th">contactPoint</th>
+<th data-quarto-table-cell-role="th">distribution</th>
 <th data-quarto-table-cell-role="th">description</th>
 <th data-quarto-table-cell-role="th">bureauCode</th>
 <th data-quarto-table-cell-role="th">accessLevel</th>
 <th data-quarto-table-cell-role="th">title</th>
 <th data-quarto-table-cell-role="th">c_isAvailable</th>
 <th data-quarto-table-cell-role="th">c_isCube</th>
-<th data-quarto-table-cell-role="th">c_isMicrodata</th>
-<th data-quarto-table-cell-role="th">c_documentationLink</th>
+<th data-quarto-table-cell-role="th">c_isAggregate</th>
 <th data-quarto-table-cell-role="th">c_dataset</th>
 <th data-quarto-table-cell-role="th">vintage</th>
 </tr>
@@ -616,23 +439,21 @@ Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-5
 <td data-quarto-table-cell-role="th">ACSDT5Y2009</td>
 <td>NaN</td>
 <td>NaN</td>
-<td>NaN</td>
-<td>True</td>
 <td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
+<td>NaN</td>
+<td>NaN</td>
 <td>006:004</td>
 <td>2019-08-27 13:11:18.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>...</td>
+<td>{'fn': 'American Community Survey Office', 'ha...</td>
+<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
 <td>The American Community Survey (ACS) is an ongo...</td>
 <td>006:07</td>
 <td>public</td>
 <td>American Community Survey: 5-Year Estimates: D...</td>
 <td>True</td>
 <td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
+<td>True</td>
 <td>(acs, acs5)</td>
 <td>2009.0</td>
 </tr>
@@ -640,23 +461,21 @@ Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-5
 <td data-quarto-table-cell-role="th">ACSDT5Y2010</td>
 <td>NaN</td>
 <td>NaN</td>
-<td>United States</td>
-<td>True</td>
 <td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
+<td>NaN</td>
+<td>United States</td>
 <td>006:004</td>
 <td>2018-07-04 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>...</td>
+<td>{'fn': 'American Community Survey Office', 'ha...</td>
+<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
 <td>The American Community Survey (ACS) is an ongo...</td>
 <td>006:07</td>
 <td>public</td>
 <td>ACS 5-Year Detailed Tables</td>
 <td>True</td>
 <td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
+<td>True</td>
 <td>(acs, acs5)</td>
 <td>2010.0</td>
 </tr>
@@ -664,23 +483,21 @@ Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-5
 <td data-quarto-table-cell-role="th">ACSDT5Y2011</td>
 <td>NaN</td>
 <td>NaN</td>
-<td>NaN</td>
-<td>True</td>
 <td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
+<td>NaN</td>
+<td>NaN</td>
 <td>006:004</td>
 <td>2018-07-04 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>...</td>
+<td>{'fn': 'American Community Survey Office', 'ha...</td>
+<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
 <td>The American Community Survey (ACS) is an ongo...</td>
 <td>006:07</td>
 <td>public</td>
 <td>ACS 5-Year Detailed Tables</td>
 <td>True</td>
 <td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
+<td>True</td>
 <td>(acs, acs5)</td>
 <td>2011.0</td>
 </tr>
@@ -688,23 +505,21 @@ Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-5
 <td data-quarto-table-cell-role="th">ACSDT5Y2012</td>
 <td>NaN</td>
 <td>NaN</td>
-<td>NaN</td>
-<td>True</td>
 <td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
+<td>NaN</td>
+<td>NaN</td>
 <td>006:004</td>
 <td>2018-07-04 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>...</td>
+<td>{'fn': 'American Community Survey Office', 'ha...</td>
+<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
 <td>The American Community Survey (ACS) is an ongo...</td>
 <td>006:07</td>
 <td>public</td>
 <td>ACS 5-Year Detailed Tables</td>
 <td>True</td>
 <td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
+<td>True</td>
 <td>(acs, acs5)</td>
 <td>2012.0</td>
 </tr>
@@ -712,426 +527,39 @@ Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-5
 <td data-quarto-table-cell-role="th">ACSDT5Y2013</td>
 <td>NaN</td>
 <td>NaN</td>
-<td>NaN</td>
-<td>True</td>
 <td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
+<td>NaN</td>
+<td>NaN</td>
 <td>006:004</td>
 <td>2018-07-04 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>...</td>
+<td>{'fn': 'American Community Survey Office', 'ha...</td>
+<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
 <td>The American Community Survey (ACS) is an ongo...</td>
 <td>006:07</td>
 <td>public</td>
 <td>ACS 5-Year Detailed Tables</td>
 <td>True</td>
 <td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
+<td>True</td>
 <td>(acs, acs5)</td>
 <td>2013.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">ACSDT5Y2014</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
-<td>006:004</td>
-<td>2018-07-04 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The American Community Survey (ACS) is an ongo...</td>
-<td>006:07</td>
-<td>public</td>
-<td>ACS 5-Year Detailed Tables</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
-<td>(acs, acs5)</td>
-<td>2014.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ACSDT5Y2015</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
-<td>006:004</td>
-<td>2018-07-05 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The American Community Survey (ACS) is an ongo...</td>
-<td>006:07</td>
-<td>public</td>
-<td>ACS 5-Year Detailed Tables</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
-<td>(acs, acs5)</td>
-<td>2015.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">ACSDT5Y2016</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
-<td>006:004</td>
-<td>2018-07-05 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The American Community Survey (ACS) is an ongo...</td>
-<td>006:07</td>
-<td>public</td>
-<td>ACS 5-Year Detailed Tables</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
-<td>(acs, acs5)</td>
-<td>2016.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ACSDT5Y2017</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
-<td>006:004</td>
-<td>2018-08-21 07:11:43.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The American Community Survey (ACS) is an ongo...</td>
-<td>006:07</td>
-<td>public</td>
-<td>ACS 5-Year Detailed Tables</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
-<td>(acs, acs5)</td>
-<td>2017.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">ACSDT5Y2018</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
-<td>006:004</td>
-<td>2019-10-22 16:28:02.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The American Community Survey (ACS) is an ongo...</td>
-<td>006:07</td>
-<td>public</td>
-<td>American Community Survey: 5-Year Estimates: D...</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
-<td>(acs, acs5)</td>
-<td>2018.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ACSDT5Y2019</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
-<td>006:004</td>
-<td>2020-04-03 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The American Community Survey (ACS) is an ongo...</td>
-<td>006:07</td>
-<td>public</td>
-<td>American Community Survey: 5-Year Estimates: D...</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
-<td>(acs, acs5)</td>
-<td>2019.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">ACSDT5Y2020</td>
-<td>NaN</td>
-<td>2020/2020</td>
-<td>US</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
-<td>006:004</td>
-<td>2021-07-13 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The American Community Survey (ACS) is an ongo...</td>
-<td>006:07</td>
-<td>public</td>
-<td>American Community Survey: 5-Year Estimates: D...</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
-<td>(acs, acs5)</td>
-<td>2020.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ACSDT5Y2021</td>
-<td>NaN</td>
-<td>2021/2021</td>
-<td>US</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
-<td>006:004</td>
-<td>2022-08-08 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The American Community Survey (ACS) is an ongo...</td>
-<td>006:07</td>
-<td>public</td>
-<td>American Community Survey: 5-Year Estimates: D...</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
-<td>(acs, acs5)</td>
-<td>2021.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">ACSDT5Y2022</td>
-<td>NaN</td>
-<td>2022/2022</td>
-<td>US</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
-<td>006:004</td>
-<td>2023-09-05 12:01:39.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The American Community Survey (ACS) is an ongo...</td>
-<td>006:07</td>
-<td>public</td>
-<td>American Community Survey: 5-Year Estimates: D...</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
-<td>(acs, acs5)</td>
-<td>2022.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ACSDT5Y2023</td>
-<td>NaN</td>
-<td>2023/2023</td>
-<td>US</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
-<td>006:004</td>
-<td>2024-09-06 17:27:47.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The American Community Survey (ACS) is an ongo...</td>
-<td>006:07</td>
-<td>public</td>
-<td>ACS 5-Year Detailed Tables</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
-<td>(acs, acs5)</td>
-<td>2023.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">ACSDT5YAIAN2010</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
-<td>006:004</td>
-<td>2019-10-24 07:18:57.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The American Indian and Alaska Native (AIAN) t...</td>
-<td>006:07</td>
-<td>public</td>
-<td>American Community Survey: 5-Year Estimates: A...</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
-<td>(acs, acs5, aian)</td>
-<td>2010.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ACSDT5YAIAN2015</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
-<td>006:004</td>
-<td>2020-02-13 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The American Indian and Alaska Native (AIAN) t...</td>
-<td>006:07</td>
-<td>public</td>
-<td>ACS 5-Year AIAN Detailed Tables</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
-<td>(acs, acs5, aian)</td>
-<td>2015.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">ACSDT5YAIAN2021</td>
-<td>NaN</td>
-<td>2021/2021</td>
-<td>US</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
-<td>006:004</td>
-<td>2022-11-29 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The American Indian and Alaska Native (AIAN) t...</td>
-<td>006:07</td>
-<td>public</td>
-<td>American Community Survey: 5-Year Estimates: A...</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
-<td>(acs, acs5, aian)</td>
-<td>2021.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ACSDT5YSPT2010</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
-<td>006:004</td>
-<td>2019-10-11 14:16:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The Selected Population Tables (SPT) are rele...</td>
-<td>006:07</td>
-<td>public</td>
-<td>American Community Survey: 5-Year Estimates: S...</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
-<td>(acs, acs5, spt)</td>
-<td>2010.0</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">ACSDT5YSPT2015</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
-<td>006:004</td>
-<td>2020-02-18 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The Selected Population Tables (SPT) are rele...</td>
-<td>006:07</td>
-<td>public</td>
-<td>American Community Survey: 5-Year Estimates: S...</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
-<td>(acs, acs5, spt)</td>
-<td>2015.0</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">ACSDT5YSPT2021</td>
-<td>NaN</td>
-<td>2021/2021</td>
-<td>US</td>
-<td>True</td>
-<td>U.S. Census Bureau</td>
-<td>https://www.census.gov/developers/</td>
-<td>006:004</td>
-<td>2022-11-29 00:00:00.0</td>
-<td>https://creativecommons.org/publicdomain/zero/...</td>
-<td>(census,)</td>
-<td>...</td>
-<td>The Selected Population Tables (SPT) are relea...</td>
-<td>006:07</td>
-<td>public</td>
-<td>American Community Survey: 5-Year Estimates: S...</td>
-<td>True</td>
-<td>True</td>
-<td>NaN</td>
-<td>https://www.census.gov/developer/</td>
-<td>(acs, acs5, spt)</td>
-<td>2021.0</td>
 </tr>
 </tbody>
 </table>
 
-<p>21 rows × 23 columns</p>
 </div>
 </div>
 </div>
-<div id="cell-7" class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>cenpy.explorer.explain(<span class="st">"ACSDT5Y2023"</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>acs <span class="op">=</span> cenpy.remote.APIConnection(<span class="st">'ACSDT5Y2023'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-6" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cenpy.explorer.explain(<span class="st">"ACSDT5Y2023"</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>acs <span class="op">=</span> cenpy.remote.APIConnection(<span class="st">'ACSDT5Y2023'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="5">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>acs.varslike(</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    pattern<span class="op">=</span><span class="st">"B19019_001E"</span>,</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    by<span class="op">=</span><span class="st">"attributes"</span>,</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>).sort_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-7" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>acs.varslike(</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    pattern<span class="op">=</span><span class="st">"B19019_001E"</span>,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    by<span class="op">=</span><span class="st">"attributes"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>).sort_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
@@ -1170,40 +598,34 @@ Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-5
 </div>
 </div>
 </div>
-<div id="cell-9" class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>acs_variables <span class="op">=</span> [</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NAME"</span>,</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"GEO_ID"</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B19019_001E"</span>, <span class="co"># Total Median Household Income</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B06009_001E"</span>, <span class="co"># Educational Attainment- Total</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B06009_002E"</span>, <span class="co"># Educational Attainment- Less than high school graduate</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B06009_003E"</span>, <span class="co"># Educational Attainment- High school graduate (equivalent)</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B06009_004E"</span>, <span class="co"># Educational Attainment- Some college or associate's degree</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B06009_005E"</span>, <span class="co"># Educational Attainment- Bachelor's degree or higher</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B01003_001E"</span>, <span class="co"># Total Population</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B23025_001E"</span>, <span class="co"># Total Population above 16</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B23025_002E"</span>, <span class="co"># Labor Force- Total</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B23025_005E"</span>, <span class="co"># Labour Force- Unemployed</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B17020_001E"</span>, <span class="co"># Population for whom poverty is determined</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B17020_002E"</span>, <span class="co"># Population below poverty level</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">#1. Median Household Income [x]</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">#2. Education Levels [x]</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">#3. Unemployment rate [x]</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">#4. Labour force participation rate [x]</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a><span class="co">#5. Population [x]</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="co">#6. Poverty rate [x]</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-8" class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>acs_variables <span class="op">=</span> [</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"NAME"</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"GEO_ID"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B19019_001E"</span>, <span class="co"># Total Median Household Income</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B06009_001E"</span>, <span class="co"># Educational Attainment- Total</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B06009_002E"</span>, <span class="co"># Educational Attainment- Less than high school graduate</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B06009_003E"</span>, <span class="co"># Educational Attainment- High school graduate (equivalent)</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B06009_004E"</span>, <span class="co"># Educational Attainment- Some college or associate's degree</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B06009_005E"</span>, <span class="co"># Educational Attainment- Bachelor's degree or higher</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B01003_001E"</span>, <span class="co"># Total Population</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B23025_001E"</span>, <span class="co"># Total Population above 16</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B23025_002E"</span>, <span class="co"># Labor Force- Total</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B23025_005E"</span>, <span class="co"># Labour Force- Unemployed</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B17020_001E"</span>, <span class="co"># Population for whom poverty is determined</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="st">"B17020_002E"</span>, <span class="co"># Population below poverty level</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-10" class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out the data for state</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>USA_acs_data <span class="op">=</span> acs.query(</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    cols<span class="op">=</span>acs_variables,</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    geo_unit<span class="op">=</span><span class="st">"state:*"</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>USA_acs_data.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-9" class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out the data for state</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>USA_acs_data <span class="op">=</span> acs.query(</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    cols<span class="op">=</span>acs_variables,</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    geo_unit<span class="op">=</span><span class="st">"state:*"</span>,</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>USA_acs_data.head(n<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
@@ -1326,50 +748,50 @@ Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-5
 </div>
 </div>
 </div>
-<div id="cell-11" class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> variable <span class="kw">in</span> acs_variables:</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert all variables EXCEPT for NAME</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> variable <span class="kw">not</span> <span class="kw">in</span> (<span class="st">"NAME"</span>, <span class="st">"GEO_ID"</span>):</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        USA_acs_data[variable] <span class="op">=</span> USA_acs_data[variable].astype(<span class="bu">float</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-10" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> variable <span class="kw">in</span> acs_variables:</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Convert all variables EXCEPT for NAME</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> variable <span class="kw">not</span> <span class="kw">in</span> (<span class="st">"NAME"</span>, <span class="st">"GEO_ID"</span>):</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        USA_acs_data[variable] <span class="op">=</span> USA_acs_data[variable].astype(<span class="bu">float</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-12" class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>USA_acs_data <span class="op">=</span> USA_acs_data.rename(</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>{</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B19019_001E"</span>: <span class="st">"MedHHInc"</span>, <span class="co"># Total Median Household Income</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B06009_001E"</span>: <span class="st">"EducTotal"</span>, <span class="co"># Educational Attainment- Total</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B06009_002E"</span>: <span class="st">"EducBelowHighSch"</span>, <span class="co"># Educational Attainment- Less than high school graduate</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B06009_003E"</span>: <span class="st">"EducHighSch"</span>, <span class="co"># Educational Attainment- High school graduate (equivalent)</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B06009_004E"</span>: <span class="st">"EducAssoc"</span>, <span class="co"># Educational Attainment- Some college or associate's degree</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B06009_005E"</span>: <span class="st">"EducBach"</span>, <span class="co"># Educational Attainment- Bachelor's degree or higher</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B01003_001E"</span>: <span class="st">"TotalPop"</span>, <span class="co"># Total Population</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B23025_001E"</span>: <span class="st">"TotalPop16"</span>, <span class="co"># Total Population above 16</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B23025_002E"</span>: <span class="st">"LabForTotal"</span>, <span class="co"># Labor Force- Total</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B23025_005E"</span>: <span class="st">"Unemployed"</span>, <span class="co"># Labour Force- Unemployed</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B17020_001E"</span>: <span class="st">"PopPovertyDetermined"</span>, <span class="co"># Population for whom poverty is determined</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B17020_002E"</span>: <span class="st">"PovertyPop"</span>, <span class="co"># Population below poverty level</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-11" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>USA_acs_data <span class="op">=</span> USA_acs_data.rename(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>{</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B19019_001E"</span>: <span class="st">"MedHHInc"</span>, <span class="co"># Total Median Household Income</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B06009_001E"</span>: <span class="st">"EducTotal"</span>, <span class="co"># Educational Attainment- Total</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B06009_002E"</span>: <span class="st">"EducBelowHighSch"</span>, <span class="co"># Educational Attainment- Less than high school graduate</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B06009_003E"</span>: <span class="st">"EducHighSch"</span>, <span class="co"># Educational Attainment- High school graduate (equivalent)</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B06009_004E"</span>: <span class="st">"EducAssoc"</span>, <span class="co"># Educational Attainment- Some college or associate's degree</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B06009_005E"</span>: <span class="st">"EducBach"</span>, <span class="co"># Educational Attainment- Bachelor's degree or higher</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B01003_001E"</span>: <span class="st">"TotalPop"</span>, <span class="co"># Total Population</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B23025_001E"</span>: <span class="st">"TotalPop16"</span>, <span class="co"># Total Population above 16</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B23025_002E"</span>: <span class="st">"LabForTotal"</span>, <span class="co"># Labor Force- Total</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B23025_005E"</span>: <span class="st">"Unemployed"</span>, <span class="co"># Labour Force- Unemployed</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B17020_001E"</span>: <span class="st">"PopPovertyDetermined"</span>, <span class="co"># Population for whom poverty is determined</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">"B17020_002E"</span>: <span class="st">"PovertyPop"</span>, <span class="co"># Population below poverty level</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Feature engineering</em></p>
-<div id="cell-14" class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>USA_acs_data[<span class="st">'PctBach'</span>] <span class="op">=</span> USA_acs_data[<span class="st">'EducBach'</span>]<span class="op">/</span>USA_acs_data[<span class="st">'EducTotal'</span>]</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>USA_acs_data[<span class="st">'PovertyRate'</span>] <span class="op">=</span> USA_acs_data[<span class="st">'PovertyPop'</span>]<span class="op">/</span>USA_acs_data[<span class="st">'PopPovertyDetermined'</span>]</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>USA_acs_data[<span class="st">'UnemploymentRate'</span>] <span class="op">=</span> USA_acs_data[<span class="st">'Unemployed'</span>]<span class="op">/</span>USA_acs_data[<span class="st">'LabForTotal'</span>]</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>USA_acs_data[<span class="st">'LabForParticipationRate'</span>] <span class="op">=</span> USA_acs_data[<span class="st">'LabForTotal'</span>]<span class="op">/</span>USA_acs_data[<span class="st">'TotalPop16'</span>]</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Remove Puerto Rico</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>USA_acs_data <span class="op">=</span> USA_acs_data[USA_acs_data[<span class="st">'NAME'</span>] <span class="op">!=</span> <span class="st">'Puerto Rico'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-13" class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>USA_acs_data[<span class="st">'PctBach'</span>] <span class="op">=</span> USA_acs_data[<span class="st">'EducBach'</span>]<span class="op">/</span>USA_acs_data[<span class="st">'EducTotal'</span>]</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>USA_acs_data[<span class="st">'PovertyRate'</span>] <span class="op">=</span> USA_acs_data[<span class="st">'PovertyPop'</span>]<span class="op">/</span>USA_acs_data[<span class="st">'PopPovertyDetermined'</span>]</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>USA_acs_data[<span class="st">'UnemploymentRate'</span>] <span class="op">=</span> USA_acs_data[<span class="st">'Unemployed'</span>]<span class="op">/</span>USA_acs_data[<span class="st">'LabForTotal'</span>]</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>USA_acs_data[<span class="st">'LabForParticipationRate'</span>] <span class="op">=</span> USA_acs_data[<span class="st">'LabForTotal'</span>]<span class="op">/</span>USA_acs_data[<span class="st">'TotalPop16'</span>]</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#Remove Puerto Rico</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>USA_acs_data <span class="op">=</span> USA_acs_data[USA_acs_data[<span class="st">'NAME'</span>] <span class="op">!=</span> <span class="st">'Puerto Rico'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="international-trade" class="level3">
 <h3 class="anchored" data-anchor-id="international-trade"><strong>1.2 International Trade</strong></h3>
 <p><em>Exports</em></p>
-<div id="cell-17" class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>cenpy.explorer.explain(<span class="st">"ITMONTHLYEXPORTSSTATENAICS"</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>US_export <span class="op">=</span> cenpy.remote.APIConnection(<span class="st">'ITMONTHLYEXPORTSSTATENAICS'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-16" class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cenpy.explorer.explain(<span class="st">"ITMONTHLYEXPORTSSTATENAICS"</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>US_export <span class="op">=</span> cenpy.remote.APIConnection(<span class="st">'ITMONTHLYEXPORTSSTATENAICS'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-18" class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>US_export.variables</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-17" class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>US_export.variables</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 
@@ -1902,8 +1324,8 @@ Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-5
 </div>
 </div>
 </div>
-<div id="cell-19" class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>US_export.geographies[<span class="st">'fips'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-18" class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>US_export.geographies[<span class="st">'fips'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
@@ -1948,17 +1370,17 @@ Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-5
 </div>
 </div>
 </div>
-<div id="cell-20" class="cell" data-execution_count="14">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>US_export_data <span class="op">=</span> US_export.query(</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>    cols<span class="op">=</span>[<span class="st">"US_STATE"</span>, <span class="st">"GEO_ID"</span>,<span class="st">"YEAR"</span>,<span class="st">"MONTH"</span>,<span class="st">"ALL_VAL_YR"</span>],</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    geo_unit<span class="op">=</span><span class="st">"world:*"</span>,</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> variable <span class="kw">in</span> [<span class="st">"YEAR"</span>,<span class="st">"MONTH"</span>,<span class="st">"ALL_VAL_YR"</span>]:</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    US_export_data[variable] <span class="op">=</span> US_export_data[variable].astype(<span class="bu">float</span>)</span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>US_export_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="14">
+<div id="cell-19" class="cell" data-execution_count="40">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>US_export_data <span class="op">=</span> US_export.query(</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    cols<span class="op">=</span>[<span class="st">"US_STATE"</span>, <span class="st">"GEO_ID"</span>,<span class="st">"YEAR"</span>,<span class="st">"MONTH"</span>,<span class="st">"ALL_VAL_YR"</span>],</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>    geo_unit<span class="op">=</span><span class="st">"world:*"</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> variable <span class="kw">in</span> [<span class="st">"YEAR"</span>,<span class="st">"MONTH"</span>,<span class="st">"ALL_VAL_YR"</span>]:</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    US_export_data[variable] <span class="op">=</span> US_export_data[variable].astype(<span class="bu">float</span>)</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>US_export_data.head(n<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="40">
 <div>
 
 
@@ -2020,78 +1442,23 @@ Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-5
 <td>1.510832e+09</td>
 <td>1</td>
 </tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">9785</td>
-<td>WA</td>
-<td>W0100Y1WO</td>
-<td>2024.0</td>
-<td>10.0</td>
-<td>4.816321e+10</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9786</td>
-<td>WI</td>
-<td>W0100Y1WO</td>
-<td>2024.0</td>
-<td>10.0</td>
-<td>2.333412e+10</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">9787</td>
-<td>XX</td>
-<td>W0100Y1WO</td>
-<td>2024.0</td>
-<td>10.0</td>
-<td>6.910604e+10</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9788</td>
-<td>WV</td>
-<td>W0100Y1WO</td>
-<td>2024.0</td>
-<td>10.0</td>
-<td>4.155562e+09</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">9789</td>
-<td>WY</td>
-<td>W0100Y1WO</td>
-<td>2024.0</td>
-<td>10.0</td>
-<td>1.712623e+09</td>
-<td>1</td>
-</tr>
 </tbody>
 </table>
 
-<p>9790 rows × 6 columns</p>
 </div>
 </div>
-</div>
-<div id="cell-21" class="cell" data-execution_count="15">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data for December 2023</span></span>
-<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>US_export_2023 <span class="op">=</span> US_export_data[(US_export_data[<span class="st">'YEAR'</span>] <span class="op">==</span> <span class="dv">2023</span>) <span class="op">&amp;</span> (US_export_data[<span class="st">'MONTH'</span>] <span class="op">==</span> <span class="dv">12</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Imports</em></p>
-<div id="cell-23" class="cell" data-execution_count="16">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>cenpy.explorer.explain(<span class="st">"ITMONTHLYIMPORTSSTATENAICS"</span>)</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>US_import <span class="op">=</span> cenpy.remote.APIConnection(<span class="st">'ITMONTHLYIMPORTSSTATENAICS'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-21" class="cell" data-execution_count="15">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data for December 2023</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>US_export_2023 <span class="op">=</span> US_export_data[(US_export_data[<span class="st">'YEAR'</span>] <span class="op">==</span> <span class="dv">2023</span>) <span class="op">&amp;</span> (US_export_data[<span class="st">'MONTH'</span>] <span class="op">==</span> <span class="dv">12</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-24" class="cell" data-execution_count="17">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>US_import.variables</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-22" class="cell" data-execution_count="16">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>cenpy.explorer.explain(<span class="st">"ITMONTHLYIMPORTSSTATENAICS"</span>)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>US_import <span class="op">=</span> cenpy.remote.APIConnection(<span class="st">'ITMONTHLYIMPORTSSTATENAICS'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div id="cell-23" class="cell" data-execution_count="17">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>US_import.variables</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 
@@ -2652,17 +2019,17 @@ Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-5
 </div>
 </div>
 </div>
-<div id="cell-25" class="cell" data-execution_count="18">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>US_import_data <span class="op">=</span> US_import.query(</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>    cols<span class="op">=</span>[<span class="st">"US_STATE"</span>, <span class="st">"GEO_ID"</span>,<span class="st">"YEAR"</span>,<span class="st">"MONTH"</span>,<span class="st">"GEN_VAL_YR"</span>],</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>    geo_unit<span class="op">=</span><span class="st">"world:*"</span>,</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> variable <span class="kw">in</span> [<span class="st">"YEAR"</span>,<span class="st">"MONTH"</span>,<span class="st">"GEN_VAL_YR"</span>]:</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    US_import_data[variable] <span class="op">=</span> US_import_data[variable].astype(<span class="bu">float</span>)</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>US_import_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="18">
+<div id="cell-24" class="cell" data-execution_count="41">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>US_import_data <span class="op">=</span> US_import.query(</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    cols<span class="op">=</span>[<span class="st">"US_STATE"</span>, <span class="st">"GEO_ID"</span>,<span class="st">"YEAR"</span>,<span class="st">"MONTH"</span>,<span class="st">"GEN_VAL_YR"</span>],</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    geo_unit<span class="op">=</span><span class="st">"world:*"</span>,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> variable <span class="kw">in</span> [<span class="st">"YEAR"</span>,<span class="st">"MONTH"</span>,<span class="st">"GEN_VAL_YR"</span>]:</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>    US_import_data[variable] <span class="op">=</span> US_import_data[variable].astype(<span class="bu">float</span>)</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>US_import_data.head(n<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="41">
 <div>
 
 
@@ -2724,124 +2091,61 @@ Requirement already satisfied: colorama in c:\users\jiayu\miniforge3\envs\musa-5
 <td>1.782983e+09</td>
 <td>1</td>
 </tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">9785</td>
-<td>WA</td>
-<td>W0100Y1WO</td>
-<td>2024.0</td>
-<td>10.0</td>
-<td>5.254540e+10</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9786</td>
-<td>WI</td>
-<td>W0100Y1WO</td>
-<td>2024.0</td>
-<td>10.0</td>
-<td>3.284204e+10</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">9787</td>
-<td>WV</td>
-<td>W0100Y1WO</td>
-<td>2024.0</td>
-<td>10.0</td>
-<td>4.158808e+09</td>
-<td>1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9788</td>
-<td>WY</td>
-<td>W0100Y1WO</td>
-<td>2024.0</td>
-<td>10.0</td>
-<td>1.113063e+09</td>
-<td>1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">9789</td>
-<td>XX</td>
-<td>W0100Y1WO</td>
-<td>2024.0</td>
-<td>10.0</td>
-<td>2.036682e+10</td>
-<td>1</td>
-</tr>
 </tbody>
 </table>
 
-<p>9790 rows × 6 columns</p>
 </div>
 </div>
 </div>
-<div id="cell-26" class="cell" data-execution_count="19">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data for December 2023</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>US_import_2023 <span class="op">=</span> US_import_data[(US_export_data[<span class="st">'YEAR'</span>] <span class="op">==</span> <span class="dv">2023</span>) <span class="op">&amp;</span> (US_import_data[<span class="st">'MONTH'</span>] <span class="op">==</span> <span class="dv">12</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-25" class="cell" data-execution_count="19">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data for December 2023</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>US_import_2023 <span class="op">=</span> US_import_data[(US_export_data[<span class="st">'YEAR'</span>] <span class="op">==</span> <span class="dv">2023</span>) <span class="op">&amp;</span> (US_import_data[<span class="st">'MONTH'</span>] <span class="op">==</span> <span class="dv">12</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Net Export (Export-Import)</em></p>
-<div id="cell-28" class="cell" data-execution_count="20">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join export and import data</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>US_netexport_2023 <span class="op">=</span> US_export_2023.merge(US_import_2023[[<span class="st">'US_STATE'</span>, <span class="st">'GEN_VAL_YR'</span>]], on<span class="op">=</span><span class="st">'US_STATE'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Net export</span></span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>US_netexport_2023[<span class="st">"netexport"</span>] <span class="op">=</span> US_netexport_2023[<span class="st">"ALL_VAL_YR"</span>]<span class="op">-</span>US_netexport_2023[<span class="st">"GEN_VAL_YR"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-27" class="cell" data-execution_count="20">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join export and import data</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>US_netexport_2023 <span class="op">=</span> US_export_2023.merge(US_import_2023[[<span class="st">'US_STATE'</span>, <span class="st">'GEN_VAL_YR'</span>]], on<span class="op">=</span><span class="st">'US_STATE'</span>, how<span class="op">=</span><span class="st">'left'</span>)</span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Net export</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>US_netexport_2023[<span class="st">"netexport"</span>] <span class="op">=</span> US_netexport_2023[<span class="st">"ALL_VAL_YR"</span>]<span class="op">-</span>US_netexport_2023[<span class="st">"GEN_VAL_YR"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-29" class="cell" data-execution_count="21">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new column with states name</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>state_names <span class="op">=</span> {</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'AL'</span>: <span class="st">'Alabama'</span>, <span class="st">'AK'</span>: <span class="st">'Alaska'</span>, <span class="st">'AZ'</span>: <span class="st">'Arizona'</span>, <span class="st">'AR'</span>: <span class="st">'Arkansas'</span>, <span class="st">'CA'</span>: <span class="st">'California'</span>,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'CO'</span>: <span class="st">'Colorado'</span>, <span class="st">'CT'</span>: <span class="st">'Connecticut'</span>, <span class="st">'DE'</span>: <span class="st">'Delaware'</span>, <span class="st">'FL'</span>: <span class="st">'Florida'</span>, <span class="st">'GA'</span>: <span class="st">'Georgia'</span>,</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'HI'</span>: <span class="st">'Hawaii'</span>, <span class="st">'ID'</span>: <span class="st">'Idaho'</span>, <span class="st">'IL'</span>: <span class="st">'Illinois'</span>, <span class="st">'IN'</span>: <span class="st">'Indiana'</span>, <span class="st">'IA'</span>: <span class="st">'Iowa'</span>,</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'KS'</span>: <span class="st">'Kansas'</span>, <span class="st">'KY'</span>: <span class="st">'Kentucky'</span>, <span class="st">'LA'</span>: <span class="st">'Louisiana'</span>, <span class="st">'ME'</span>: <span class="st">'Maine'</span>, <span class="st">'MD'</span>: <span class="st">'Maryland'</span>,</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'MA'</span>: <span class="st">'Massachusetts'</span>, <span class="st">'MI'</span>: <span class="st">'Michigan'</span>, <span class="st">'MN'</span>: <span class="st">'Minnesota'</span>, <span class="st">'MS'</span>: <span class="st">'Mississippi'</span>, <span class="st">'MO'</span>: <span class="st">'Missouri'</span>,</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'MT'</span>: <span class="st">'Montana'</span>, <span class="st">'NE'</span>: <span class="st">'Nebraska'</span>, <span class="st">'NV'</span>: <span class="st">'Nevada'</span>, <span class="st">'NH'</span>: <span class="st">'New Hampshire'</span>, <span class="st">'NJ'</span>: <span class="st">'New Jersey'</span>,</span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'NM'</span>: <span class="st">'New Mexico'</span>, <span class="st">'NY'</span>: <span class="st">'New York'</span>, <span class="st">'NC'</span>: <span class="st">'North Carolina'</span>, <span class="st">'ND'</span>: <span class="st">'North Dakota'</span>, <span class="st">'OH'</span>: <span class="st">'Ohio'</span>,</span>
-<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'OK'</span>: <span class="st">'Oklahoma'</span>, <span class="st">'OR'</span>: <span class="st">'Oregon'</span>, <span class="st">'PA'</span>: <span class="st">'Pennsylvania'</span>, <span class="st">'RI'</span>: <span class="st">'Rhode Island'</span>, <span class="st">'SC'</span>: <span class="st">'South Carolina'</span>,</span>
-<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SD'</span>: <span class="st">'South Dakota'</span>, <span class="st">'TN'</span>: <span class="st">'Tennessee'</span>, <span class="st">'TX'</span>: <span class="st">'Texas'</span>, <span class="st">'UT'</span>: <span class="st">'Utah'</span>, <span class="st">'VT'</span>: <span class="st">'Vermont'</span>,</span>
-<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'VA'</span>: <span class="st">'Virginia'</span>, <span class="st">'WA'</span>: <span class="st">'Washington'</span>, <span class="st">'WV'</span>: <span class="st">'West Virginia'</span>, <span class="st">'WI'</span>: <span class="st">'Wisconsin'</span>, <span class="st">'WY'</span>: <span class="st">'Wyoming'</span>,</span>
-<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'DC'</span>: <span class="st">'District of Columbia'</span></span>
-<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a>US_netexport_2023[<span class="st">'STATE_NAME'</span>] <span class="op">=</span> US_netexport_2023[<span class="st">'US_STATE'</span>].<span class="bu">map</span>(state_names)</span>
-<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-18"><a href="#cb22-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter states only</span></span>
-<span id="cb22-19"><a href="#cb22-19" aria-hidden="true" tabindex="-1"></a>US_netexport_2023 <span class="op">=</span> US_netexport_2023.dropna(subset<span class="op">=</span>[<span class="st">'STATE_NAME'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-28" class="cell" data-execution_count="21">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new column with states name</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>state_names <span class="op">=</span> {</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'AL'</span>: <span class="st">'Alabama'</span>, <span class="st">'AK'</span>: <span class="st">'Alaska'</span>, <span class="st">'AZ'</span>: <span class="st">'Arizona'</span>, <span class="st">'AR'</span>: <span class="st">'Arkansas'</span>, <span class="st">'CA'</span>: <span class="st">'California'</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'CO'</span>: <span class="st">'Colorado'</span>, <span class="st">'CT'</span>: <span class="st">'Connecticut'</span>, <span class="st">'DE'</span>: <span class="st">'Delaware'</span>, <span class="st">'FL'</span>: <span class="st">'Florida'</span>, <span class="st">'GA'</span>: <span class="st">'Georgia'</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'HI'</span>: <span class="st">'Hawaii'</span>, <span class="st">'ID'</span>: <span class="st">'Idaho'</span>, <span class="st">'IL'</span>: <span class="st">'Illinois'</span>, <span class="st">'IN'</span>: <span class="st">'Indiana'</span>, <span class="st">'IA'</span>: <span class="st">'Iowa'</span>,</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'KS'</span>: <span class="st">'Kansas'</span>, <span class="st">'KY'</span>: <span class="st">'Kentucky'</span>, <span class="st">'LA'</span>: <span class="st">'Louisiana'</span>, <span class="st">'ME'</span>: <span class="st">'Maine'</span>, <span class="st">'MD'</span>: <span class="st">'Maryland'</span>,</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'MA'</span>: <span class="st">'Massachusetts'</span>, <span class="st">'MI'</span>: <span class="st">'Michigan'</span>, <span class="st">'MN'</span>: <span class="st">'Minnesota'</span>, <span class="st">'MS'</span>: <span class="st">'Mississippi'</span>, <span class="st">'MO'</span>: <span class="st">'Missouri'</span>,</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'MT'</span>: <span class="st">'Montana'</span>, <span class="st">'NE'</span>: <span class="st">'Nebraska'</span>, <span class="st">'NV'</span>: <span class="st">'Nevada'</span>, <span class="st">'NH'</span>: <span class="st">'New Hampshire'</span>, <span class="st">'NJ'</span>: <span class="st">'New Jersey'</span>,</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'NM'</span>: <span class="st">'New Mexico'</span>, <span class="st">'NY'</span>: <span class="st">'New York'</span>, <span class="st">'NC'</span>: <span class="st">'North Carolina'</span>, <span class="st">'ND'</span>: <span class="st">'North Dakota'</span>, <span class="st">'OH'</span>: <span class="st">'Ohio'</span>,</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'OK'</span>: <span class="st">'Oklahoma'</span>, <span class="st">'OR'</span>: <span class="st">'Oregon'</span>, <span class="st">'PA'</span>: <span class="st">'Pennsylvania'</span>, <span class="st">'RI'</span>: <span class="st">'Rhode Island'</span>, <span class="st">'SC'</span>: <span class="st">'South Carolina'</span>,</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'SD'</span>: <span class="st">'South Dakota'</span>, <span class="st">'TN'</span>: <span class="st">'Tennessee'</span>, <span class="st">'TX'</span>: <span class="st">'Texas'</span>, <span class="st">'UT'</span>: <span class="st">'Utah'</span>, <span class="st">'VT'</span>: <span class="st">'Vermont'</span>,</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'VA'</span>: <span class="st">'Virginia'</span>, <span class="st">'WA'</span>: <span class="st">'Washington'</span>, <span class="st">'WV'</span>: <span class="st">'West Virginia'</span>, <span class="st">'WI'</span>: <span class="st">'Wisconsin'</span>, <span class="st">'WY'</span>: <span class="st">'Wyoming'</span>,</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'DC'</span>: <span class="st">'District of Columbia'</span></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a>US_netexport_2023[<span class="st">'STATE_NAME'</span>] <span class="op">=</span> US_netexport_2023[<span class="st">'US_STATE'</span>].<span class="bu">map</span>(state_names)</span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter states only</span></span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>US_netexport_2023 <span class="op">=</span> US_netexport_2023.dropna(subset<span class="op">=</span>[<span class="st">'STATE_NAME'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="bureau-of-economic-analysis-gross-domesitc-product-gdp" class="level3">
 <h3 class="anchored" data-anchor-id="bureau-of-economic-analysis-gross-domesitc-product-gdp"><strong>1.3 Bureau of Economic Analysis: Gross Domesitc Product (GDP)</strong></h3>
-<div id="cell-31" class="cell" data-execution_count="22">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install beaapi<span class="op">-</span><span class="fl">0.0.2</span><span class="op">-</span>py3<span class="op">-</span>none<span class="op">-</span><span class="bu">any</span>.whl</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> beaapi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Processing c:\users\jiayu\onedrive - penno365\documents\02. musa year 1\musa 5500- geospatial data science in python\quatro_jy\quarto_template\analysis\beaapi-0.0.2-py3-none-any.whl</code></pre>
+<div id="cell-30" class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install beaapi<span class="op">-</span><span class="fl">0.0.2</span><span class="op">-</span>py3<span class="op">-</span>none<span class="op">-</span><span class="bu">any</span>.whl</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> beaapi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>WARNING: Requirement 'beaapi-0.0.2-py3-none-any.whl' looks like a filename, but the file does not exist
-ERROR: Could not install packages due to an OSError: [Errno 2] No such file or directory: 'C:\\Users\\jiayu\\OneDrive - PennO365\\Documents\\02. MUSA Year 1\\MUSA 5500- Geospatial Data Science in Python\\quatro_jy\\quarto_template\\analysis\\beaapi-0.0.2-py3-none-any.whl'
-</code></pre>
-</div>
-</div>
-<div id="cell-33" class="cell" data-execution_count="24">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of data set available</span></span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>list_of_sets <span class="op">=</span> beaapi.get_data_set_list(beakey)</span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co"># List of parameters</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>list_of_params <span class="op">=</span> beaapi.get_parameter_list(beakey, <span class="st">'Regional'</span>)</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co"># List of parameters values</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>list_of_param_vals <span class="op">=</span> beaapi.get_parameter_values(beakey, <span class="st">'Regional'</span>, <span class="st">'LineCode'</span>,)</span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>list_of_param_vals</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-32" class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of data set available</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>list_of_sets <span class="op">=</span> beaapi.get_data_set_list(beakey)</span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a><span class="co"># List of parameters</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>list_of_params <span class="op">=</span> beaapi.get_parameter_list(beakey, <span class="st">'Regional'</span>)</span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="co"># List of parameters values</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>list_of_param_vals <span class="op">=</span> beaapi.get_parameter_values(beakey, <span class="st">'Regional'</span>, <span class="st">'LineCode'</span>,)</span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>list_of_param_vals.head(n<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 
@@ -2917,9 +2221,9 @@ ERROR: Could not install packages due to an OSError: [Errno 2] No such file or d
 </div>
 </div>
 </div>
-<div id="cell-34" class="cell" data-execution_count="25">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>bea_tbl <span class="op">=</span> beaapi.get_data(beakey, datasetname<span class="op">=</span><span class="st">'Regional'</span>, GeoFips<span class="op">=</span> <span class="st">'STATE'</span>, LineCode<span class="op">=</span> <span class="st">'1'</span>, TableName<span class="op">=</span><span class="st">'SAGDP9N'</span>, Year<span class="op">=</span><span class="st">'2023'</span>)</span>
-<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>display(bea_tbl.head(<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-33" class="cell" data-execution_count="25">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>bea_tbl <span class="op">=</span> beaapi.get_data(beakey, datasetname<span class="op">=</span><span class="st">'Regional'</span>, GeoFips<span class="op">=</span> <span class="st">'STATE'</span>, LineCode<span class="op">=</span> <span class="st">'1'</span>, TableName<span class="op">=</span><span class="st">'SAGDP9N'</span>, Year<span class="op">=</span><span class="st">'2023'</span>)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>display(bea_tbl.head(<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 
@@ -2994,41 +2298,26 @@ ERROR: Could not install packages due to an OSError: [Errno 2] No such file or d
 </div>
 </div>
 </div>
-<div id="cell-35" class="cell" data-execution_count="26">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>bea_state_tbl <span class="op">=</span> bea_tbl[bea_tbl[<span class="st">'GeoName'</span>].isin(state_names.values())]</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>bea_state_tbl.rename(columns<span class="op">=</span>{<span class="st">'DataValue'</span>: <span class="st">'REALGDP'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>C:\Users\jiayu\AppData\Local\Temp\ipykernel_26412\629114622.py:2: SettingWithCopyWarning: 
-A value is trying to be set on a copy of a slice from a DataFrame
-
-See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-  bea_state_tbl.rename(columns={'DataValue': 'REALGDP'}, inplace=True)</code></pre>
-</div>
+<div id="cell-34" class="cell" data-execution_count="26">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>bea_state_tbl <span class="op">=</span> bea_tbl[bea_tbl[<span class="st">'GeoName'</span>].isin(state_names.values())]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>bea_state_tbl.rename(columns<span class="op">=</span>{<span class="st">'DataValue'</span>: <span class="st">'REALGDP'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="centers-for-disease-control-and-prevention-life-expectancy-by-state" class="level3">
 <h3 class="anchored" data-anchor-id="centers-for-disease-control-and-prevention-life-expectancy-by-state"><strong>1.4 Centers for Disease Control and Prevention: Life Expectancy by state</strong></h3>
 <p>The last available data was 2021.</p>
-<div id="cell-37" class="cell" data-execution_count="27">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install sodapy</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sodapy <span class="im">import</span> Socrata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>Requirement already satisfied: sodapy in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (2.2.0)
-Requirement already satisfied: requests&gt;=2.28.1 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from sodapy) (2.31.0)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from requests&gt;=2.28.1-&gt;sodapy) (3.3.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from requests&gt;=2.28.1-&gt;sodapy) (3.8)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from requests&gt;=2.28.1-&gt;sodapy) (1.26.19)
-Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\jiayu\miniforge3\envs\musa-550-fall-2023\lib\site-packages (from requests&gt;=2.28.1-&gt;sodapy) (2024.7.4)</code></pre>
+<div id="cell-36" class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install sodapy</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sodapy <span class="im">import</span> Socrata</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-</div>
-<div id="cell-38" class="cell" data-execution_count="28">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>cdc <span class="op">=</span> Socrata(<span class="st">"data.cdc.gov"</span>, <span class="va">None</span>)</span>
-<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>life <span class="op">=</span> cdc.get(<span class="st">"it4f-frdc"</span>, limit<span class="op">=</span><span class="dv">2000</span>)</span>
-<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>life_df <span class="op">=</span> pd.DataFrame.from_records(life)</span>
-<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>life_df <span class="op">=</span> life_df[life_df[<span class="st">"sex"</span>]<span class="op">==</span><span class="st">"Total"</span>]</span>
-<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>life_df[<span class="st">"leb"</span>] <span class="op">=</span> life_df[<span class="st">"leb"</span>].astype(<span class="bu">float</span>)</span>
-<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>life_df.rename(columns<span class="op">=</span>{<span class="st">'leb'</span>: <span class="st">'life_expectancy'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-37" class="cell" data-execution_count="28">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>cdc <span class="op">=</span> Socrata(<span class="st">"data.cdc.gov"</span>, <span class="va">None</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>life <span class="op">=</span> cdc.get(<span class="st">"it4f-frdc"</span>, limit<span class="op">=</span><span class="dv">2000</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>life_df <span class="op">=</span> pd.DataFrame.from_records(life)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>life_df <span class="op">=</span> life_df[life_df[<span class="st">"sex"</span>]<span class="op">==</span><span class="st">"Total"</span>]</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>life_df[<span class="st">"leb"</span>] <span class="op">=</span> life_df[<span class="st">"leb"</span>].astype(<span class="bu">float</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>life_df.rename(columns<span class="op">=</span>{<span class="st">'leb'</span>: <span class="st">'life_expectancy'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>WARNING:root:Requests made without an app_token will be subject to strict throttling limits.</code></pre>
 </div>
@@ -3036,9 +2325,9 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\jiayu\miniforge
 </section>
 <section id="bureau-of-labor-statistics-labor-productivity" class="level3">
 <h3 class="anchored" data-anchor-id="bureau-of-labor-statistics-labor-productivity"><strong>1.5 Bureau of Labor Statistics: Labor Productivity</strong></h3>
-<div id="cell-40" class="cell" data-execution_count="29">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>lab_pdt <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/JiaYue-Ong/Python-Final-Project/refs/heads/main/labor-productivity.csv'</span>)</span>
-<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>lab_pdt.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-39" class="cell" data-execution_count="29">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>lab_pdt <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/JiaYue-Ong/Python-Final-Project/refs/heads/main/labor-productivity.csv'</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>lab_pdt.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="29">
 <div>
 
@@ -3198,10 +2487,10 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\jiayu\miniforge
 </div>
 </div>
 </div>
-<div id="cell-41" class="cell" data-execution_count="30">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>lab_pdt_2023 <span class="op">=</span> lab_pdt[lab_pdt[<span class="st">'Area'</span>].isin(state_names.values())]</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>lab_pdt_2023 <span class="op">=</span> lab_pdt_2023[[<span class="st">"Area"</span>,<span class="st">"2023"</span>]]</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>lab_pdt_2023.rename(columns<span class="op">=</span>{<span class="st">'Area'</span>: <span class="st">'State'</span>, <span class="st">'2023'</span>: <span class="st">'Labor_Productivity_2023'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-40" class="cell" data-execution_count="30">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>lab_pdt_2023 <span class="op">=</span> lab_pdt[lab_pdt[<span class="st">'Area'</span>].isin(state_names.values())]</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>lab_pdt_2023 <span class="op">=</span> lab_pdt_2023[[<span class="st">"Area"</span>,<span class="st">"2023"</span>]]</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>lab_pdt_2023.rename(columns<span class="op">=</span>{<span class="st">'Area'</span>: <span class="st">'State'</span>, <span class="st">'2023'</span>: <span class="st">'Labor_Productivity_2023'</span>}, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 </section>
@@ -3209,13 +2498,13 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\jiayu\miniforge
 <h2 class="anchored" data-anchor-id="data-wrangling">2. Data Wrangling</h2>
 <p>Dependent variables: 1. GDP per capita 2. Life expectancy 3. Median household income 4. Education levels</p>
 <p>Independent variables 1. Unemployment rate 2. Labour force participation rate 3. Labour Productivity Private non-farm 4. Population 5. Poverty rate 6. Net exports by state</p>
-<div id="cell-44" class="cell" data-execution_count="31">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All dataset</span></span>
-<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>USA_acs_data</span>
-<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>US_netexport_2023</span>
-<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>bea_state_tbl</span>
-<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>life_df</span>
-<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>lab_pdt_2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-43" class="cell" data-execution_count="31">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All dataset</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>USA_acs_data</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>US_netexport_2023</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>bea_state_tbl</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>life_df</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>lab_pdt_2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="31">
 <div>
 
@@ -3490,40 +2779,40 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\jiayu\miniforge
 </div>
 </div>
 </div>
-<div id="cell-45" class="cell" data-execution_count="32">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join ACS and netexport</span></span>
-<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> USA_acs_data.merge(US_netexport_2023[[<span class="st">'STATE_NAME'</span>, <span class="st">'netexport'</span>]], left_on<span class="op">=</span><span class="st">'NAME'</span>, right_on<span class="op">=</span><span class="st">'STATE_NAME'</span>, how<span class="op">=</span><span class="st">'left'</span>).drop(</span>
-<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"STATE_NAME"</span>]</span>
-<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-6"><a href="#cb37-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Join bea_state_tbl</span></span>
-<span id="cb37-7"><a href="#cb37-7" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> df1.merge(bea_state_tbl[[<span class="st">'GeoName'</span>, <span class="st">'REALGDP'</span>]], left_on<span class="op">=</span><span class="st">'NAME'</span>, right_on<span class="op">=</span><span class="st">'GeoName'</span>, how<span class="op">=</span><span class="st">'left'</span>).drop(</span>
-<span id="cb37-8"><a href="#cb37-8" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"GeoName"</span>]</span>
-<span id="cb37-9"><a href="#cb37-9" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-11"><a href="#cb37-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Join life_df</span></span>
-<span id="cb37-12"><a href="#cb37-12" aria-hidden="true" tabindex="-1"></a>df3 <span class="op">=</span> df2.merge(life_df[[<span class="st">'area'</span>, <span class="st">'life_expectancy'</span>]], left_on<span class="op">=</span><span class="st">'NAME'</span>, right_on<span class="op">=</span><span class="st">'area'</span>, how<span class="op">=</span><span class="st">'left'</span>).drop(</span>
-<span id="cb37-13"><a href="#cb37-13" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"area"</span>]</span>
-<span id="cb37-14"><a href="#cb37-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb37-15"><a href="#cb37-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-16"><a href="#cb37-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Join lab_pdt_2023</span></span>
-<span id="cb37-17"><a href="#cb37-17" aria-hidden="true" tabindex="-1"></a>df4 <span class="op">=</span> df3.merge(lab_pdt_2023, left_on<span class="op">=</span><span class="st">'NAME'</span>, right_on<span class="op">=</span><span class="st">'State'</span>, how<span class="op">=</span><span class="st">'left'</span>).drop(</span>
-<span id="cb37-18"><a href="#cb37-18" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"State"</span>]</span>
-<span id="cb37-19"><a href="#cb37-19" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb37-20"><a href="#cb37-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb37-21"><a href="#cb37-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Real GDP per capita</span></span>
-<span id="cb37-22"><a href="#cb37-22" aria-hidden="true" tabindex="-1"></a>df4[<span class="st">"REALGDPpercapita"</span>] <span class="op">=</span> df4[<span class="st">"REALGDP"</span>]<span class="op">/</span>df4[<span class="st">"TotalPop"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-44" class="cell" data-execution_count="32">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join ACS and netexport</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>df1 <span class="op">=</span> USA_acs_data.merge(US_netexport_2023[[<span class="st">'STATE_NAME'</span>, <span class="st">'netexport'</span>]], left_on<span class="op">=</span><span class="st">'NAME'</span>, right_on<span class="op">=</span><span class="st">'STATE_NAME'</span>, how<span class="op">=</span><span class="st">'left'</span>).drop(</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"STATE_NAME"</span>]</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Join bea_state_tbl</span></span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> df1.merge(bea_state_tbl[[<span class="st">'GeoName'</span>, <span class="st">'REALGDP'</span>]], left_on<span class="op">=</span><span class="st">'NAME'</span>, right_on<span class="op">=</span><span class="st">'GeoName'</span>, how<span class="op">=</span><span class="st">'left'</span>).drop(</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"GeoName"</span>]</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Join life_df</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>df3 <span class="op">=</span> df2.merge(life_df[[<span class="st">'area'</span>, <span class="st">'life_expectancy'</span>]], left_on<span class="op">=</span><span class="st">'NAME'</span>, right_on<span class="op">=</span><span class="st">'area'</span>, how<span class="op">=</span><span class="st">'left'</span>).drop(</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"area"</span>]</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Join lab_pdt_2023</span></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>df4 <span class="op">=</span> df3.merge(lab_pdt_2023, left_on<span class="op">=</span><span class="st">'NAME'</span>, right_on<span class="op">=</span><span class="st">'State'</span>, how<span class="op">=</span><span class="st">'left'</span>).drop(</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"State"</span>]</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb32-20"><a href="#cb32-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-21"><a href="#cb32-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Create Real GDP per capita</span></span>
+<span id="cb32-22"><a href="#cb32-22" aria-hidden="true" tabindex="-1"></a>df4[<span class="st">"REALGDPpercapita"</span>] <span class="op">=</span> df4[<span class="st">"REALGDP"</span>]<span class="op">/</span>df4[<span class="st">"TotalPop"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-46" class="cell" data-execution_count="33">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get geographies of US States</span></span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pygris</span>
-<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pygris <span class="im">import</span> states</span>
-<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pygris.utils <span class="im">import</span> shift_geometry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-45" class="cell" data-execution_count="33">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get geographies of US States</span></span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pygris</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pygris <span class="im">import</span> states</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pygris.utils <span class="im">import</span> shift_geometry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-47" class="cell" data-execution_count="34">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>us <span class="op">=</span> states(cb <span class="op">=</span> <span class="va">True</span>, resolution <span class="op">=</span> <span class="st">"20m"</span>, year<span class="op">=</span><span class="dv">2023</span>)</span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>us_rescaled <span class="op">=</span> shift_geometry(us)</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>us_rescaled.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-46" class="cell" data-execution_count="34">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>us <span class="op">=</span> states(cb <span class="op">=</span> <span class="va">True</span>, resolution <span class="op">=</span> <span class="st">"20m"</span>, year<span class="op">=</span><span class="dv">2023</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>us_rescaled <span class="op">=</span> shift_geometry(us)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>us_rescaled.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -3532,9 +2821,9 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\jiayu\miniforge
 </div>
 </div>
 </div>
-<div id="cell-48" class="cell" data-execution_count="35">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join the data to geography</span></span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>us_rescaled.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-47" class="cell" data-execution_count="35">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join the data to geography</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>us_rescaled.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="35">
 <div>
 
@@ -3627,20 +2916,20 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\jiayu\miniforge
 </div>
 </div>
 </div>
-<div id="cell-49" class="cell" data-execution_count="36">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>us_rescaled_final <span class="op">=</span> us_rescaled.merge(</span>
-<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>    df4,</span>
-<span id="cb41-3"><a href="#cb41-3" aria-hidden="true" tabindex="-1"></a>    left_on<span class="op">=</span>[<span class="st">"GEOID"</span>],</span>
-<span id="cb41-4"><a href="#cb41-4" aria-hidden="true" tabindex="-1"></a>    right_on<span class="op">=</span>[<span class="st">"state"</span>],</span>
-<span id="cb41-5"><a href="#cb41-5" aria-hidden="true" tabindex="-1"></a>).drop(</span>
-<span id="cb41-6"><a href="#cb41-6" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"state"</span>]</span>
-<span id="cb41-7"><a href="#cb41-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb41-8"><a href="#cb41-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb41-9"><a href="#cb41-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert CRS</span></span>
-<span id="cb41-10"><a href="#cb41-10" aria-hidden="true" tabindex="-1"></a>us_rescaled_final <span class="op">=</span> us_rescaled_final.to_crs(<span class="st">"EPSG:4326"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-48" class="cell" data-execution_count="36">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>us_rescaled_final <span class="op">=</span> us_rescaled.merge(</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>    df4,</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>    left_on<span class="op">=</span>[<span class="st">"GEOID"</span>],</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>    right_on<span class="op">=</span>[<span class="st">"state"</span>],</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>).drop(</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>    columns<span class="op">=</span>[<span class="st">"state"</span>]</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert CRS</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>us_rescaled_final <span class="op">=</span> us_rescaled_final.to_crs(<span class="st">"EPSG:4326"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-50" class="cell" data-execution_count="37">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>us_rescaled_final.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="cell-49" class="cell" data-execution_count="37">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>us_rescaled_final.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>Index(['STATEFP', 'STATENS', 'GEOIDFQ', 'GEOID', 'STUSPS', 'NAME_x', 'LSAD',
        'ALAND', 'AWATER', 'geometry', 'NAME_y', 'GEO_ID', 'MedHHInc',

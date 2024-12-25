@@ -33,6 +33,7 @@ website:
           - analysis/1.2-Exploratory_Plots.qmd
           - analysis/1.3-Clustering.qmd
           - analysis/1.4-PredictiveModelling.qmd
+          - analysis/Python-Final-Project.ipynb
           - analysis/1-python-code-blocks.qmd 
           - analysis/2-static-images.ipynb
           - analysis/3-altair-hvplot.ipynb
