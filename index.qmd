@@ -1,6 +1,6 @@
 ---
-title: "MUSA 550: Final Project Template"
-subtitle: "An example website demonstrating the power of Quarto for sharing analyses on the web"
+title: "Ong Jia Yue adventures in Master of Urban Spatial Analytics"
+subtitle: "A portfolio of my work from Master of Urban Spatial Analytics at the University of Pennsylvania"
 ---
 
 ## Welcome!
