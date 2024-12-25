@@ -5,9 +5,9 @@ project:
     port: 3333
 
 website:
-  title: "MUSA 550"
+  title: "MUSA 5500 by Jia Yue"
   page-footer:
-    left: "delmelle@gmail.com"
+    left: "jiaong@upenn.edu"
     right: "This page is built with ❤️ and [Quarto](https://quarto.org/)."
 
   sidebar:
