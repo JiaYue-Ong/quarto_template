@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1. Getting data and data wrangling – Ong Jia Yue adventures in Master of Urban Spatial Analytics</title>
+<title>1. Getting data and data processing – Ong Jia Yue adventures in Master of Urban Spatial Analytics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -116,7 +116,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../analysis/index.html">Final Project: MUSA 5500 Geospatial Data Science in Python</a></li><li class="breadcrumb-item"><a href="../analysis/1.1-Get_Data.html">1. Getting data and data wrangling</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../analysis/index.html">Final Project: MUSA 5500 Geospatial Data Science in Python</a></li><li class="breadcrumb-item"><a href="../analysis/1.1-Get_Data.html">1. Getting data and data processing</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -163,13 +163,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../analysis/1.1-Get_Data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">1. Getting data and data wrangling</span></a>
+ <span class="menu-text">1. Getting data and data processing</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../analysis/1.2-Exploratory_Plots.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2. Exploratory Plots</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/1.2-Exploratory_Plots_Map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Exploratory Plots [Map]</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -195,9 +201,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content column-page-right" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../analysis/index.html">Final Project: MUSA 5500 Geospatial Data Science in Python</a></li><li class="breadcrumb-item"><a href="../analysis/1.1-Get_Data.html">1. Getting data and data wrangling</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../analysis/index.html">Final Project: MUSA 5500 Geospatial Data Science in Python</a></li><li class="breadcrumb-item"><a href="../analysis/1.1-Get_Data.html">1. Getting data and data processing</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">1. Getting data and data wrangling</h1>
+<h1 class="title">1. Getting data and data processing</h1>
 </div>
 
 
@@ -247,22 +253,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">c_isTimeseries</th>
-<th data-quarto-table-cell-role="th">c_isMicrodata</th>
-<th data-quarto-table-cell-role="th">publisher</th>
 <th data-quarto-table-cell-role="th">temporal</th>
 <th data-quarto-table-cell-role="th">spatial</th>
+<th data-quarto-table-cell-role="th">c_isAggregate</th>
+<th data-quarto-table-cell-role="th">publisher</th>
+<th data-quarto-table-cell-role="th">references</th>
 <th data-quarto-table-cell-role="th">programCode</th>
 <th data-quarto-table-cell-role="th">modified</th>
+<th data-quarto-table-cell-role="th">license</th>
 <th data-quarto-table-cell-role="th">keyword</th>
-<th data-quarto-table-cell-role="th">contactPoint</th>
-<th data-quarto-table-cell-role="th">distribution</th>
+<th data-quarto-table-cell-role="th">...</th>
 <th data-quarto-table-cell-role="th">description</th>
 <th data-quarto-table-cell-role="th">bureauCode</th>
 <th data-quarto-table-cell-role="th">accessLevel</th>
 <th data-quarto-table-cell-role="th">title</th>
 <th data-quarto-table-cell-role="th">c_isAvailable</th>
 <th data-quarto-table-cell-role="th">c_isCube</th>
-<th data-quarto-table-cell-role="th">c_isAggregate</th>
+<th data-quarto-table-cell-role="th">c_isMicrodata</th>
+<th data-quarto-table-cell-role="th">c_documentationLink</th>
 <th data-quarto-table-cell-role="th">c_dataset</th>
 <th data-quarto-table-cell-role="th">vintage</th>
 </tr>
@@ -271,116 +279,127 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ABSCB2017</td>
 <td>NaN</td>
-<td>NaN</td>
-<td>U.S. Census Bureau</td>
 <td>2017/2017</td>
 <td>United States</td>
+<td>True</td>
+<td>U.S. Census Bureau</td>
+<td>https://www.census.gov/developers/</td>
 <td>006:007</td>
 <td>2020-04-30 00:00:00.0</td>
+<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>{'fn': 'ABS Staff', 'hasEmail': 'mailto:adep.a...</td>
-<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
+<td>...</td>
 <td>The Annual Business Survey (ABS) provides info...</td>
 <td>006:07</td>
 <td>public</td>
 <td>Annual Business Survey: Characteristics of Bus...</td>
 <td>True</td>
 <td>NaN</td>
-<td>True</td>
+<td>NaN</td>
+<td>https://www.census.gov/developer/</td>
 <td>(abscb,)</td>
 <td>2017.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">ABSCB2018</td>
 <td>NaN</td>
-<td>NaN</td>
-<td>U.S. Census Bureau</td>
 <td>2018/2018</td>
 <td>United States</td>
+<td>True</td>
+<td>U.S. Census Bureau</td>
+<td>https://www.census.gov/developers/</td>
 <td>006:007</td>
 <td>2020-10-26 00:00:00.0</td>
+<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>{'fn': 'ABS Staff', 'hasEmail': 'mailto:adep.a...</td>
-<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
+<td>...</td>
 <td>The Annual Business Survey (ABS) provides info...</td>
 <td>006:07</td>
 <td>public</td>
 <td>Annual Business Survey: Characteristics of Bus...</td>
 <td>True</td>
 <td>NaN</td>
-<td>True</td>
+<td>NaN</td>
+<td>https://www.census.gov/developer/</td>
 <td>(abscb,)</td>
 <td>2018.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ABSCB2019</td>
 <td>NaN</td>
-<td>NaN</td>
-<td>U.S. Census Bureau</td>
 <td>2019/2019</td>
 <td>US</td>
+<td>True</td>
+<td>U.S. Census Bureau</td>
+<td>https://www.census.gov/developers/</td>
 <td>006:007</td>
 <td>2021-08-17 00:00:00.0</td>
+<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>{'fn': 'ASE Staff', 'hasEmail': 'mailto:ERD.an...</td>
-<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
+<td>...</td>
 <td>The Annual Business Survey (ABS) provides info...</td>
 <td>006:07</td>
 <td>public</td>
 <td>2019 Annual Business Survey: Characteristics o...</td>
 <td>True</td>
 <td>NaN</td>
-<td>True</td>
+<td>NaN</td>
+<td>https://www.census.gov/developer/</td>
 <td>(abscb,)</td>
 <td>2019.0</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">ABSCB2020</td>
 <td>NaN</td>
-<td>NaN</td>
-<td>U.S. Census Bureau</td>
 <td>2020/2020</td>
 <td>US</td>
+<td>True</td>
+<td>U.S. Census Bureau</td>
+<td>https://www.census.gov/developers/</td>
 <td>006:007</td>
 <td>2022-08-03 00:00:00.0</td>
+<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>{'fn': 'ASE Staff', 'hasEmail': 'mailto:ERD.an...</td>
-<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
+<td>...</td>
 <td>The Annual Business Survey (ABS) provides info...</td>
 <td>006:07</td>
 <td>public</td>
 <td>2020 Annual Business Survey: Characteristics o...</td>
 <td>True</td>
 <td>NaN</td>
-<td>True</td>
+<td>NaN</td>
+<td>https://www.census.gov/developer/</td>
 <td>(abscb,)</td>
 <td>2020.0</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">ABSCB2021</td>
 <td>NaN</td>
-<td>NaN</td>
-<td>U.S. Census Bureau</td>
 <td>2021/2021</td>
 <td>United States</td>
+<td>True</td>
+<td>U.S. Census Bureau</td>
+<td>https://www.census.gov/developers/</td>
 <td>006:007</td>
 <td>2023-07-24 10:30:52.0</td>
+<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>{'fn': 'ABS Staff', 'hasEmail': 'mailto:adep.a...</td>
-<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
+<td>...</td>
 <td>The Annual Business Survey (ABS) provides info...</td>
 <td>006:07</td>
 <td>public</td>
 <td>2021 Annual Business Survey: Characteristics o...</td>
 <td>True</td>
 <td>NaN</td>
-<td>True</td>
+<td>NaN</td>
+<td>https://www.census.gov/developer/</td>
 <td>(abscb,)</td>
 <td>2021.0</td>
 </tr>
 </tbody>
 </table>
 
+<p>5 rows × 23 columns</p>
 </div>
 </div>
 </div>
@@ -396,22 +415,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
 <th data-quarto-table-cell-role="th">c_isTimeseries</th>
-<th data-quarto-table-cell-role="th">c_isMicrodata</th>
-<th data-quarto-table-cell-role="th">publisher</th>
 <th data-quarto-table-cell-role="th">temporal</th>
 <th data-quarto-table-cell-role="th">spatial</th>
+<th data-quarto-table-cell-role="th">c_isAggregate</th>
+<th data-quarto-table-cell-role="th">publisher</th>
+<th data-quarto-table-cell-role="th">references</th>
 <th data-quarto-table-cell-role="th">programCode</th>
 <th data-quarto-table-cell-role="th">modified</th>
+<th data-quarto-table-cell-role="th">license</th>
 <th data-quarto-table-cell-role="th">keyword</th>
-<th data-quarto-table-cell-role="th">contactPoint</th>
-<th data-quarto-table-cell-role="th">distribution</th>
+<th data-quarto-table-cell-role="th">...</th>
 <th data-quarto-table-cell-role="th">description</th>
 <th data-quarto-table-cell-role="th">bureauCode</th>
 <th data-quarto-table-cell-role="th">accessLevel</th>
 <th data-quarto-table-cell-role="th">title</th>
 <th data-quarto-table-cell-role="th">c_isAvailable</th>
 <th data-quarto-table-cell-role="th">c_isCube</th>
-<th data-quarto-table-cell-role="th">c_isAggregate</th>
+<th data-quarto-table-cell-role="th">c_isMicrodata</th>
+<th data-quarto-table-cell-role="th">c_documentationLink</th>
 <th data-quarto-table-cell-role="th">c_dataset</th>
 <th data-quarto-table-cell-role="th">vintage</th>
 </tr>
@@ -421,21 +442,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">ACSDT5Y2009</td>
 <td>NaN</td>
 <td>NaN</td>
+<td>NaN</td>
+<td>True</td>
 <td>U.S. Census Bureau</td>
-<td>NaN</td>
-<td>NaN</td>
+<td>https://www.census.gov/developers/</td>
 <td>006:004</td>
 <td>2019-08-27 13:11:18.0</td>
+<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>{'fn': 'American Community Survey Office', 'ha...</td>
-<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
+<td>...</td>
 <td>The American Community Survey (ACS) is an ongo...</td>
 <td>006:07</td>
 <td>public</td>
 <td>American Community Survey: 5-Year Estimates: D...</td>
 <td>True</td>
 <td>True</td>
-<td>True</td>
+<td>NaN</td>
+<td>https://www.census.gov/developer/</td>
 <td>(acs, acs5)</td>
 <td>2009.0</td>
 </tr>
@@ -443,21 +466,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">ACSDT5Y2010</td>
 <td>NaN</td>
 <td>NaN</td>
-<td>U.S. Census Bureau</td>
-<td>NaN</td>
 <td>United States</td>
+<td>True</td>
+<td>U.S. Census Bureau</td>
+<td>https://www.census.gov/developers/</td>
 <td>006:004</td>
 <td>2018-07-04 00:00:00.0</td>
+<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>{'fn': 'American Community Survey Office', 'ha...</td>
-<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
+<td>...</td>
 <td>The American Community Survey (ACS) is an ongo...</td>
 <td>006:07</td>
 <td>public</td>
 <td>ACS 5-Year Detailed Tables</td>
 <td>True</td>
 <td>True</td>
-<td>True</td>
+<td>NaN</td>
+<td>https://www.census.gov/developer/</td>
 <td>(acs, acs5)</td>
 <td>2010.0</td>
 </tr>
@@ -465,21 +490,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">ACSDT5Y2011</td>
 <td>NaN</td>
 <td>NaN</td>
+<td>NaN</td>
+<td>True</td>
 <td>U.S. Census Bureau</td>
-<td>NaN</td>
-<td>NaN</td>
+<td>https://www.census.gov/developers/</td>
 <td>006:004</td>
 <td>2018-07-04 00:00:00.0</td>
+<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>{'fn': 'American Community Survey Office', 'ha...</td>
-<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
+<td>...</td>
 <td>The American Community Survey (ACS) is an ongo...</td>
 <td>006:07</td>
 <td>public</td>
 <td>ACS 5-Year Detailed Tables</td>
 <td>True</td>
 <td>True</td>
-<td>True</td>
+<td>NaN</td>
+<td>https://www.census.gov/developer/</td>
 <td>(acs, acs5)</td>
 <td>2011.0</td>
 </tr>
@@ -487,21 +514,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">ACSDT5Y2012</td>
 <td>NaN</td>
 <td>NaN</td>
+<td>NaN</td>
+<td>True</td>
 <td>U.S. Census Bureau</td>
-<td>NaN</td>
-<td>NaN</td>
+<td>https://www.census.gov/developers/</td>
 <td>006:004</td>
 <td>2018-07-04 00:00:00.0</td>
+<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>{'fn': 'American Community Survey Office', 'ha...</td>
-<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
+<td>...</td>
 <td>The American Community Survey (ACS) is an ongo...</td>
 <td>006:07</td>
 <td>public</td>
 <td>ACS 5-Year Detailed Tables</td>
 <td>True</td>
 <td>True</td>
-<td>True</td>
+<td>NaN</td>
+<td>https://www.census.gov/developer/</td>
 <td>(acs, acs5)</td>
 <td>2012.0</td>
 </tr>
@@ -509,27 +538,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">ACSDT5Y2013</td>
 <td>NaN</td>
 <td>NaN</td>
+<td>NaN</td>
+<td>True</td>
 <td>U.S. Census Bureau</td>
-<td>NaN</td>
-<td>NaN</td>
+<td>https://www.census.gov/developers/</td>
 <td>006:004</td>
 <td>2018-07-04 00:00:00.0</td>
+<td>https://creativecommons.org/publicdomain/zero/...</td>
 <td>(census,)</td>
-<td>{'fn': 'American Community Survey Office', 'ha...</td>
-<td>{'@type': 'dcat:Distribution', 'accessURL': 'h...</td>
+<td>...</td>
 <td>The American Community Survey (ACS) is an ongo...</td>
 <td>006:07</td>
 <td>public</td>
 <td>ACS 5-Year Detailed Tables</td>
 <td>True</td>
 <td>True</td>
-<td>True</td>
+<td>NaN</td>
+<td>https://www.census.gov/developer/</td>
 <td>(acs, acs5)</td>
 <td>2013.0</td>
 </tr>
 </tbody>
 </table>
 
+<p>5 rows × 23 columns</p>
 </div>
 </div>
 </div>
@@ -2120,7 +2152,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> beaapi</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
-<div id="cell-31" class="cell" data-execution_count="2">
+<div id="cell-31" class="cell" data-execution_count="23">
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> config</span>
 <span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>beakey <span class="op">=</span> config.bea_api_key <span class="co">#API Key</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -2260,7 +2292,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="centers-for-disease-control-and-prevention-life-expectancy-by-state" class="level3">
 <h3 class="anchored" data-anchor-id="centers-for-disease-control-and-prevention-life-expectancy-by-state"><strong>1.4 Centers for Disease Control and Prevention: Life Expectancy by state</strong></h3>
-<p>The last available data was 2021.</p>
+<p>The most recently published life expectancy data was from 2021. The 2021 data was published in 2024.</p>
 <div id="cell-36" class="cell" data-execution_count="27">
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install sodapy</span>
 <span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -2449,10 +2481,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section>
 </section>
-<section id="data-wrangling" class="level2">
-<h2 class="anchored" data-anchor-id="data-wrangling">2. Data Wrangling</h2>
+<section id="data-processing" class="level2">
+<h2 class="anchored" data-anchor-id="data-processing">2. Data Processing</h2>
+<p>We aim to put model the following variables:</p>
 <p>Dependent variables: 1. GDP per capita 2. Life expectancy 3. Median household income 4. Education levels</p>
 <p>Independent variables 1. Unemployment rate 2. Labour force participation rate 3. Labour Productivity Private non-farm 4. Population 5. Poverty rate 6. Net exports by state</p>
+<p>To achieve this, we will merge all the variables dataset into one dataset based on states.</p>
 <div id="cell-43" class="cell" data-execution_count="31">
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All dataset</span></span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>USA_acs_data</span>
@@ -2460,279 +2494,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>bea_state_tbl</span>
 <span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>life_df</span>
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>lab_pdt_2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="31">
-<div>
-
-
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">State</th>
-<th data-quarto-table-cell-role="th">Labor_Productivity_2023</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>Alabama</td>
-<td>107.992</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>Alaska</td>
-<td>100.303</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>Arizona</td>
-<td>109.179</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>Arkansas</td>
-<td>106.947</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>California</td>
-<td>118.074</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>Colorado</td>
-<td>115.671</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>Connecticut</td>
-<td>103.346</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>Delaware</td>
-<td>101.073</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>District of Columbia</td>
-<td>114.806</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>Florida</td>
-<td>112.931</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">10</td>
-<td>Georgia</td>
-<td>104.667</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">11</td>
-<td>Hawaii</td>
-<td>99.788</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">12</td>
-<td>Idaho</td>
-<td>112.662</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">13</td>
-<td>Illinois</td>
-<td>106.842</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">14</td>
-<td>Indiana</td>
-<td>111.292</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">15</td>
-<td>Iowa</td>
-<td>103.393</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">16</td>
-<td>Kansas</td>
-<td>108.006</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">17</td>
-<td>Kentucky</td>
-<td>107.007</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">18</td>
-<td>Louisiana</td>
-<td>98.811</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">19</td>
-<td>Maine</td>
-<td>115.711</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">20</td>
-<td>Maryland</td>
-<td>109.428</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">21</td>
-<td>Massachusetts</td>
-<td>116.072</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">22</td>
-<td>Michigan</td>
-<td>107.504</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">23</td>
-<td>Minnesota</td>
-<td>107.390</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">24</td>
-<td>Mississippi</td>
-<td>102.623</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">25</td>
-<td>Missouri</td>
-<td>109.715</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">26</td>
-<td>Montana</td>
-<td>102.921</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">27</td>
-<td>Nebraska</td>
-<td>120.151</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">28</td>
-<td>Nevada</td>
-<td>100.565</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">29</td>
-<td>New Hampshire</td>
-<td>111.814</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">30</td>
-<td>New Jersey</td>
-<td>108.088</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">31</td>
-<td>New Mexico</td>
-<td>110.286</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">32</td>
-<td>New York</td>
-<td>108.494</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">33</td>
-<td>North Carolina</td>
-<td>105.774</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">34</td>
-<td>North Dakota</td>
-<td>99.667</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">35</td>
-<td>Ohio</td>
-<td>107.278</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">36</td>
-<td>Oklahoma</td>
-<td>100.616</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">37</td>
-<td>Oregon</td>
-<td>111.063</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">38</td>
-<td>Pennsylvania</td>
-<td>103.329</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">39</td>
-<td>Rhode Island</td>
-<td>101.389</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">40</td>
-<td>South Carolina</td>
-<td>104.611</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">41</td>
-<td>South Dakota</td>
-<td>97.433</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">42</td>
-<td>Tennessee</td>
-<td>112.898</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">43</td>
-<td>Texas</td>
-<td>106.564</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">44</td>
-<td>Utah</td>
-<td>116.077</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">45</td>
-<td>Vermont</td>
-<td>108.206</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">46</td>
-<td>Virginia</td>
-<td>114.121</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">47</td>
-<td>Washington</td>
-<td>124.929</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">48</td>
-<td>West Virginia</td>
-<td>106.637</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">49</td>
-<td>Wisconsin</td>
-<td>108.181</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">50</td>
-<td>Wyoming</td>
-<td>102.393</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
 </div>
 <div id="cell-44" class="cell" data-execution_count="32">
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join ACS and netexport</span></span>

@@ -31,6 +31,7 @@ website:
         contents:
           - analysis/1.1-Get_Data.ipynb
           - analysis/1.2-Exploratory_Plots.ipynb
+          - analysis/1.2-Exploratory_Plots_Map.ipynb
           - analysis/1.3-Clustering.ipynb
           - analysis/1.4-PredictiveModelling.ipynb
 
