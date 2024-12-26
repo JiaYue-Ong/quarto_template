@@ -4,7 +4,6 @@ This section contains my final project for MUSA 5500 Geospatial Data Science in 
 
 *Background:*
     The United States of America (USA) is a large country comprising 50 states. Each state is not equal, and it would be interesting to analyse and map out the differences in level of development and socioeconomic indicators between each state as if they were 50 sovereign countries.
-
     My final project's research question is inspired by Gapminder. I aim to apply this in the context of US States to answer these questions: how do socioeconomic variables vary across US states? And do they suggest which states are more developed/deprived than others?
 
 *Implication:*
@@ -15,7 +14,6 @@ This section contains my final project for MUSA 5500 Geospatial Data Science in 
 
 *Methodology:*
     I make an interactive bubble graph and map showing the variation in socioeconomic variables across states. I then apply scikit-learn to the data set to identify clusters of states. This would enable us to identify which states are more developed/deprived in the USA.
-
     Finally, I apply predictive modelling to identify which variables matter most for the dependent variables: GDP per capita, life expectancy, median household income, and education levels. This could inform policymakers which areas to investigate further, if they seek to improve the level of development in a deprived state.
 
 *References:*
