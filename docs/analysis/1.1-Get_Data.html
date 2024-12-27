@@ -202,6 +202,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">5. Conclusion</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/1.6-Time_Series.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. Additional-Time Series Analysis</span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -239,7 +245,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>I also use the dependent variables as independent variables in the analysis. For example, when modelling the relation ship of GDP per capita against socioeconomic variables, life expectancy, median household income, and education levels become independent variables. This would enable us to explore which variables is more important in predicting the dependent variable.</p>
 <section id="getting-the-data-with-api" class="level2">
 <h2 class="anchored" data-anchor-id="getting-the-data-with-api">1. Getting the data with API</h2>
-<div id="cell-3" class="cell" data-execution_count="38">
+<div id="cell-3" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install cenpy</span>
@@ -251,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="acs-5-year-estimate-by-us-states" class="level3">
 <h3 class="anchored" data-anchor-id="acs-5-year-estimate-by-us-states"><strong>1.1 ACS 5-Year Estimate by US States</strong></h3>
 <p>From cenpy we can access American Community Survey 5-Year data to obtain/derive the following socioeconomic variables: 1. Median Household Income 2. Education Levels 3. Unemployment rate 4. Labour force participation rate 5. Population 6. Poverty rate</p>
-<div id="cell-5" class="cell" data-execution_count="39">
+<div id="cell-5" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Finding data set</span></span>
@@ -260,7 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># We use data from ACS 5 Year, Monthly Export and Import</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="39">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
@@ -420,13 +426,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We identify the dataset we want to use from cenpy. In this case it is ACSDT5Y.</p>
-<div id="cell-7" class="cell" data-execution_count="40">
+<div id="cell-7" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>acs <span class="op">=</span> available.<span class="bu">filter</span>(regex<span class="op">=</span><span class="st">"^ACS"</span>, axis<span class="op">=</span><span class="dv">0</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>available.<span class="bu">filter</span>(regex<span class="op">=</span><span class="st">"^ACSDT5Y"</span>, axis<span class="op">=</span><span class="dv">0</span>).head(n<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="40">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -585,14 +591,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-8" class="cell" data-execution_count="41">
+<div id="cell-8" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>cenpy.explorer.explain(<span class="st">"ACSDT5Y2023"</span>)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>acs <span class="op">=</span> cenpy.remote.APIConnection(<span class="st">'ACSDT5Y2023'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-9" class="cell" data-execution_count="42">
+<div id="cell-9" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>acs.varslike(</span>
@@ -600,7 +606,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    by<span class="op">=</span><span class="st">"attributes"</span>,</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>).sort_index()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="42">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -639,7 +645,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We then extract out the following variables. Since the variables are in object format, we will convert them to float. Rename the variables for clarity.</p>
-<div id="cell-11" class="cell" data-execution_count="43">
+<div id="cell-11" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>acs_variables <span class="op">=</span> [</span>
@@ -662,7 +668,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-12" class="cell" data-execution_count="44">
+<div id="cell-12" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter out the data for state</span></span>
@@ -673,7 +679,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>USA_acs_data.head(n<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="44">
+<div class="cell-output cell-output-display" data-execution_count="7">
 <div>
 
 
@@ -795,7 +801,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-13" class="cell" data-execution_count="45">
+<div id="cell-13" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> variable <span class="kw">in</span> acs_variables:</span>
@@ -804,7 +810,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>        USA_acs_data[variable] <span class="op">=</span> USA_acs_data[variable].astype(<span class="bu">float</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-14" class="cell" data-execution_count="46">
+<div id="cell-14" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>USA_acs_data <span class="op">=</span> USA_acs_data.rename(</span>
@@ -827,7 +833,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><em>Feature engineering:</em></p>
 <p>We apply feature engineering to derive the following socioeconomic variables: 1) education levels, 2) poverty rate, 3) unemployment rate, and 4) labour force participation rate.</p>
-<div id="cell-16" class="cell" data-execution_count="47">
+<div id="cell-16" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>USA_acs_data[<span class="st">'PctBach'</span>] <span class="op">=</span> USA_acs_data[<span class="st">'EducBach'</span>]<span class="op">/</span>USA_acs_data[<span class="st">'EducTotal'</span>]</span>
@@ -844,7 +850,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="international-trade-net-export"><strong>1.2 International Trade: Net Export</strong></h3>
 <p><em>Exports:</em></p>
 <p>From cenpy we can also access USA trade data to calculate the net exports by state.</p>
-<div id="cell-19" class="cell" data-execution_count="48">
+<div id="cell-19" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>cenpy.explorer.explain(<span class="st">"ITMONTHLYEXPORTSSTATENAICS"</span>)</span>
@@ -852,12 +858,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <p>The code below shows the list of variables in the export dataset and the geographic display level.</p>
-<div id="cell-21" class="cell" data-execution_count="49">
+<div id="cell-21" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>US_export.variables</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="49">
+<div class="cell-output cell-output-display" data-execution_count="12">
 <div>
 
 
@@ -1389,12 +1395,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-22" class="cell" data-execution_count="50">
+<div id="cell-22" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>US_export.geographies[<span class="st">'fips'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="50">
+<div class="cell-output cell-output-display" data-execution_count="13">
 <div>
 
 
@@ -1439,7 +1445,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We run the code below to extract out the total trade to date per month in 2023. We set geographic display levels to world since we are interested only in aggregate exports.</p>
-<div id="cell-24" class="cell" data-execution_count="51">
+<div id="cell-24" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>US_export_data <span class="op">=</span> US_export.query(</span>
@@ -1452,7 +1458,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>US_export_data.head(n<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="51">
+<div class="cell-output cell-output-display" data-execution_count="14">
 <div>
 
 
@@ -1521,7 +1527,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Finally, filter for December to get aggregate exports in 2023</p>
-<div id="cell-26" class="cell" data-execution_count="52">
+<div id="cell-26" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data for December 2023</span></span>
@@ -1530,19 +1536,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><em>Imports:</em></p>
 <p>The code below shows the list of variables in the import dataset and the geographic display level.</p>
-<div id="cell-28" class="cell" data-execution_count="53">
+<div id="cell-28" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>cenpy.explorer.explain(<span class="st">"ITMONTHLYIMPORTSSTATENAICS"</span>)</span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>US_import <span class="op">=</span> cenpy.remote.APIConnection(<span class="st">'ITMONTHLYIMPORTSSTATENAICS'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-29" class="cell" data-execution_count="54">
+<div id="cell-29" class="cell" data-execution_count="17">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>US_import.variables</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="54">
+<div class="cell-output cell-output-display" data-execution_count="17">
 <div>
 
 
@@ -2103,7 +2109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>We run the code below to extract out the total trade to date per month in 2023. We set geographic display levels to world since we are interested only in aggregate imports.</p>
-<div id="cell-31" class="cell" data-execution_count="55">
+<div id="cell-31" class="cell" data-execution_count="18">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>US_import_data <span class="op">=</span> US_import.query(</span>
@@ -2116,7 +2122,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a>US_import_data.head(n<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="55">
+<div class="cell-output cell-output-display" data-execution_count="18">
 <div>
 
 
@@ -2185,16 +2191,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Finally, filter for December to get aggregate import in 2023</p>
-<div id="cell-33" class="cell" data-execution_count="56">
+<div id="cell-33" class="cell" data-execution_count="19">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Filter data for December 2023</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>US_import_2023 <span class="op">=</span> US_import_data[(US_export_data[<span class="st">'YEAR'</span>] <span class="op">==</span> <span class="dv">2023</span>) <span class="op">&amp;</span> (US_import_data[<span class="st">'MONTH'</span>] <span class="op">==</span> <span class="dv">12</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>US_import_2023 <span class="op">=</span> US_import_data[(US_import_data[<span class="st">'YEAR'</span>] <span class="op">==</span> <span class="dv">2023</span>) <span class="op">&amp;</span> (US_import_data[<span class="st">'MONTH'</span>] <span class="op">==</span> <span class="dv">12</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><em>Net Export (Export-Import)</em></p>
 <p>Net export is then calculated by taking Export – Import. Rename the states to include their full name for joining later.</p>
-<div id="cell-35" class="cell" data-execution_count="57">
+<div id="cell-35" class="cell" data-execution_count="20">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join export and import data</span></span>
@@ -2204,7 +2210,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>US_netexport_2023[<span class="st">"netexport"</span>] <span class="op">=</span> US_netexport_2023[<span class="st">"ALL_VAL_YR"</span>]<span class="op">-</span>US_netexport_2023[<span class="st">"GEN_VAL_YR"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-36" class="cell" data-execution_count="58">
+<div id="cell-36" class="cell" data-execution_count="21">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create new column with states name</span></span>
@@ -2233,7 +2239,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="bureau-of-economic-analysis-gross-domesitc-product-gdp"><strong>1.3 Bureau of Economic Analysis: Gross Domesitc Product (GDP)</strong></h3>
 <p>From Bureau of Economic Analysis, we can access real GDP data to calculate real GDP per capita for each state. Real GDP per capital is total real GDP divided by total population, with total population data coming from ACS 5-Year Survey earlier.</p>
 <p>First, import the package beaapi.</p>
-<div id="cell-39" class="cell" data-execution_count="59">
+<div id="cell-39" class="cell" data-execution_count="22">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install beaapi<span class="op">-</span><span class="fl">0.0.2</span><span class="op">-</span>py3<span class="op">-</span>none<span class="op">-</span><span class="bu">any</span>.whl</span>
@@ -2242,7 +2248,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <p>Set up your API key. You will need to request one from the BEA website if your do not have and validate it: https://www.bea.gov/resources/for-developers</p>
-<div id="cell-41" class="cell" data-execution_count="60">
+<div id="cell-41" class="cell" data-execution_count="23">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb23"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> config</span>
@@ -2250,7 +2256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <p>Review the list of dataset and parameters available. For this analysis we will be using ‘Regional’ dataset and SAGDP9N.</p>
-<div id="cell-43" class="cell" data-execution_count="61">
+<div id="cell-43" class="cell" data-execution_count="24">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="co"># List of data set available</span></span>
@@ -2261,7 +2267,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>list_of_param_vals <span class="op">=</span> beaapi.get_parameter_values(beakey, <span class="st">'Regional'</span>, <span class="st">'LineCode'</span>,)</span>
 <span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>list_of_param_vals.head(n<span class="op">=</span><span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="61">
+<div class="cell-output cell-output-display" data-execution_count="24">
 <div>
 
 
@@ -2306,7 +2312,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <p>Extract the real GDP for each state using the code below.</p>
-<div id="cell-45" class="cell" data-execution_count="62">
+<div id="cell-45" class="cell" data-execution_count="25">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>bea_tbl <span class="op">=</span> beaapi.get_data(beakey, datasetname<span class="op">=</span><span class="st">'Regional'</span>, GeoFips<span class="op">=</span> <span class="st">'STATE'</span>, LineCode<span class="op">=</span> <span class="st">'1'</span>, TableName<span class="op">=</span><span class="st">'SAGDP9N'</span>, Year<span class="op">=</span><span class="st">'2023'</span>)</span>
@@ -2386,7 +2392,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-46" class="cell" data-execution_count="63">
+<div id="cell-46" class="cell" data-execution_count="26">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>bea_state_tbl <span class="op">=</span> bea_tbl[bea_tbl[<span class="st">'GeoName'</span>].isin(state_names.values())]</span>
@@ -2398,7 +2404,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="centers-for-disease-control-and-prevention-life-expectancy-by-state"><strong>1.4 Centers for Disease Control and Prevention: Life Expectancy by state</strong></h3>
 <p>The most recent data available for Life Expectancy was for 2021 and this data was published in 2024. We assume for our analysis that 2021 and 2024 life expectancy are similar.</p>
 <p>Install and import the packages pandas and Socrata.</p>
-<div id="cell-48" class="cell" data-execution_count="64">
+<div id="cell-48" class="cell" data-execution_count="27">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="op">!</span>pip install sodapy</span>
@@ -2407,7 +2413,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <p>Get the data of life expectancy for each state and both sexes using the code below. This allows us to access the data on https://data.cdc.gov/NCHS/U-S-State-Life-Expectancy-by-Sex-2021/it4f-frdc/about_data</p>
-<div id="cell-50" class="cell" data-execution_count="65">
+<div id="cell-50" class="cell" data-execution_count="28">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>cdc <span class="op">=</span> Socrata(<span class="st">"data.cdc.gov"</span>, <span class="va">None</span>)</span>
@@ -2425,13 +2431,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="bureau-of-labor-statistics-labor-productivity" class="level3">
 <h3 class="anchored" data-anchor-id="bureau-of-labor-statistics-labor-productivity"><strong>1.5 Bureau of Labor Statistics: Labor Productivity</strong></h3>
 <p>I downloaded the csv file of labour productivity from the Bureau of Labor Statistics website https://www.bls.gov/productivity/tables/. The data are all indexed with reference to 2017, with 2017=100 for all states. This means that by comparing index values in 2023, we can see which states have become relatively more productive than others since 2017. The code below gets labor productivity data for 2023.</p>
-<div id="cell-52" class="cell" data-execution_count="66">
+<div id="cell-52" class="cell" data-execution_count="29">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>lab_pdt <span class="op">=</span> pd.read_csv(<span class="st">'https://raw.githubusercontent.com/JiaYue-Ong/Python-Final-Project/refs/heads/main/labor-productivity.csv'</span>)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>lab_pdt.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="66">
+<div class="cell-output cell-output-display" data-execution_count="29">
 <div>
 
 
@@ -2590,7 +2596,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-53" class="cell" data-execution_count="67">
+<div id="cell-53" class="cell" data-execution_count="30">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb31"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>lab_pdt_2023 <span class="op">=</span> lab_pdt[lab_pdt[<span class="st">'Area'</span>].isin(state_names.values())]</span>
@@ -2603,7 +2609,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="data-processing" class="level2">
 <h2 class="anchored" data-anchor-id="data-processing">2. Data Processing</h2>
 <p>We now join all our dataset together into one dataframe, by the individual states. After joining, we calculate the Real GDP per capita for each state.</p>
-<div id="cell-56" class="cell" data-execution_count="68">
+<div id="cell-56" class="cell" data-execution_count="31">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># All dataset</span></span>
@@ -2614,7 +2620,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>lab_pdt_2023</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-57" class="cell" data-execution_count="69">
+<div id="cell-57" class="cell" data-execution_count="32">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb33"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join ACS and netexport</span></span>
@@ -2642,7 +2648,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <p>We then obtain a geographic map of USA and join the dataframe to the geographies. This would allow us to conduct spatial analysis</p>
-<div id="cell-59" class="cell" data-execution_count="70">
+<div id="cell-59" class="cell" data-execution_count="33">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get geographies of US States</span></span>
@@ -2651,7 +2657,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pygris.utils <span class="im">import</span> shift_geometry</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-60" class="cell" data-execution_count="71">
+<div id="cell-60" class="cell" data-execution_count="34">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb35"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>us <span class="op">=</span> states(cb <span class="op">=</span> <span class="va">True</span>, resolution <span class="op">=</span> <span class="st">"20m"</span>, year<span class="op">=</span><span class="dv">2023</span>)</span>
@@ -2666,13 +2672,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-61" class="cell" data-execution_count="72">
+<div id="cell-61" class="cell" data-execution_count="35">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Join the data to geography</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>us_rescaled.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="72">
+<div class="cell-output cell-output-display" data-execution_count="35">
 <div>
 
 
@@ -2764,7 +2770,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="cell-62" class="cell" data-execution_count="73">
+<div id="cell-62" class="cell" data-execution_count="36">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb37"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>us_rescaled_final <span class="op">=</span> us_rescaled.merge(</span>
@@ -2779,12 +2785,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb37-10"><a href="#cb37-10" aria-hidden="true" tabindex="-1"></a>us_rescaled_final <span class="op">=</span> us_rescaled_final.to_crs(<span class="st">"EPSG:4326"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="cell-63" class="cell" data-execution_count="74">
+<div id="cell-63" class="cell" data-execution_count="37">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>us_rescaled_final.columns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="74">
+<div class="cell-output cell-output-display" data-execution_count="37">
 <pre><code>Index(['STATEFP', 'STATENS', 'GEOIDFQ', 'GEOID', 'STUSPS', 'NAME_x', 'LSAD',
        'ALAND', 'AWATER', 'geometry', 'NAME_y', 'GEO_ID', 'MedHHInc',
        'EducTotal', 'EducBelowHighSch', 'EducHighSch', 'EducAssoc', 'EducBach',
