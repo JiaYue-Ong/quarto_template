@@ -29,6 +29,7 @@ website:
         text: Welcome
       - section: analysis/index.qmd
         contents:
+          - analysis/shortabstract.qmd
           - analysis/1.1-Get_Data.ipynb
           - analysis/1.2-Exploratory_Plots.ipynb
           - analysis/1.2-Exploratory_Plots_Map.ipynb
