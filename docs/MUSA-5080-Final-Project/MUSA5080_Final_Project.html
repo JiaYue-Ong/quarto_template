@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.37">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="by Krystal Won &amp; Ong Jia Yue">
+<meta name="dcterms.date" content="2024-11-22">
+
+<title>Smart Listing: Optimizing Airbnb Pricing in Amsterdam’s Regulated Market – Ong Jia Yue adventures in Master of Urban Spatial Analytics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b5e3097ca6bab6260ed4ce2e73d47aae.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6bf0b08ca396cf31294168bc13d35783.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../MUSA-5080-Final-Project/MUSA5080_Final_Project.html">Amsterdam’s Airbnb Prices Predictor</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation docked overflow-auto">
+    <div class="pt-lg-2 mt-2 text-center sidebar-header">
+      <a href="../index.html" class="sidebar-logo-link">
+      <img src="../images/course-icon.png" alt="" class="sidebar-logo py-0 d-lg-inline d-none">
+      </a>
+      <div class="sidebar-tools-main">
+    <a href="https://github.com/JiaYue-Ong" title="Ong Jia Yue GitHub" class="quarto-navigation-tool px-1" aria-label="Ong Jia Yue GitHub"><i class="bi bi-github"></i></a>
+    <a href="../www.linkedin.com/in/jia-yue-ong" title="Ong Jia Yue Linkedin" class="quarto-navigation-tool px-1" aria-label="Ong Jia Yue Linkedin"><i class="bi bi-linkedin"></i></a>
+</div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Welcome</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="../analysis/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Disparities in Socioeconomic Conditions Among U.S. States</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/shortabstract.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Abstract</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/1.1-Get_Data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Getting data and data processing</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/1.2-Exploratory_Plots.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Exploratory Plots</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/1.2-Exploratory_Plots_Map.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Exploratory Plots [Map]</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/1.3-Clustering.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Clustering</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/1.4-PredictiveModelling.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Predictive Modelling</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/1.5-Conclusion.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Conclusion</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis/1.6-Time_Series.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. Additional-Time Series Analysis</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../MUSA-5080-Final-Project/MUSA5080_Final_Project.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Amsterdam’s Airbnb Prices Predictor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Urban development along the Mekong River</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#data-wrangling" id="toc-data-wrangling" class="nav-link" data-scroll-target="#data-wrangling">Data Wrangling</a>
+  <ul class="collapse">
+  <li><a href="#libraries-setup" id="toc-libraries-setup" class="nav-link" data-scroll-target="#libraries-setup">Libraries Setup</a></li>
+  <li><a href="#data-preparation" id="toc-data-preparation" class="nav-link" data-scroll-target="#data-preparation">Data Preparation</a></li>
+  </ul></li>
+  <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">Exploratory Data Analysis</a>
+  <ul class="collapse">
+  <li><a href="#seasonal-price-patterns" id="toc-seasonal-price-patterns" class="nav-link" data-scroll-target="#seasonal-price-patterns">Seasonal Price Patterns</a></li>
+  <li><a href="#property-characteristics-and-their-impact" id="toc-property-characteristics-and-their-impact" class="nav-link" data-scroll-target="#property-characteristics-and-their-impact">Property Characteristics and Their Impact</a></li>
+  </ul></li>
+  <li><a href="#feature-engineering" id="toc-feature-engineering" class="nav-link" data-scroll-target="#feature-engineering">Feature Engineering</a>
+  <ul class="collapse">
+  <li><a href="#key-location-features-we-analyzed" id="toc-key-location-features-we-analyzed" class="nav-link" data-scroll-target="#key-location-features-we-analyzed">Key Location Features We Analyzed</a></li>
+  </ul></li>
+  <li><a href="#exploratory-analysis-of-engineered-features" id="toc-exploratory-analysis-of-engineered-features" class="nav-link" data-scroll-target="#exploratory-analysis-of-engineered-features">Exploratory Analysis of Engineered Features</a>
+  <ul class="collapse">
+  <li><a href="#what-this-means-for-hosts" id="toc-what-this-means-for-hosts" class="nav-link" data-scroll-target="#what-this-means-for-hosts">What This Means for Hosts</a></li>
+  </ul></li>
+  <li><a href="#modeling-approach" id="toc-modeling-approach" class="nav-link" data-scroll-target="#modeling-approach">Modeling Approach</a>
+  <ul class="collapse">
+  <li><a href="#initial-variable-selection" id="toc-initial-variable-selection" class="nav-link" data-scroll-target="#initial-variable-selection">Initial Variable Selection</a></li>
+  <li><a href="#model-refinement" id="toc-model-refinement" class="nav-link" data-scroll-target="#model-refinement">Model Refinement</a></li>
+  <li><a href="#final-model-specification" id="toc-final-model-specification" class="nav-link" data-scroll-target="#final-model-specification">Final Model Specification</a></li>
+  <li><a href="#validation-accuracy-and-generalizability" id="toc-validation-accuracy-and-generalizability" class="nav-link" data-scroll-target="#validation-accuracy-and-generalizability">Validation: Accuracy and Generalizability</a>
+  <ul class="collapse">
+  <li><a href="#measuring-prediction-accuracy" id="toc-measuring-prediction-accuracy" class="nav-link" data-scroll-target="#measuring-prediction-accuracy">Measuring Prediction Accuracy</a></li>
+  <li><a href="#testing-generalizability" id="toc-testing-generalizability" class="nav-link" data-scroll-target="#testing-generalizability">Testing Generalizability</a></li>
+  <li><a href="#examining-spatial-variations" id="toc-examining-spatial-variations" class="nav-link" data-scroll-target="#examining-spatial-variations">Examining spatial variations</a></li>
+  <li><a href="#examining-spatial-autocorrelation-in-model-errors" id="toc-examining-spatial-autocorrelation-in-model-errors" class="nav-link" data-scroll-target="#examining-spatial-autocorrelation-in-model-errors">Examining Spatial Autocorrelation in Model Errors</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#model-limitations-and-future-improvements" id="toc-model-limitations-and-future-improvements" class="nav-link" data-scroll-target="#model-limitations-and-future-improvements">Model Limitations and Future Improvements</a></li>
+  <li><a href="#meeting-the-use-case" id="toc-meeting-the-use-case" class="nav-link" data-scroll-target="#meeting-the-use-case">Meeting the Use Case</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Smart Listing: Optimizing Airbnb Pricing in Amsterdam’s Regulated Market</h1>
+<p class="subtitle lead">MUSA 5080 Final Project (Fall 2024)</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>by Krystal Won &amp; Ong Jia Yue </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 22, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>In recent years, Amsterdam has emerged as one of Europe’s most dynamic short-term rental markets, with Airbnb becoming the preferred accommodation choice for many of the city’s 20 million annual visitors. International travelers increasingly choose Airbnb over traditional hotels, attracted by the superior value for money, authentic local experiences, and the flexibility to stay in Amsterdam’s iconic canal houses and historic neighborhoods. For visitors, Airbnb typically offers more space and amenities at a lower cost per night than comparable hotel rooms, while providing unique opportunities to experience the city like a local.</p>
+<p>From the host perspective, Airbnb has opened up new opportunities for Amsterdam residents to generate supplemental income from their properties. Hosts can offset their high housing costs in one of Europe’s most expensive real estate markets, with many earning significant side income during peak tourist seasons. The platform’s popularity has created a vibrant marketplace where both occasional hosts sharing spare rooms and property owners offering entire apartments can thrive.</p>
+<p>However, navigating this market presents unique challenges due to Amsterdam’s comprehensive regulatory framework, which aims to balance tourism with residential housing needs. The most significant regulation affecting Airbnb hosts is the 30-day annual rental limit, introduced to preserve neighborhood character and housing availability for residents. This differs markedly from traditional long-term rentals, which operate under rent control systems with points-based maximum prices, and hotel accommodations, which face separate commercial licensing requirements. For Airbnb hosts, this 30-day constraint makes optimal pricing strategy crucial – each available day must be priced effectively to maximize returns while remaining competitive. While Airbnb offers its “Smart Pricing” feature, recent research has highlighted its limitations. A 2024 study analyzing 26 U.S. regions found that algorithmic pricing often fails to account for local market dynamics and regulations (Lin &amp; Yang, 2024). Similarly, research across European markets indicates that successful pricing strategies must consider both hyperlocal factors and seasonal variations (Toader, 2021).</p>
+<p>Our analysis leverages comprehensive Amsterdam Airbnb data from December 2018 to December 2019, encompassing over 20,000 listings with detailed property characteristics, daily pricing patterns, and neighborhood factors. By combining this with local market insights and regulatory constraints, we’ve developed a data-driven approach to help hosts optimize their pricing strategies.</p>
+<p>This web-based app serves two primary audiences:</p>
+<ul>
+<li><p>New hosts entering the market who need guidance on setting competitive initial prices while complying with local regulations</p></li>
+<li><p>Experienced hosts looking to optimize their pricing strategy for maximum returns within the 30-day annual limit, particularly during high-demand periods</p></li>
+</ul>
+<p>Through advanced statistical modeling and machine learning techniques, our analysis provides actionable insights for hosts to make informed pricing decisions in Amsterdam’s unique short-term rental market. What follows is a detailed examination of the factors that influence Airbnb pricing in Amsterdam and our methodology for developing optimal pricing strategies within the regulatory framework.</p>
+</section>
+<section id="data-wrangling" class="level1">
+<h1>Data Wrangling</h1>
+<section id="libraries-setup" class="level2">
+<h2 class="anchored" data-anchor-id="libraries-setup">Libraries Setup</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(sf)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(spdep)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(caret)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ckanr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(FNN)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggcorrplot)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(lubridate)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(viridis)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(pander)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">#Functions</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"https://raw.githubusercontent.com/urbanSpatial/Public-Policy-Analytics-Landing/master/functions.r"</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co">#Set working directory</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"~/02. MUSA Year 1/MUSA 5500- Geospatial Data Science in Python/quatro_jy/quarto_template/MUSA-5080-Final-Project"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="data-preparation" class="level2">
+<h2 class="anchored" data-anchor-id="data-preparation">Data Preparation</h2>
+<p>Our analysis is built on comprehensive Airbnb data from Amsterdam, sourced from two key Kaggle datasets:</p>
+<ul>
+<li><code>Calendar.csv</code>: Contains daily pricing and availability information for each listing</li>
+<li><code>Listings_details.csv</code>: Provides detailed property characteristics including location, amenities, and room configurations</li>
+</ul>
+<p>We merged these datasets to create a complete view of each property, combining daily pricing data with property features. This allowed us to analyze how factors like number of bathrooms, neighborhood location, and seasonal timing affect listing prices. To ensure our analysis accurately represents Amsterdam’s regulated home-sharing market, we applied several careful filtering steps:</p>
+<ul>
+<li>Removed commercial properties (hotels and B&amp;Bs) as they operate under different regulations</li>
+<li>Excluded listings with minimum stay requirements over 32 days to align with Amsterdam’s 30-day annual rental limit</li>
+<li>Filtered out listings priced above €1,100 to eliminate outliers and focus on typical market rates</li>
+</ul>
+<p>This data cleaning process ensures our model reflects the reality faced by individual hosts operating within Amsterdam’s regulatory framework, making our pricing recommendations more relevant and applicable.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Amsterdam Neighborhood</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>neighborhood.sf <span class="ot">&lt;-</span> <span class="fu">st_read</span>(<span class="st">"airbnbdata/neighbourhoods.geojson"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Date of listings</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>calendar <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"calendar.csv"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>calendar2<span class="ot">&lt;-</span>calendar[calendar<span class="sc">$</span>available<span class="sc">==</span><span class="st">"t"</span>,] <span class="co"># Select only dates when listings were rented out</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>calendar2<span class="sc">$</span>date<span class="ot">&lt;-</span><span class="fu">dmy</span>(calendar2<span class="sc">$</span>date)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">range</span>(calendar2<span class="sc">$</span>date) <span class="co"># We are only left with 2019 after cleaning </span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Detail of listing</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>listings_all<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"listings_details.csv"</span>)</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(<span class="fu">unique</span>(listings_all<span class="sc">$</span>id)) <span class="co"># Confirm number of unique values in listing</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>listings<span class="ot">&lt;-</span>listings_all <span class="sc">%&gt;%</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="st">"id"</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                <span class="st">"name"</span>,</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                <span class="st">"host_id"</span>,</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                <span class="st">"host_name"</span>,</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                <span class="st">"neighbourhood_cleansed"</span>,</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                <span class="st">"latitude"</span>,</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>                <span class="st">"longitude"</span>,</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>                <span class="st">"property_type"</span>,</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>                <span class="st">"room_type"</span>,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>                <span class="st">"accommodates"</span>,</span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>                <span class="st">"bathrooms"</span>,</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>                <span class="st">"bedrooms"</span>,</span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>                <span class="st">"price"</span>,</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                <span class="st">"minimum_nights"</span>,</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>                <span class="st">"number_of_reviews"</span>,</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>                <span class="st">"last_review"</span>,</span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>                <span class="st">"reviews_per_month"</span>,</span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>                <span class="st">"calculated_host_listings_count"</span>,</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>                <span class="st">"availability_365"</span>,</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>                <span class="fu">starts_with</span>(<span class="st">"review_scores_"</span>)</span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>                )</span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Join listing</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>airbnb_joined <span class="ot">&lt;-</span> <span class="fu">left_join</span>(calendar2, listings, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"listing_id"</span> <span class="ot">=</span> <span class="st">"id"</span>))</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>airbnb_joined<span class="sc">$</span>price.y<span class="ot">&lt;-</span><span class="fu">parse_number</span>(airbnb_joined<span class="sc">$</span>price.y)</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>airbnb_joined<span class="sc">$</span>price.x<span class="ot">&lt;-</span><span class="fu">parse_number</span>(airbnb_joined<span class="sc">$</span>price.x)</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean <span class="ot">&lt;-</span> airbnb_joined <span class="sc">%&gt;%</span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove listings that are not regulated by 30 days rule (i.e., hotels)</span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span>(property_type <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"Bed and breakfast"</span>, <span class="st">"Boutique hotel"</span>, <span class="st">"Cabin"</span>, <span class="st">"Chalet"</span>, <span class="st">"Hotel"</span>))) <span class="sc">%&gt;%</span> </span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(minimum_nights<span class="sc">&lt;</span> <span class="dv">32</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove extreme values (outliers)</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(price.y <span class="sc">&lt;</span> <span class="dv">1100</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(price.x <span class="sc">&lt;</span> <span class="dv">1100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="exploratory-data-analysis" class="level1">
+<h1>Exploratory Data Analysis</h1>
+<section id="seasonal-price-patterns" class="level2">
+<h2 class="anchored" data-anchor-id="seasonal-price-patterns">Seasonal Price Patterns</h2>
+<p>Our time-series analysis reveals complex temporal dynamics in Amsterdam’s Airbnb market through both listing volume and pricing patterns. The data shows a general upward trend in available listings throughout the year, growing from approximately 200 listings in December to over 800 by year-end, with notable fluctuations during spring months and more stability during summer.</p>
+<p>Pricing patterns demonstrate significant seasonality, with the highest volatility observed in early months where prices spike to €250, followed by a notable peak around €225 in May coinciding with spring tourism and flower season. The summer months (June-August) maintain relatively stable pricing around €190-200, before showing a gradual decline from September onwards to winter levels of €170-180. This inverse relationship between listing volume and average prices is particularly interesting - as the number of listings increases throughout the year, we observe a general downward trend in average prices, suggesting increased market competition.</p>
+<p>These patterns provide valuable insights for hosts: they can capitalize on higher pricing potential during spring events and summer peak season, while considering more competitive pricing strategies during winter months when both demand and average prices are lower. The data also reveals strategic opportunities for timing new listings or adjusting prices based on seasonal supply-demand dynamics, particularly during transition periods between high and low seasons.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Time-series of counts against date (may remove bc not very useful)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date) <span class="sc">%&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">count =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> count)) <span class="sc">+</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Number of Listings Over Time"</span>, <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Count of Listings"</span>) <span class="sc">+</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">"1 month"</span>, <span class="at">date_labels =</span> <span class="st">"%b-%d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Exploratory Analysis with time-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Time-series of average prices against date</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(date) <span class="sc">%&gt;%</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_price =</span> <span class="fu">mean</span>(price.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> date, <span class="at">y =</span> mean_price)) <span class="sc">+</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Average price of Listings Over Time"</span>, <span class="at">x =</span> <span class="st">"Date"</span>, <span class="at">y =</span> <span class="st">"Average price of Listings"</span>) <span class="sc">+</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()<span class="sc">+</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_date</span>(<span class="at">date_breaks =</span> <span class="st">"1 month"</span>, <span class="at">date_labels =</span> <span class="st">"%b-%d"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Exploratory Analysis with time-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>non_date_columns <span class="ot">&lt;-</span> <span class="fu">setdiff</span>(<span class="fu">names</span>(airbnb_joined_clean), <span class="fu">c</span>(<span class="st">"listing_id"</span>, <span class="st">"date"</span>))</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>consistency_check <span class="ot">&lt;-</span> airbnb_joined_clean <span class="sc">%&gt;%</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(listing_id) <span class="sc">%&gt;%</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="fu">across</span>(<span class="fu">all_of</span>(non_date_columns), <span class="sc">~</span> <span class="fu">n_distinct</span>(.) <span class="sc">==</span> <span class="dv">1</span>))</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(consistency_check)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Extact out weekdays, weekends, and months</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean<span class="sc">$</span>day_of_week <span class="ot">&lt;-</span> <span class="fu">weekdays</span>(airbnb_joined_clean<span class="sc">$</span>date)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean<span class="sc">$</span>day_of_week <span class="ot">&lt;-</span> <span class="fu">factor</span>(airbnb_joined_clean<span class="sc">$</span>day_of_week, </span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>                                          <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"Monday"</span>, <span class="st">"Tuesday"</span>, <span class="st">"Wednesday"</span>, <span class="st">"Thursday"</span>, <span class="st">"Friday"</span>, <span class="st">"Saturday"</span>, <span class="st">"Sunday"</span>))</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean<span class="sc">$</span>weekend <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(airbnb_joined_clean<span class="sc">$</span>day_of_week <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">'Saturday'</span>, <span class="st">'Sunday'</span>), <span class="st">'Weekend'</span>, <span class="st">'Weekday'</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">format</span>(airbnb_joined_clean<span class="sc">$</span>date, <span class="st">"%B"</span>)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean<span class="sc">$</span>month <span class="ot">&lt;-</span> <span class="fu">factor</span>(airbnb_joined_clean<span class="sc">$</span>month, </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">levels =</span> <span class="fu">c</span>(<span class="st">"January"</span>, <span class="st">"February"</span>, <span class="st">"March"</span>, <span class="st">"April"</span>, <span class="st">"May"</span>, <span class="st">"June"</span>, </span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>                                               <span class="st">"July"</span>, <span class="st">"August"</span>, <span class="st">"September"</span>, <span class="st">"October"</span>, <span class="st">"November"</span>, <span class="st">"December"</span>))</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Create airbnb shapefile</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean_sf<span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(airbnb_joined_clean, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"longitude"</span>, <span class="st">"latitude"</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="property-characteristics-and-their-impact" class="level2">
+<h2 class="anchored" data-anchor-id="property-characteristics-and-their-impact">Property Characteristics and Their Impact</h2>
+<p>We also examined several key property features that influence pricing:</p>
+<p><strong>Physical Characteristics:</strong></p>
+<ul>
+<li>Accommodates: The total number of guests a property can host, a fundamental driver of pricing</li>
+<li>Bathrooms: The number of bathrooms available, often a luxury indicator in city apartments</li>
+<li>Bedrooms: The bedroom count, which strongly correlates with overall space and privacy options</li>
+</ul>
+<p><strong>Quality Indicators:</strong></p>
+<ul>
+<li>Overall Rating: The property’s aggregate review score</li>
+<li>Accuracy: How well the listing matches reality</li>
+<li>Cleanliness: The property’s hygiene and maintenance standards</li>
+<li>Check-in: Ease of the arrival process</li>
+<li>Communication: Host responsiveness and clarity</li>
+<li>Location: Convenience and desirability of the area</li>
+<li>Value: Guests’ perception of price versus quality</li>
+</ul>
+<p>Our analysis showed that physical characteristics – particularly capacity, bathroom count, and bedroom number – have the strongest correlation with pricing. While quality indicators matter, they show less direct impact on price variations.</p>
+<p><strong>Location and Property Types:</strong></p>
+<p>The most striking price variations emerged from two key factors, as shown in the map and charts that reveals ‘Mean Price of Listings by Property Type’:</p>
+<ul>
+<li>Neighborhood location: Different areas of Amsterdam command significantly different price points, reflecting their unique character and proximity to attractions</li>
+<li>Property type: Whether it’s a cozy apartment, traditional canal house, or modern studio significantly influences pricing</li>
+</ul>
+<p>Interestingly, while we observed substantial price differences across neighborhoods and property types, daily and monthly variations were more subtle. This suggests that location and property characteristics might be more crucial for baseline price setting than seasonal adjustments.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation plot</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>numericVars <span class="ot">&lt;-</span> airbnb_joined_clean <span class="sc">%&gt;%</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="st">"price.x"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">"accommodates"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>                <span class="st">"bathrooms"</span>,</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">"bedrooms"</span>,</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">"minimum_nights"</span>,</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>                <span class="fu">starts_with</span>(<span class="st">"review_scores_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcorrplot</span>(</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="fu">cor</span>(numericVars), <span class="dv">2</span>), </span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.mat =</span> <span class="fu">cor_pmat</span>(numericVars),</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#6D9EC1"</span>, <span class="st">"white"</span>, <span class="st">"#E46726"</span>),  <span class="co"># Better color scheme</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"lower"</span>,</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">insig =</span> <span class="st">"blank"</span>,</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">sig.level =</span> <span class="fl">0.05</span>,</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">lab =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">lab_size =</span> <span class="dv">2</span>,            </span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">tl.cex =</span> <span class="dv">6</span>,              </span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">tl.srt =</span> <span class="dv">45</span>,             </span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">show.legend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.title =</span> <span class="st">"Correlation"</span>,</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">ggtheme =</span> ggplot2<span class="sc">::</span><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Correlation across numeric variables"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Exploratory Analysis without time-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Price as a function of continuous variables</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="st">"price.x"</span>, </span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>                <span class="st">"accommodates"</span>, </span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>                <span class="st">"bathrooms"</span>, </span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>                <span class="st">"bedrooms"</span>, </span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>                <span class="st">"minimum_nights"</span>,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>                <span class="fu">starts_with</span>(<span class="st">"review_scores_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(Variable, Value, <span class="sc">-</span>price.x) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(Value, price.x)) <span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">0.3</span>, <span class="at">alpha =</span> <span class="fl">0.4</span>, <span class="at">color =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span> </span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">colour =</span> <span class="st">"#FA7800"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>    <span class="fu">facet_wrap</span>(<span class="sc">~</span>Variable, <span class="at">ncol =</span> <span class="dv">3</span>, <span class="at">scales =</span> <span class="st">"free_x"</span>) <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Price as a Function of Property Characteristics"</span>,</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>         <span class="at">x =</span> <span class="st">"Value"</span>,</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>         <span class="at">y =</span> <span class="st">"Listing Price (€)"</span>) <span class="sc">+</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>      <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>      <span class="at">strip.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_y_continuous</span>(<span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">prefix =</span> <span class="st">"€"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Exploratory Analysis without time-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average prices by neighborhood (bar chart)</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean <span class="sc">%&gt;%</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(neighbourhood_cleansed) <span class="sc">%&gt;%</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_price =</span> <span class="fu">mean</span>(price.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> neighbourhood_cleansed, <span class="at">y =</span> mean_price)) <span class="sc">+</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mean Price of Listings by Neighborhood"</span>, <span class="at">x =</span> <span class="st">"Neighborhood"</span>, <span class="at">y =</span> <span class="st">"Mean Price"</span>) <span class="sc">+</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Exploratory Analysis without time-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average prices by neighborhood (map)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>neighborhood.sf <span class="ot">&lt;-</span> neighborhood.sf <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(airbnb_joined_clean <span class="sc">%&gt;%</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>              <span class="fu">group_by</span>(neighbourhood_cleansed) <span class="sc">%&gt;%</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>              <span class="fu">summarize</span>(<span class="at">mean_price =</span> <span class="fu">mean</span>(price.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"neighbourhood"</span> <span class="ot">=</span> <span class="st">"neighbourhood_cleansed"</span>))</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>neighborhoods_centroids <span class="ot">&lt;-</span> <span class="fu">st_centroid</span>(neighborhood.sf)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>neighborhoods_centroids<span class="sc">$</span>neighbourhood <span class="ot">&lt;-</span> <span class="fu">str_wrap</span>(neighborhoods_centroids<span class="sc">$</span>neighbourhood, <span class="at">width =</span> <span class="dv">12</span>)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create improved map</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> neighborhood.sf) <span class="sc">+</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Base map layer</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_sf</span>(<span class="fu">aes</span>(<span class="at">fill =</span> mean_price),</span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"white"</span>,         <span class="co"># White borders between neighborhoods</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>          <span class="at">size =</span> <span class="fl">0.2</span>) <span class="sc">+</span>           <span class="co"># Thinner borders</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Labels</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_label</span>(<span class="at">data =</span> neighborhoods_centroids, </span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>             <span class="fu">aes</span>(<span class="at">label =</span> neighbourhood, <span class="at">geometry =</span> geometry),</span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>             <span class="at">stat =</span> <span class="st">"sf_coordinates"</span>, </span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="fl">2.5</span>,          <span class="co"># Adjusted text size</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>             <span class="at">color =</span> <span class="st">"black"</span>, </span>
+<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>             <span class="at">fill =</span> <span class="st">"white"</span>,</span>
+<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> <span class="fl">0.8</span>,         <span class="co"># Slightly transparent labels</span></span>
+<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>             <span class="at">label.size =</span> <span class="fl">0.1</span>,    <span class="co"># Thinner label borders</span></span>
+<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a>             <span class="at">label.padding =</span> <span class="fu">unit</span>(<span class="fl">0.15</span>, <span class="st">"lines"</span>)) <span class="sc">+</span>  <span class="co"># Less padding around text</span></span>
+<span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Color scale</span></span>
+<span id="cb9-28"><a href="#cb9-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_fill_gradient2</span>(</span>
+<span id="cb9-29"><a href="#cb9-29" aria-hidden="true" tabindex="-1"></a>    <span class="at">low =</span> <span class="st">"#6D9EC1"</span>,  <span class="co"># Blue</span></span>
+<span id="cb9-30"><a href="#cb9-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">mid =</span> <span class="st">"white"</span>,</span>
+<span id="cb9-31"><a href="#cb9-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">high =</span> <span class="st">"#E46726"</span>, <span class="co"># Orange</span></span>
+<span id="cb9-32"><a href="#cb9-32" aria-hidden="true" tabindex="-1"></a>    <span class="at">midpoint =</span> <span class="fu">mean</span>(neighborhood.sf<span class="sc">$</span>mean_price, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb9-33"><a href="#cb9-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">labels =</span> scales<span class="sc">::</span><span class="fu">dollar_format</span>(<span class="at">prefix =</span> <span class="st">"€"</span>),</span>
+<span id="cb9-34"><a href="#cb9-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">name =</span> <span class="st">"Mean Price"</span></span>
+<span id="cb9-35"><a href="#cb9-35" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb9-36"><a href="#cb9-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Labels and title</span></span>
+<span id="cb9-37"><a href="#cb9-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mean Price of Listings by Neighborhood"</span>,</span>
+<span id="cb9-38"><a href="#cb9-38" aria-hidden="true" tabindex="-1"></a>       <span class="at">caption =</span> <span class="st">"Data source: Airbnb Amsterdam"</span>) <span class="sc">+</span></span>
+<span id="cb9-39"><a href="#cb9-39" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Theme customization</span></span>
+<span id="cb9-40"><a href="#cb9-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb9-41"><a href="#cb9-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(</span>
+<span id="cb9-42"><a href="#cb9-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">14</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">hjust =</span> <span class="fl">0.5</span>),</span>
+<span id="cb9-43"><a href="#cb9-43" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.position =</span> <span class="st">"right"</span>,</span>
+<span id="cb9-44"><a href="#cb9-44" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.title =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">10</span>),</span>
+<span id="cb9-45"><a href="#cb9-45" aria-hidden="true" tabindex="-1"></a>    <span class="at">legend.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb9-46"><a href="#cb9-46" aria-hidden="true" tabindex="-1"></a>    <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb9-47"><a href="#cb9-47" aria-hidden="true" tabindex="-1"></a>    <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb9-48"><a href="#cb9-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">panel.grid =</span> <span class="fu">element_blank</span>()  <span class="co"># Remove background grid</span></span>
+<span id="cb9-49"><a href="#cb9-49" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb9-50"><a href="#cb9-50" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Proper aspect ratio</span></span>
+<span id="cb9-51"><a href="#cb9-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_sf</span>(<span class="at">datum =</span> <span class="cn">NA</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Exploratory Analysis without time-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average prices by property type</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean <span class="sc">%&gt;%</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(property_type) <span class="sc">%&gt;%</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_price =</span> <span class="fu">mean</span>(price.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> property_type, <span class="at">y =</span> mean_price)) <span class="sc">+</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mean Price of Listings by Property Type"</span>, <span class="at">x =</span> <span class="st">"Neighborhood"</span>, <span class="at">y =</span> <span class="st">"Mean Price"</span>) <span class="sc">+</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Exploratory Analysis without time-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Average prices by days and months</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean <span class="sc">%&gt;%</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(day_of_week, month) <span class="sc">%&gt;%</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">mean_price =</span> <span class="fu">mean</span>(price.x, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> day_of_week, <span class="at">y =</span> mean_price)) <span class="sc">+</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">fill =</span> <span class="st">"steelblue"</span>) <span class="sc">+</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Mean Price of Listings by Days and Months"</span>, <span class="at">x =</span> <span class="st">"Neighborhood"</span>, <span class="at">y =</span> <span class="st">"Mean Price"</span>) <span class="sc">+</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))<span class="sc">+</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> month)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Exploratory Analysis without time-6.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>From the charts and maps, we can see that our exploratory data analysis reveals several key patterns in Amsterdam’s Airbnb pricing dynamics. The correlation analysis shows that physical property characteristics have the strongest relationship with listing prices, with accommodation capacity (0.58), number of bedrooms (0.56), and bathroom count (0.43) showing moderate to strong positive correlations. Interestingly, review scores demonstrate surprisingly weak correlations with price (all below 0.3), suggesting that guest ratings have minimal impact on hosts’ pricing decisions. These relationships are further validated in our scatter plots, which show clear positive trends for physical characteristics but relatively flat relationships for review metrics.</p>
+<p>Spatial analysis through our neighborhood map visualization uncovers significant geographic variation in pricing patterns. Central Amsterdam neighborhoods, particularly Centrum-West and Centrum-Oost, consistently command premium prices, while peripheral areas such as Noord-Oost and the Bijlmer regions show notably lower average prices. This clear spatial pattern emphasizes the crucial role of location in determining Airbnb pricing strategies. Property type analysis reveals interesting market segmentation, with unique accommodations like lighthouses commanding the highest average prices (approximately €800), followed by serviced apartments (around €400) significantly outpricing standard apartments (about €200). Traditional properties such as regular apartments and houses cluster in the mid-price range, while smaller units like tiny houses and guesthouses consistently show lower price points.</p>
+<p>These findings suggest that Amsterdam’s Airbnb pricing is primarily driven by three key factors: physical property characteristics, location centrality, and property uniqueness. Surprisingly, quality metrics as measured by guest reviews appear to play a lesser role in price determination. This understanding provides valuable insights for our subsequent feature engineering and modeling approaches, suggesting that focusing on physical and locational attributes might yield more predictive power than guest satisfaction metrics.</p>
+</section>
+</section>
+<section id="feature-engineering" class="level1">
+<h1>Feature Engineering</h1>
+<section id="key-location-features-we-analyzed" class="level2">
+<h2 class="anchored" data-anchor-id="key-location-features-we-analyzed">Key Location Features We Analyzed</h2>
+<p>First, we have to think about this question: <strong>What Makes an Airbnb Attractive?</strong></p>
+<p>Drawing from the rich open data provided by the Municipality of Amsterdam (maps.amsterdam.nl/open_geodata/), we delved deeper into what makes certain locations more appealing to guests. After all, your property’s value isn’t just about the space itself – it’s about the entire guest experience, from convenient transportation to feeling safe walking home at night.</p>
+<p><strong>Transportation Accessibility</strong></p>
+<p>We measured how close properties are to tram and metro lines using a sophisticated k-nearest neighbor analysis (looking at the 1-5 closest stops). Our findings confirm what many hosts already know: properties closer to public transportation command higher prices. For every additional minute of walking distance to transport, we observed a gradual decrease in nightly rates.</p>
+<p><strong>Safety and Lighting</strong></p>
+<p>Using detailed street lighting data, we analyzed the number of public lights within 165 feet (about a half block) of each property. Properties in well-lit areas tend to command slightly higher prices – a feature particularly valuable for guests who prioritize safety and comfort during evening hours.</p>
+<p><strong>Green Spaces</strong></p>
+<p>We calculated each property’s distance to the nearest park, recognizing that access to Amsterdam’s beautiful green spaces adds value to a visitor’s experience. Interestingly, while proximity to parks shows a positive correlation with prices, the effect is nuanced – suggesting that being near a park is just one of many factors guests consider.</p>
+<p><strong>Local Markets and Culture</strong></p>
+<p>Amsterdam’s famous outdoor markets are more than just shopping destinations – they’re cultural landmarks. Our analysis tracked distances to these markets, revealing that properties within easy walking distance often achieve higher nightly rates. This reflects guests’ desire to experience local culture and have easy access to fresh food and unique shopping experiences.</p>
+<p><strong>Tourist Attractions</strong></p>
+<p>We mapped distances to major tourist attractions, finding that properties closer to these hotspots generally command premium prices. However, the relationship isn’t simply linear – some guests prefer being close enough to visit attractions easily while staying in quieter, more residential areas.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tram and metro lines in Amsterdam</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>tram_metro_19<span class="ot">&lt;-</span><span class="fu">st_read</span>(<span class="st">"https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=TRAMMETRO_PUNTEN_2019&amp;THEMA=trammetro"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Public lighting</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>public_lighting<span class="ot">&lt;-</span><span class="fu">st_read</span>(<span class="st">"https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=LICHTPUNTEN&amp;THEMA=lichtpunten"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(geometry)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Attraction 1: Parks</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>park<span class="ot">&lt;-</span><span class="fu">st_read</span>(<span class="st">"https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=PARKPLANTSOENGROEN&amp;THEMA=stadsparken"</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Attraction 2: Outdoor Markets</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>outdoor_markets<span class="ot">&lt;-</span><span class="fu">st_read</span>(<span class="st">"https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=MARKTEN_AMBULANT&amp;THEMA=markten"</span>)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Attraction 3: Tourist Attractions</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>tourist_attraction<span class="ot">&lt;-</span><span class="fu">st_read</span>(<span class="st">"https://maps.amsterdam.nl/open_geodata/geojson_lnglat.php?KAARTLAAG=HISTORISCHE_BEBOUWING&amp;THEMA=archeologie"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>listings.sf<span class="ot">&lt;-</span> <span class="fu">st_as_sf</span>(listings, <span class="at">coords =</span> <span class="fu">c</span>(<span class="st">"longitude"</span>, <span class="st">"latitude"</span>), <span class="at">crs =</span> <span class="dv">4326</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Tram and metro lines in Amsterdam (k-nearest neighbor)</span></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>listings.sf <span class="ot">&lt;-</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  listings.sf <span class="sc">%&gt;%</span> </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">tpt_nn1 =</span> <span class="fu">nn_function</span>(<span class="fu">st_coordinates</span>(listings.sf), </span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">st_coordinates</span>(tram_metro_19), <span class="at">k =</span> <span class="dv">1</span>),</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">tpt_nn2 =</span> <span class="fu">nn_function</span>(<span class="fu">st_coordinates</span>(listings.sf), </span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">st_coordinates</span>(tram_metro_19), <span class="at">k =</span> <span class="dv">2</span>), </span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>      <span class="at">tpt_nn3 =</span> <span class="fu">nn_function</span>(<span class="fu">st_coordinates</span>(listings.sf), </span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">st_coordinates</span>(tram_metro_19), <span class="at">k =</span> <span class="dv">3</span>), </span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb13-16"><a href="#cb13-16" aria-hidden="true" tabindex="-1"></a>      <span class="at">tpt_nn4 =</span> <span class="fu">nn_function</span>(<span class="fu">st_coordinates</span>(listings.sf), </span>
+<span id="cb13-17"><a href="#cb13-17" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">st_coordinates</span>(tram_metro_19), <span class="at">k =</span> <span class="dv">4</span>), </span>
+<span id="cb13-18"><a href="#cb13-18" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb13-19"><a href="#cb13-19" aria-hidden="true" tabindex="-1"></a>      <span class="at">tpt_nn5 =</span> <span class="fu">nn_function</span>(<span class="fu">st_coordinates</span>(listings.sf), </span>
+<span id="cb13-20"><a href="#cb13-20" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">st_coordinates</span>(tram_metro_19), <span class="at">k =</span> <span class="dv">5</span>))</span>
+<span id="cb13-21"><a href="#cb13-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-22"><a href="#cb13-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Public lighting (buffer)</span></span>
+<span id="cb13-23"><a href="#cb13-23" aria-hidden="true" tabindex="-1"></a>listings.sf<span class="sc">$</span>light.Buffer <span class="ot">&lt;-</span> listings.sf <span class="sc">%&gt;%</span></span>
+<span id="cb13-24"><a href="#cb13-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">st_buffer</span>(<span class="dv">165</span>) <span class="sc">%&gt;%</span> <span class="co">#feet</span></span>
+<span id="cb13-25"><a href="#cb13-25" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aggregate</span>(<span class="fu">mutate</span>(public_lighting, <span class="at">counter =</span> <span class="dv">1</span>),., sum) <span class="sc">%&gt;%</span></span>
+<span id="cb13-26"><a href="#cb13-26" aria-hidden="true" tabindex="-1"></a>    <span class="fu">pull</span>(counter) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-27"><a href="#cb13-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">replace_na</span>(<span class="dv">0</span>)</span>
+<span id="cb13-28"><a href="#cb13-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-29"><a href="#cb13-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Attraction 1: Parks (nearest distance)</span></span>
+<span id="cb13-30"><a href="#cb13-30" aria-hidden="true" tabindex="-1"></a>listings.sf<span class="sc">$</span>park.dist <span class="ot">&lt;-</span> <span class="fu">as.numeric</span>(<span class="fu">st_distance</span>(listings.sf, <span class="fu">st_union</span>(park)))</span>
+<span id="cb13-31"><a href="#cb13-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-32"><a href="#cb13-32" aria-hidden="true" tabindex="-1"></a><span class="co"># Attraction 2: Outdoor Markets (k-nearest neighbor)</span></span>
+<span id="cb13-33"><a href="#cb13-33" aria-hidden="true" tabindex="-1"></a>listings.sf <span class="ot">&lt;-</span></span>
+<span id="cb13-34"><a href="#cb13-34" aria-hidden="true" tabindex="-1"></a>  listings.sf <span class="sc">%&gt;%</span> </span>
+<span id="cb13-35"><a href="#cb13-35" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb13-36"><a href="#cb13-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">mkt_nn1 =</span> <span class="fu">nn_function</span>(<span class="fu">st_coordinates</span>(listings.sf), </span>
+<span id="cb13-37"><a href="#cb13-37" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">st_coordinates</span>(outdoor_markets), <span class="at">k =</span> <span class="dv">1</span>),</span>
+<span id="cb13-38"><a href="#cb13-38" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb13-39"><a href="#cb13-39" aria-hidden="true" tabindex="-1"></a>      <span class="at">mkt_nn2 =</span> <span class="fu">nn_function</span>(<span class="fu">st_coordinates</span>(listings.sf), </span>
+<span id="cb13-40"><a href="#cb13-40" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">st_coordinates</span>(outdoor_markets), <span class="at">k =</span> <span class="dv">2</span>), </span>
+<span id="cb13-41"><a href="#cb13-41" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb13-42"><a href="#cb13-42" aria-hidden="true" tabindex="-1"></a>      <span class="at">mkt_nn3 =</span> <span class="fu">nn_function</span>(<span class="fu">st_coordinates</span>(listings.sf), </span>
+<span id="cb13-43"><a href="#cb13-43" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">st_coordinates</span>(outdoor_markets), <span class="at">k =</span> <span class="dv">3</span>), </span>
+<span id="cb13-44"><a href="#cb13-44" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb13-45"><a href="#cb13-45" aria-hidden="true" tabindex="-1"></a>      <span class="at">mkt_nn4 =</span> <span class="fu">nn_function</span>(<span class="fu">st_coordinates</span>(listings.sf), </span>
+<span id="cb13-46"><a href="#cb13-46" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">st_coordinates</span>(outdoor_markets), <span class="at">k =</span> <span class="dv">4</span>), </span>
+<span id="cb13-47"><a href="#cb13-47" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb13-48"><a href="#cb13-48" aria-hidden="true" tabindex="-1"></a>      <span class="at">mkt_nn5 =</span> <span class="fu">nn_function</span>(<span class="fu">st_coordinates</span>(listings.sf), </span>
+<span id="cb13-49"><a href="#cb13-49" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">st_coordinates</span>(outdoor_markets), <span class="at">k =</span> <span class="dv">5</span>))</span>
+<span id="cb13-50"><a href="#cb13-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-51"><a href="#cb13-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Attraction 3: Tourist Attractions (k-nearest neighbor)</span></span>
+<span id="cb13-52"><a href="#cb13-52" aria-hidden="true" tabindex="-1"></a>listings.sf <span class="ot">&lt;-</span></span>
+<span id="cb13-53"><a href="#cb13-53" aria-hidden="true" tabindex="-1"></a>  listings.sf <span class="sc">%&gt;%</span> </span>
+<span id="cb13-54"><a href="#cb13-54" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(</span>
+<span id="cb13-55"><a href="#cb13-55" aria-hidden="true" tabindex="-1"></a>      <span class="at">tour_nn1 =</span> <span class="fu">nn_function</span>(<span class="fu">st_coordinates</span>(listings.sf), </span>
+<span id="cb13-56"><a href="#cb13-56" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">st_coordinates</span>(tourist_attraction), <span class="at">k =</span> <span class="dv">1</span>),</span>
+<span id="cb13-57"><a href="#cb13-57" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb13-58"><a href="#cb13-58" aria-hidden="true" tabindex="-1"></a>      <span class="at">tour_nn2 =</span> <span class="fu">nn_function</span>(<span class="fu">st_coordinates</span>(listings.sf), </span>
+<span id="cb13-59"><a href="#cb13-59" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">st_coordinates</span>(tourist_attraction), <span class="at">k =</span> <span class="dv">2</span>), </span>
+<span id="cb13-60"><a href="#cb13-60" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb13-61"><a href="#cb13-61" aria-hidden="true" tabindex="-1"></a>      <span class="at">tour_nn3 =</span> <span class="fu">nn_function</span>(<span class="fu">st_coordinates</span>(listings.sf), </span>
+<span id="cb13-62"><a href="#cb13-62" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">st_coordinates</span>(tourist_attraction), <span class="at">k =</span> <span class="dv">3</span>), </span>
+<span id="cb13-63"><a href="#cb13-63" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb13-64"><a href="#cb13-64" aria-hidden="true" tabindex="-1"></a>      <span class="at">tour_nn4 =</span> <span class="fu">nn_function</span>(<span class="fu">st_coordinates</span>(listings.sf), </span>
+<span id="cb13-65"><a href="#cb13-65" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">st_coordinates</span>(tourist_attraction), <span class="at">k =</span> <span class="dv">4</span>), </span>
+<span id="cb13-66"><a href="#cb13-66" aria-hidden="true" tabindex="-1"></a>      </span>
+<span id="cb13-67"><a href="#cb13-67" aria-hidden="true" tabindex="-1"></a>      <span class="at">tour_nn5 =</span> <span class="fu">nn_function</span>(<span class="fu">st_coordinates</span>(listings.sf), </span>
+<span id="cb13-68"><a href="#cb13-68" aria-hidden="true" tabindex="-1"></a>                              <span class="fu">st_coordinates</span>(tourist_attraction), <span class="at">k =</span> <span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>col1 <span class="ot">&lt;-</span> listings.sf <span class="sc">%&gt;%</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(id,<span class="fu">starts_with</span>(<span class="st">"tpt_"</span>), park.dist, light.Buffer, <span class="fu">starts_with</span>(<span class="st">"mkt_"</span>), <span class="fu">starts_with</span>(<span class="st">"tour_"</span>))</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean_sf <span class="ot">&lt;-</span> <span class="fu">merge</span>(airbnb_joined_clean_sf, col1, <span class="at">by.x =</span> <span class="st">"listing_id"</span>, <span class="at">by.y =</span> <span class="st">"id"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="exploratory-analysis-of-engineered-features" class="level1">
+<h1>Exploratory Analysis of Engineered Features</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Correlation plot</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>numericVars_eng <span class="ot">&lt;-</span> airbnb_joined_clean_sf <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(<span class="st">"price.x"</span>,</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>                <span class="fu">starts_with</span>(<span class="st">"tpt_"</span>), </span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>                <span class="fu">starts_with</span>(<span class="st">"mkt_"</span>), </span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>                <span class="fu">starts_with</span>(<span class="st">"tour_"</span>), </span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>                <span class="st">"park.dist"</span>,</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>                <span class="st">"light.Buffer"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">na.omit</span>()</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Improved correlation plot</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">ggcorrplot</span>(</span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">round</span>(<span class="fu">cor</span>(numericVars_eng), <span class="dv">2</span>), </span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">p.mat =</span> <span class="fu">cor_pmat</span>(numericVars_eng),</span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">colors =</span> <span class="fu">c</span>(<span class="st">"#6D9EC1"</span>, <span class="st">"white"</span>, <span class="st">"#E46726"</span>),  </span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="at">type =</span> <span class="st">"lower"</span>,</span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="at">insig =</span> <span class="st">"blank"</span>,</span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>  <span class="at">sig.level =</span> <span class="fl">0.05</span>,</span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  <span class="at">lab =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="at">lab_size =</span> <span class="dv">2</span>,           </span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  <span class="at">tl.cex =</span> <span class="dv">6</span>,              </span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  <span class="at">tl.srt =</span> <span class="dv">45</span>,             </span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>  <span class="at">show.legend =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>  <span class="at">legend.title =</span> <span class="st">"Correlation"</span>,</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>  <span class="at">ggtheme =</span> ggplot2<span class="sc">::</span><span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(</span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>),</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>      <span class="at">axis.text.y =</span> <span class="fu">element_text</span>(<span class="at">size =</span> <span class="dv">8</span>),</span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>      <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>)</span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>) <span class="sc">+</span></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a><span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Correlation across numeric variables"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Exploratory Analysis of Engineered Features-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tram and metro lines</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean_sf <span class="sc">%&gt;%</span> <span class="co">#error need repair</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(price.x, <span class="fu">starts_with</span>(<span class="st">"tpt_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(Variable, Value, <span class="sc">-</span>price.x) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(Value, price.x)) <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_point</span>(<span class="at">size =</span> .<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se=</span>F, <span class="at">colour =</span> <span class="st">"#FA7800"</span>) <span class="sc">+</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>     <span class="fu">facet_wrap</span>(<span class="sc">~</span>Variable, <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>     <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Price as a function of transport k-nearest neighbor"</span>) <span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>     <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Exploratory Analysis of Engineered Features-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Public Lighting</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airbnb_joined_clean_sf,</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> light.Buffer, <span class="at">y =</span> price.x)) <span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#3B4161"</span>) <span class="sc">+</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se=</span>F, <span class="at">colour =</span> <span class="st">"#FA7800"</span>)<span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Price of listing against number of street lights within 165 ft of property"</span>, <span class="at">x =</span> <span class="st">"Number of street light"</span>, <span class="at">y =</span> <span class="st">"Price of Listings"</span>) <span class="sc">+</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Exploratory Analysis of Engineered Features-3.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Parks</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airbnb_joined_clean_sf,</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> park.dist, <span class="at">y =</span> price.x)) <span class="sc">+</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"#3B4161"</span>) <span class="sc">+</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se=</span>F, <span class="at">colour =</span> <span class="st">"#FA7800"</span>)<span class="sc">+</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Price of listing against distance from nearest park"</span>, <span class="at">x =</span> <span class="st">"Distance from nearest park"</span>, <span class="at">y =</span> <span class="st">"Price of Listings"</span>) <span class="sc">+</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Exploratory Analysis of Engineered Features-4.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Outdoor markets</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean_sf <span class="sc">%&gt;%</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(price.x, <span class="fu">starts_with</span>(<span class="st">"mkt_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(Variable, Value, <span class="sc">-</span>price.x) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(Value, price.x)) <span class="sc">+</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_point</span>(<span class="at">size =</span> .<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se=</span>F, <span class="at">colour =</span> <span class="st">"#FA7800"</span>) <span class="sc">+</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>     <span class="fu">facet_wrap</span>(<span class="sc">~</span>Variable, <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>     <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Price as a function of market k-nearest neighbor"</span>) <span class="sc">+</span></span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>     <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Exploratory Analysis of Engineered Features-5.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Tourist attractions</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean_sf <span class="sc">%&gt;%</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">st_drop_geometry</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(price.x, <span class="fu">starts_with</span>(<span class="st">"tour_"</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gather</span>(Variable, Value, <span class="sc">-</span>price.x) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(Value, price.x)) <span class="sc">+</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>     <span class="fu">geom_point</span>(<span class="at">size =</span> .<span class="dv">5</span>) <span class="sc">+</span> <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se=</span>F, <span class="at">colour =</span> <span class="st">"#FA7800"</span>) <span class="sc">+</span></span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>     <span class="fu">facet_wrap</span>(<span class="sc">~</span>Variable, <span class="at">nrow =</span> <span class="dv">1</span>, <span class="at">scales =</span> <span class="st">"free"</span>) <span class="sc">+</span></span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>     <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Price as a function of tourist attraction k-nearest neighbor"</span>) <span class="sc">+</span></span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>     <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Exploratory Analysis of Engineered Features-6.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>From the result output, we can see that:</strong></p>
+<ul>
+<li><p>Street Lights vs Price: Slightly higher prices in better-lit areas, but the relationship is minimal as shown by the nearly flat orange trend line.</p></li>
+<li><p>Transport Proximity vs Price: Properties closer to public transport (low distance values) consistently command higher prices, shown by downward-sloping lines across all five nearest transport stops.</p></li>
+<li><p>Park Distance vs Price: Very weak positive relationship - properties slightly more expensive further from parks, but the effect is minimal and likely not practically significant.</p></li>
+<li><p>Market Proximity vs Price: Clear negative relationship - properties closer to markets tend to have higher prices, with the effect consistent across all five nearest markets.</p></li>
+<li><p>Tourist Attraction Proximity vs Price: Strongest location effect - properties closer to tourist attractions command significantly higher prices, shown by steep downward slopes across all five nearest attractions.</p></li>
+</ul>
+<section id="what-this-means-for-hosts" class="level2">
+<h2 class="anchored" data-anchor-id="what-this-means-for-hosts">What This Means for Hosts</h2>
+<p>While our statistical analysis showed relatively modest correlations between these features and prices, real-world experience and existing research suggest they do matter to guests. The key takeaways for hosts:</p>
+<ul>
+<li>Transport Proximity: Properties within a 5-10 minute walk of public transport tend to perform better</li>
+<li>Safety First: Well-lit neighborhoods can justify slightly higher rates</li>
+<li>Green Appeal: Access to parks can be a valuable selling point, especially for longer stays</li>
+<li>Local Experience: Proximity to markets and cultural spots can differentiate your listing</li>
+<li>Tourist-Friendly: Being near attractions allows for premium pricing, but consider highlighting the perfect balance of accessibility and quiet your location offers</li>
+</ul>
+</section>
+</section>
+<section id="modeling-approach" class="level1">
+<h1>Modeling Approach</h1>
+<p>Our analysis employs an OLS regression framework with listing prices as the dependent variable. After implementing a standard train-test split, we constructed our initial model with a comprehensive set of predictors that capture both temporal and spatial dynamics of the Amsterdam Airbnb market.</p>
+<section id="initial-variable-selection" class="level2">
+<h2 class="anchored" data-anchor-id="initial-variable-selection">Initial Variable Selection</h2>
+<p><strong>Temporal Variables:</strong></p>
+<ul>
+<li>Day of week</li>
+<li>Weekend/weekday binary</li>
+<li>Monthly seasonality</li>
+</ul>
+<p><strong>Property Characteristics:</strong></p>
+<ul>
+<li>Neighborhood classification</li>
+<li>Property type</li>
+<li>Accommodation capacity</li>
+<li>Bathroom count</li>
+<li>Bedroom count</li>
+<li>Minimum nights requirement</li>
+</ul>
+<p><strong>Spatial Features:</strong></p>
+<ul>
+<li>Transport accessibility (<code>tpt_1</code>, <code>tpt_2</code>, <code>tpt_3</code>, <code>tpt_4</code>, <code>tpt_5</code>)</li>
+<li>Market proximity (<code>mkt_1</code>, <code>mkt_2</code>, <code>mkt_3</code>, <code>mkt_4</code>, <code>mkt_5</code>)</li>
+<li>Tourist attraction density (<code>tour_nn1</code>, <code>tour_nn2</code>, <code>tour_nn3</code>, <code>tour_nn4</code>, <code>tour_nn5</code>)</li>
+<li>Park distance (<code>park.dist</code>)</li>
+<li>Street lighting density within 165ft buffer (<code>light.Buffer</code>)</li>
+</ul>
+<p><strong>Two crucial variable exclusions shaped our modeling approach:</strong></p>
+<ul>
+<li><p>Review Metrics: Excluded due to the inherent cold-start problem for new listings. This omission acknowledges that new hosts need pricing guidance before accumulating reviews.</p></li>
+<li><p>Date Variables: Removed in favor of cyclical temporal indicators (day of week, month) to capture recurring patterns rather than specific temporal events.</p></li>
+</ul>
+</section>
+<section id="model-refinement" class="level2">
+<h2 class="anchored" data-anchor-id="model-refinement">Model Refinement</h2>
+<p>We employed stepwise regression with AIC as our selection criterion to optimize the model specification. This approach systematically evaluates the marginal contribution of each predictor, yielding a more parsimonious final model while maintaining predictive power.</p>
+</section>
+<section id="final-model-specification" class="level2">
+<h2 class="anchored" data-anchor-id="final-model-specification">Final Model Specification</h2>
+<p>The stepwise selection retained most of our initial variables with some refinement in the k-nearest neighbor terms:</p>
+<p><strong>Temporal and Core Features:</strong></p>
+<ul>
+<li>Day of week and monthly indicators</li>
+<li>Neighborhood effects</li>
+<li>Property characteristics</li>
+<li>Minimum stay requirements</li>
+</ul>
+<p><strong>Refined Spatial Metrics:</strong></p>
+<ul>
+<li>Transport proximity (<code>tpt_1</code>, <code>tpt_2</code>, <code>tpt_3</code>, <code>tpt_4</code>)</li>
+<li>Market accessibility (<code>mkt_1</code>, <code>mkt_3</code>, <code>mkt_4</code>)</li>
+<li>Tourist attraction proximity (<code>tour_nn1</code>, <code>tour_nn2</code>, <code>tour_nn3</code>, <code>tour_nn4</code>, <code>tour_nn5</code>)</li>
+<li>Park distance (<code>park.dist</code>)</li>
+<li>Local lighting density (<code>light.Buffer</code>)</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Omit NA values from reviews</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#airbnb_joined_clean_sf &lt;- airbnb_joined_clean_sf %&gt;%</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="co">#  filter(!if_any(starts_with("review_scores_"), is.na)) # Remove NA so that AIC model can run (if i include review_scores in the equation. But also dont make sense since new host dont have info on review)</span></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Split data set</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>inTrain <span class="ot">&lt;-</span> <span class="fu">createDataPartition</span>(</span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>              <span class="at">y =</span> <span class="fu">paste</span>(airbnb_joined_clean_sf<span class="sc">$</span>neighbourhood_cleansed, </span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>                        airbnb_joined_clean_sf<span class="sc">$</span>property_type,</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>                        airbnb_joined_clean_sf<span class="sc">$</span>minimum_nights), </span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">p =</span> .<span class="dv">60</span>, <span class="at">list =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>airbnb.training <span class="ot">&lt;-</span> airbnb_joined_clean_sf[inTrain,] </span>
+<span id="cb21-15"><a href="#cb21-15" aria-hidden="true" tabindex="-1"></a>airbnb.test <span class="ot">&lt;-</span> airbnb_joined_clean_sf[<span class="sc">-</span>inTrain,] </span>
+<span id="cb21-16"><a href="#cb21-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-17"><a href="#cb21-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Regression model</span></span>
+<span id="cb21-18"><a href="#cb21-18" aria-hidden="true" tabindex="-1"></a>reg<span class="ot">&lt;-</span><span class="fu">lm</span>(price.x <span class="sc">~</span> ., <span class="at">data =</span> <span class="fu">as.data.frame</span>(airbnb.training) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-19"><a href="#cb21-19" aria-hidden="true" tabindex="-1"></a>                             dplyr<span class="sc">::</span><span class="fu">select</span>(price.x,</span>
+<span id="cb21-20"><a href="#cb21-20" aria-hidden="true" tabindex="-1"></a>                                           day_of_week,</span>
+<span id="cb21-21"><a href="#cb21-21" aria-hidden="true" tabindex="-1"></a>                                           weekend,</span>
+<span id="cb21-22"><a href="#cb21-22" aria-hidden="true" tabindex="-1"></a>                                           month,</span>
+<span id="cb21-23"><a href="#cb21-23" aria-hidden="true" tabindex="-1"></a>                                           neighbourhood_cleansed,</span>
+<span id="cb21-24"><a href="#cb21-24" aria-hidden="true" tabindex="-1"></a>                                           property_type,</span>
+<span id="cb21-25"><a href="#cb21-25" aria-hidden="true" tabindex="-1"></a>                                           accommodates,</span>
+<span id="cb21-26"><a href="#cb21-26" aria-hidden="true" tabindex="-1"></a>                                           bathrooms,</span>
+<span id="cb21-27"><a href="#cb21-27" aria-hidden="true" tabindex="-1"></a>                                           bedrooms,</span>
+<span id="cb21-28"><a href="#cb21-28" aria-hidden="true" tabindex="-1"></a>                                           minimum_nights,</span>
+<span id="cb21-29"><a href="#cb21-29" aria-hidden="true" tabindex="-1"></a>                                           <span class="fu">starts_with</span>(<span class="st">"tpt_"</span>),</span>
+<span id="cb21-30"><a href="#cb21-30" aria-hidden="true" tabindex="-1"></a>                                           <span class="fu">starts_with</span>(<span class="st">"mkt_"</span>),</span>
+<span id="cb21-31"><a href="#cb21-31" aria-hidden="true" tabindex="-1"></a>                                           <span class="fu">starts_with</span>(<span class="st">"tour_"</span>),</span>
+<span id="cb21-32"><a href="#cb21-32" aria-hidden="true" tabindex="-1"></a>                                           park.dist,</span>
+<span id="cb21-33"><a href="#cb21-33" aria-hidden="true" tabindex="-1"></a>                                           light.Buffer))</span>
+<span id="cb21-34"><a href="#cb21-34" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg)</span>
+<span id="cb21-35"><a href="#cb21-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-36"><a href="#cb21-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Stepwise regression to remove unimportant variables</span></span>
+<span id="cb21-37"><a href="#cb21-37" aria-hidden="true" tabindex="-1"></a>step <span class="ot">&lt;-</span> <span class="fu">stepAIC</span>(reg, <span class="at">direction=</span><span class="st">"both"</span>)</span>
+<span id="cb21-38"><a href="#cb21-38" aria-hidden="true" tabindex="-1"></a>step<span class="sc">$</span>anova</span>
+<span id="cb21-39"><a href="#cb21-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-40"><a href="#cb21-40" aria-hidden="true" tabindex="-1"></a><span class="co"># New regression model</span></span>
+<span id="cb21-41"><a href="#cb21-41" aria-hidden="true" tabindex="-1"></a>reg2<span class="ot">&lt;-</span> <span class="fu">lm</span>(price.x <span class="sc">~</span> day_of_week <span class="sc">+</span> month <span class="sc">+</span> neighbourhood_cleansed <span class="sc">+</span> property_type <span class="sc">+</span> accommodates <span class="sc">+</span> </span>
+<span id="cb21-42"><a href="#cb21-42" aria-hidden="true" tabindex="-1"></a>    bathrooms <span class="sc">+</span> bedrooms <span class="sc">+</span> minimum_nights <span class="sc">+</span> tpt_nn1 <span class="sc">+</span> tpt_nn2 <span class="sc">+</span> </span>
+<span id="cb21-43"><a href="#cb21-43" aria-hidden="true" tabindex="-1"></a>    tpt_nn3 <span class="sc">+</span> tpt_nn4 <span class="sc">+</span> mkt_nn1 <span class="sc">+</span> mkt_nn3 <span class="sc">+</span> mkt_nn4 <span class="sc">+</span> </span>
+<span id="cb21-44"><a href="#cb21-44" aria-hidden="true" tabindex="-1"></a>    tour_nn1 <span class="sc">+</span> tour_nn2 <span class="sc">+</span> tour_nn3 <span class="sc">+</span> tour_nn4 <span class="sc">+</span> tour_nn5 <span class="sc">+</span> park.dist <span class="sc">+</span> </span>
+<span id="cb21-45"><a href="#cb21-45" aria-hidden="true" tabindex="-1"></a>    light.Buffer, <span class="at">data =</span> <span class="fu">as.data.frame</span>(airbnb.training)) <span class="co"># The AIC Model</span></span>
+<span id="cb21-46"><a href="#cb21-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-47"><a href="#cb21-47" aria-hidden="true" tabindex="-1"></a>reg2<span class="sc">$</span>coefficients[<span class="st">"(Intercept)"</span>] <span class="ot">&lt;-</span> reg2<span class="sc">$</span>coefficients[<span class="st">"(Intercept)"</span>]</span>
+<span id="cb21-48"><a href="#cb21-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-49"><a href="#cb21-49" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(reg2)</span>
+<span id="cb21-50"><a href="#cb21-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-51"><a href="#cb21-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Prediction</span></span>
+<span id="cb21-52"><a href="#cb21-52" aria-hidden="true" tabindex="-1"></a>airbnb.test <span class="ot">&lt;-</span></span>
+<span id="cb21-53"><a href="#cb21-53" aria-hidden="true" tabindex="-1"></a>  airbnb.test <span class="sc">%&gt;%</span></span>
+<span id="cb21-54"><a href="#cb21-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Regression =</span> <span class="st">"Baseline Regression"</span>,</span>
+<span id="cb21-55"><a href="#cb21-55" aria-hidden="true" tabindex="-1"></a>         <span class="at">Price.Predict =</span> <span class="fu">predict</span>(reg2, airbnb.test),</span>
+<span id="cb21-56"><a href="#cb21-56" aria-hidden="true" tabindex="-1"></a>         <span class="at">Price.Error =</span> Price.Predict <span class="sc">-</span> price.x,</span>
+<span id="cb21-57"><a href="#cb21-57" aria-hidden="true" tabindex="-1"></a>         <span class="at">Price.AbsError =</span> <span class="fu">abs</span>(Price.Predict <span class="sc">-</span> price.x),</span>
+<span id="cb21-58"><a href="#cb21-58" aria-hidden="true" tabindex="-1"></a>         <span class="at">Price.APE =</span> (<span class="fu">abs</span>(Price.Predict <span class="sc">-</span> price.x)) <span class="sc">/</span> price.x)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="validation-accuracy-and-generalizability" class="level2">
+<h2 class="anchored" data-anchor-id="validation-accuracy-and-generalizability">Validation: Accuracy and Generalizability</h2>
+<p>For a pricing model to be truly valuable in Amsterdam’s dynamic Airbnb market, it needs to be both accurate and generalizable. Accuracy ensures hosts can trust the day-to-day pricing recommendations, while generalizability ensures the model remains reliable across different seasons, neighborhoods, and market conditions.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MAE (Accuracy)</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(airbnb.test<span class="sc">$</span>Price.AbsError, <span class="at">na.rm =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 58.05745</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(airbnb.test, <span class="fu">aes</span>(<span class="at">x =</span> Price.AbsError)) <span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.5</span>, <span class="at">fill =</span> <span class="st">"blue"</span>, <span class="at">color =</span> <span class="st">"orange"</span>) <span class="sc">+</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Histogram of Absolute Error"</span>, <span class="at">x =</span> <span class="st">"Value"</span>, <span class="at">y =</span> <span class="st">"Frequency"</span>) <span class="sc">+</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Validation-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="co"># MAPE (Accuracy)</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(airbnb.test<span class="sc">$</span>Price.APE, <span class="at">na.rm =</span> T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3603723</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Cross-validation (Generalizability)</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>fitControl <span class="ot">&lt;-</span> <span class="fu">trainControl</span>(<span class="at">method =</span> <span class="st">"cv"</span>, <span class="at">number =</span> <span class="dv">100</span>)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">825</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>reg.cv <span class="ot">&lt;-</span> </span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">train</span>(price.x <span class="sc">~</span> ., <span class="at">data =</span> <span class="fu">st_drop_geometry</span>(airbnb_joined_clean_sf) <span class="sc">%&gt;%</span> </span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>                                dplyr<span class="sc">::</span><span class="fu">select</span>(price.x, </span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>                                day_of_week, month, neighbourhood_cleansed, property_type, accommodates, bathrooms, bedrooms,</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>                                minimum_nights, tpt_nn1, tpt_nn2, tpt_nn3, tpt_nn4, mkt_nn1, mkt_nn3, mkt_nn4, tour_nn1,</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>                                tour_nn2, tour_nn3, tour_nn4, tour_nn5, park.dist,light.Buffer), </span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>     <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">trControl =</span> fitControl, <span class="at">na.action =</span> na.pass)</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(reg.cv<span class="sc">$</span>resample[,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 58.22711</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(reg.cv<span class="sc">$</span>resample[,<span class="dv">3</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.332825</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>reg.cv.df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">MAE=</span>reg.cv<span class="sc">$</span>resample[,<span class="dv">3</span>])</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(reg.cv.df, <span class="fu">aes</span>(<span class="at">x =</span> MAE)) <span class="sc">+</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.5</span>, <span class="at">fill =</span> <span class="st">"#83A598"</span>) <span class="sc">+</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Distribution of MAE"</span>, <span class="at">subtitle =</span> <span class="st">"k-fold cross validation; k=100"</span>, <span class="at">x =</span> <span class="st">"Value"</span>, <span class="at">y =</span> <span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Validation-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="measuring-prediction-accuracy" class="level3">
+<h3 class="anchored" data-anchor-id="measuring-prediction-accuracy">Measuring Prediction Accuracy</h3>
+<p>To assess our model’s performance, we examined both absolute and relative prediction accuracy. Our model achieved an MAE of 58.06, meaning that, on average, predictions deviate from actual prices by €58. The MAPE of 0.36 (36.0%) provides a relative view of this accuracy. While these metrics might suggest moderate accuracy, they’re reasonable given Amsterdam’s wide range of listing prices and the inherent volatility of short-term rental markets.</p>
+</section>
+<section id="testing-generalizability" class="level3">
+<h3 class="anchored" data-anchor-id="testing-generalizability">Testing Generalizability</h3>
+<p>While accuracy on known data is important, we’re particularly interested in how well our model performs on new, unseen data. To rigorously test this, we employed k-fold cross-validation with k=100, essentially testing our model 100 times on different subsets of our data.</p>
+<p>The standard deviation of MAE across all 100 folds is remarkably low at 1.33, indicating strong model stability. This small variation suggests that our model’s performance is consistent across different subsets of the data, a crucial characteristic for reliable price predictions.</p>
+<p><strong>Why This Matters?</strong></p>
+<p>The balance between accuracy and generalizability is crucial for our use case. Hosts need reliable pricing guidance that works not just for today’s market but remains valid as conditions change. Our model’s moderate accuracy means it can provide realistic price ranges, while its strong generalizability ensures these recommendations remain reliable across different market conditions, seasons, and neighborhoods. This combination makes it a practical tool for both new hosts setting initial prices and experienced hosts adjusting their strategies throughout the year.</p>
+</section>
+<section id="examining-spatial-variations" class="level3">
+<h3 class="anchored" data-anchor-id="examining-spatial-variations">Examining spatial variations</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Predicted price as a function of observed price</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>airbnb.test <span class="sc">%&gt;%</span></span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>  dplyr<span class="sc">::</span><span class="fu">select</span>(price.x, Price.Predict) <span class="sc">%&gt;%</span></span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(price.x, Price.Predict)) <span class="sc">+</span></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="fu">aes</span>(price.x, price.x), </span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>             <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">size =</span> <span class="dv">1</span>, </span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>             <span class="at">colour =</span> <span class="st">"#FA7800"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span>  <span class="co"># Added dashed line</span></span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">stat_smooth</span>(<span class="fu">aes</span>(Price.Predict, price.x), </span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">FALSE</span>, <span class="at">size =</span> <span class="dv">1</span>, </span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">colour =</span> <span class="st">"#83A598"</span>) <span class="sc">+</span></span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Predicted airbnb price as a function of observed price"</span>,</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle =</span> <span class="st">"Orange dashed line represents a perfect prediction; Green line represents prediction"</span>) <span class="sc">+</span></span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">plotTheme</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/Examining spatial variations in errors-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The scatter plot compares our model’s predicted Airbnb prices with the actual observed prices, using an orange diagonal line to represent perfect predictions and a green line to show our model’s actual predictions.</p>
+<p>The closeness of the green line to the orange dash line suggests reasonable overall prediction accuracy in our model. We observe different patterns across price ranges: for lower-priced properties (0-300€), the model performs well with predictions tightly clustered around the prediction line; in the mid-range (300-600€), we see more scatter but predictions still follow the general trend; for higher-priced properties (600€+), the model tends to underpredict, with more points falling below the perfect prediction line.</p>
+<p>Notably, the spread of points increases with price, indicating better model accuracy for lower-priced properties, while the model tends to underestimate very high prices (900€+). The visualization also shows that our model avoids extreme predictions, staying within reasonable price ranges. Overall, this suggests that while our model performs well for typical Amsterdam Airbnb prices, it might need refinement for luxury or premium properties.</p>
+</section>
+<section id="examining-spatial-autocorrelation-in-model-errors" class="level3">
+<h3 class="anchored" data-anchor-id="examining-spatial-autocorrelation-in-model-errors">Examining Spatial Autocorrelation in Model Errors</h3>
+<p><strong>Moran’s I</strong></p>
+<p>Moran’s I is a measure that tells us how similar or different our model’s prediction errors are across Amsterdam’s neighborhoods. We use it to check if our errors show any geographic patterns – in other words, are we consistently over- or under-predicting prices in certain areas of the city? If Moran’s I reveals strong patterns, it suggests our model might be missing important neighborhood-specific factors that influence pricing.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>coords <span class="ot">&lt;-</span> <span class="fu">jitter</span>(<span class="fu">st_coordinates</span>(airbnb_joined_clean_sf),<span class="fl">0.0001</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>neighborList <span class="ot">&lt;-</span> <span class="fu">knn2nb</span>(<span class="fu">knearneigh</span>(coords, <span class="dv">5</span>))</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>spatialWeights <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(neighborList, <span class="at">style=</span><span class="st">"W"</span>)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>airbnb_joined_clean_sf<span class="sc">$</span>lagPrice <span class="ot">&lt;-</span> <span class="fu">lag.listw</span>(spatialWeights, airbnb_joined_clean_sf<span class="sc">$</span>price.x)</span>
+<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>airbnb.test2 <span class="ot">&lt;-</span> airbnb.test <span class="sc">%&gt;%</span> <span class="fu">na.omit</span>() <span class="co">#Remove NA values</span></span>
+<span id="cb33-7"><a href="#cb33-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb33-8"><a href="#cb33-8" aria-hidden="true" tabindex="-1"></a>coords.test <span class="ot">&lt;-</span>  <span class="fu">jitter</span>(<span class="fu">st_coordinates</span>(airbnb.test2))</span>
+<span id="cb33-9"><a href="#cb33-9" aria-hidden="true" tabindex="-1"></a>neighborList.test <span class="ot">&lt;-</span> <span class="fu">knn2nb</span>(<span class="fu">knearneigh</span>(coords.test, <span class="dv">5</span>))</span>
+<span id="cb33-10"><a href="#cb33-10" aria-hidden="true" tabindex="-1"></a>spatialWeights.test <span class="ot">&lt;-</span> <span class="fu">nb2listw</span>(neighborList.test, <span class="at">style=</span><span class="st">"W"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>moranTest <span class="ot">&lt;-</span> <span class="fu">moran.mc</span>(airbnb.test2<span class="sc">$</span>Price.Error, </span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>                      spatialWeights.test, <span class="at">nsim =</span> <span class="dv">999</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">as.data.frame</span>(moranTest<span class="sc">$</span>res[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">999</span>)]), <span class="fu">aes</span>(moranTest<span class="sc">$</span>res[<span class="fu">c</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">999</span>)])) <span class="sc">+</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.01</span>) <span class="sc">+</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="fu">aes</span>(<span class="at">xintercept =</span> moranTest<span class="sc">$</span>statistic), <span class="at">colour =</span> <span class="st">"orange"</span>,<span class="at">linewidth=</span><span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="fl">0.3</span>, <span class="fl">0.3</span>)) <span class="sc">+</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title=</span><span class="st">"Observed and permuted Moran's I"</span>,</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">subtitle=</span> <span class="st">"Observed Moran's I in orange"</span>,</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">x=</span><span class="st">"Moran's I"</span>,</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a>       <span class="at">y=</span><span class="st">"Count"</span>) <span class="sc">+</span></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>, <span class="at">face=</span><span class="st">"bold"</span>),</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">10</span>),</span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/moran-I-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In our analysis, we observed a Moran’s I value of 0.273 with a p-value of 0.001. Looking at the visualization, the orange line represents our observed Moran’s I statistic, while the black bars show the distribution of what we’d expect if the errors were randomly distributed across Amsterdam. The fact that our orange line sits notably to the right of this distribution tells us something important: our prediction errors aren’t random across the city – they show significant positive spatial autocorrelation.</p>
+<p>This clustering of errors suggests that when our model over- or under-predicts a property’s price, nearby properties are likely to have similar prediction errors. While the magnitude (0.273) indicates moderate spatial autocorrelation, the highly significant p-value (0.001) confirms that this pattern isn’t due to chance. This insight points to an opportunity to improve our model by incorporating additional neighborhood-specific features that might capture these spatial patterns more effectively.</p>
+<p><strong>Spatial Lag of Airbnb Price Error</strong></p>
+<p>The spatial lag scatter plot provides another way to understand how our model’s prediction errors are related across space. The plot shows each property’s prediction error against the average error of its neighboring properties (the spatial lag). This helps us visualize whether properties with high or low prediction errors tend to be near other properties with similar errors.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>airbnb.test2 <span class="ot">&lt;-</span> airbnb.test2 <span class="sc">%&gt;%</span> </span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">lagPriceError =</span> <span class="fu">lag.listw</span>(spatialWeights.test, Price.Error))</span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">data =</span> airbnb.test2)<span class="sc">+</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x =</span>lagPriceError, <span class="at">y =</span>Price.Error)) <span class="sc">+</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">label =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">label =</span> scales<span class="sc">::</span>comma) <span class="sc">+</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Spatial lag of Airbnb Price Error"</span>,</span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a>       <span class="at">x =</span> <span class="st">"Lag of airbnb price error"</span>,</span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Airbnb error"</span>) <span class="sc">+</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span> </span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">size=</span><span class="dv">12</span>, <span class="at">face=</span><span class="st">"bold"</span>),</span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">panel.grid.minor =</span> <span class="fu">element_blank</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="MUSA5080_Final_Project_files/figure-html/plot-spatial-lag-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Looking at our scatter plot, we observe several key patterns:</p>
+<ul>
+<li>The majority of points cluster around the center (0,0), indicating that many properties have relatively small prediction errors that don’t show strong spatial patterns</li>
+<li>There’s a visible positive correlation between errors and their spatial lags, shown by the general upward trend of points from lower left to upper right</li>
+<li>We see some distinct horizontal bands in the error distribution, particularly around -500 and 0, suggesting certain price ranges where our model consistently over- or under-predicts</li>
+</ul>
+<p>This pattern reinforces our Moran’s I findings (0.273) by visually demonstrating that prediction errors aren’t randomly distributed across space. When we over-predict a property’s price, we’re likely to over-predict its neighbors’ prices too. This spatial clustering of errors suggests our model could be improved by:</p>
+<ul>
+<li>Adding more detailed neighborhood-level variables</li>
+<li>Incorporating interaction effects between spatial features</li>
+<li>Considering non-linear relationships in our spatial variables</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="model-limitations-and-future-improvements" class="level1">
+<h1>Model Limitations and Future Improvements</h1>
+<p>While our model provides valuable pricing insights for Amsterdam’s Airbnb hosts, it’s important to acknowledge several key limitations that affect its application:</p>
+<p><strong>Pre-Pandemic Market Conditions</strong></p>
+<p>Our model is based on 2019 data, representing the pre-COVID-19 tourism landscape in Amsterdam. The pandemic has significantly altered travel patterns, guest preferences, and pricing dynamics. For example:</p>
+<ul>
+<li>Changes in work-from-home policies have led to longer average stays</li>
+<li>Increased emphasis on cleanliness and private spaces</li>
+<li>Shifts in tourist demographics and travel purposes</li>
+<li>New patterns in seasonal demand</li>
+</ul>
+<p><strong>Limited Time Horizon</strong></p>
+<p>Basing our model on a single year’s data means we may miss important long-term market trends:</p>
+<ul>
+<li>Unable to capture multi-year seasonal patterns</li>
+<li>Missing longer-term neighborhood development effects</li>
+<li>Limited insight into how major events impact pricing over time</li>
+<li>No historical context for market maturation effects</li>
+</ul>
+<p><strong>Resident Feedback Consideration</strong></p>
+<p>While we deliberately excluded review scores from our model to make it useful for new listings, resident feedback could provide valuable pricing signals:</p>
+<ul>
+<li>Local sentiments about tourist density in different neighborhoods</li>
+<li>Changes in neighborhood character over time</li>
+<li>Community responses to short-term rentals</li>
+<li>Impact of tourist-resident interactions on property values</li>
+</ul>
+<p>These limitations suggest several opportunities for future improvement:</p>
+<ul>
+<li>Regular model updates with post-pandemic data</li>
+<li>Integration of multi-year historical pricing trends</li>
+<li>Development of separate models for different market segments (short vs.&nbsp;long stays)</li>
+<li>Incorporation of neighborhood sentiment analysis</li>
+<li>Addition of dynamic pricing factors for major events and festivals</li>
+</ul>
+<p>Despite these limitations, our model provides a solid foundation for price optimization within Amsterdam’s current regulatory framework. Users should consider these factors when applying the model’s recommendations to their specific situations.</p>
+</section>
+<section id="meeting-the-use-case" class="level1">
+<h1>Meeting the Use Case</h1>
+<p>Our model successfully addresses the core needs of Amsterdam’s Airbnb hosts by providing data-driven pricing recommendations that account for Amsterdam’s unique market dynamics. For new hosts, we’ve developed a robust pricing framework that doesn’t rely on historical review data, allowing immediate market entry with competitive pricing. For experienced hosts, our model’s incorporation of temporal and spatial factors helps optimize pricing within the critical 30-day annual rental limit.</p>
+<p>Please see the following link for our use case presentation: https://youtu.be/pZxZnmO2SEU</p>
+<p>Key achievements include:</p>
+<ul>
+<li>Accurate price recommendations based on property characteristics and location</li>
+<li>Seasonal adjustment capabilities for high-demand periods</li>
+<li>Neighborhood-specific pricing insights</li>
+<li>Regulatory compliance built into the pricing strategy</li>
+</ul>
+<p>Our analytical approach also offers several compelling reasons for replication. First, while our model focuses on Amsterdam, the methodology can be adapted for any city with similar regulatory constraints on short-term rentals, such as Paris, Barcelona, or Berlin. Second, our combination of spatial analysis with traditional pricing factors provides a more nuanced understanding of neighborhood effects than typical pricing algorithms. Finally, our approach to handling regulatory constraints (like the 30-day limit) within the pricing model creates a framework that other researchers and analysts can build upon for markets with similar restrictions. The transparency and adaptability of our methodology make it particularly valuable for urban planners, policy makers, and market analysts seeking to understand short-term rental dynamics in regulated markets.</p>
+<p>Looking ahead, we envision several promising directions to enhance our model’s capabilities and broaden its impact. A critical next step would be incorporating post-pandemic market dynamics, as COVID-19 has fundamentally altered travel patterns and guest preferences in ways that continue to evolve. Expanding our analysis to multiple cities would not only validate our methodology but also reveal valuable insights about how different regulatory frameworks and market conditions influence short-term rental pricing. Additionally, developing real-time market response capabilities would allow the model to adapt to sudden changes in demand, whether from seasonal events, policy changes, or unexpected market shifts. These improvements would transform our current static model into a more dynamic tool that could better serve hosts in an increasingly complex and rapidly changing short-term rental market.</p>
+</section>
+<section id="references" class="level1">
+<h1>References</h1>
+<ul>
+<li><p>Toader, V. et al.&nbsp;(2021) ‘Analysis of price determinants in the case of Airbnb listings’, Economic Research-Ekonomska Istraživanja, 35(1), pp.&nbsp;2493–2509. doi: 10.1080/1331677X.2021.1962380.</p></li>
+<li><p>Lin, Wenzhen, and Fan Yang. 2024. “The Price of Short-Term Housing: A Study of Airbnb on 26 Regions in the United States.” Journal of Housing Economics 53: 102005. https://doi.org/10.1016/j.jhe.2024.102005.</p></li>
+<li><p><a href="https://www.airbnb.com/host/homes?c=.pi0.pk12506007315_170869348955&amp;gclsrc=aw.ds&amp;&amp;c=.pi0.pk12506007315_170869348955&amp;gad_source=1&amp;gclid=EAIaIQobChMIqcjytLimigMVKE5HAR0DshXeEAAYASAAEgK3p_D_BwE&amp;gclsrc=aw.ds">Airbnb Smart Pricing</a></p></li>
+</ul>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>jiaong@upenn.edu</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This page is built with ❤️ and <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

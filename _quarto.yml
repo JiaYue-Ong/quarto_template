@@ -19,7 +19,7 @@ website:
         href: https://github.com/JiaYue-Ong
         text: "Ong Jia Yue GitHub"
       - icon: linkedin
-        href: www.linkedin.com/in/jia-yue-ong/
+        href: www.linkedin.com/in/jia-yue-ong
         text: "Ong Jia Yue Linkedin"
     style: "docked"
     search: true
@@ -37,6 +37,10 @@ website:
           - analysis/1.4-PredictiveModelling.ipynb
           - analysis/1.5-Conclusion.ipynb
           - analysis/1.6-Time_Series.ipynb
+      - href: MUSA-5080-Final-Project/MUSA5080_Final_Project.qmd
+        text: Amsterdam’s Airbnb Prices Predictor
+      - href: analysis2/index.qmd
+        text: Urban development along the Mekong River
 
 format:
   html:

@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -82,7 +116,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../analysis/index.html">Final Project: MUSA 5500 Geospatial Data Science in Python</a></li><li class="breadcrumb-item"><a href="../analysis/1.2-Exploratory_Plots.html">2. Exploratory Plots</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../analysis/index.html">Disparities in Socioeconomic Conditions Among U.S. States</a></li><li class="breadcrumb-item"><a href="../analysis/1.2-Exploratory_Plots.html">2. Exploratory Plots</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -101,7 +135,7 @@ ul.task-list li input[type="checkbox"] {
       </a>
       <div class="sidebar-tools-main">
     <a href="https://github.com/JiaYue-Ong" title="Ong Jia Yue GitHub" class="quarto-navigation-tool px-1" aria-label="Ong Jia Yue GitHub"><i class="bi bi-github"></i></a>
-    <a href="../www.linkedin.com/in/jia-yue-ong/" title="Ong Jia Yue Linkedin" class="quarto-navigation-tool px-1" aria-label="Ong Jia Yue Linkedin"><i class="bi bi-linkedin"></i></a>
+    <a href="../www.linkedin.com/in/jia-yue-ong" title="Ong Jia Yue Linkedin" class="quarto-navigation-tool px-1" aria-label="Ong Jia Yue Linkedin"><i class="bi bi-linkedin"></i></a>
 </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -120,7 +154,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../analysis/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Final Project: MUSA 5500 Geospatial Data Science in Python</span></a>
+ <span class="menu-text">Disparities in Socioeconomic Conditions Among U.S. States</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -176,6 +210,18 @@ ul.task-list li input[type="checkbox"] {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../MUSA-5080-Final-Project/MUSA5080_Final_Project.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Amsterdam’s Airbnb Prices Predictor</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../analysis2/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Urban development along the Mekong River</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -185,7 +231,7 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content column-page-right" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../analysis/index.html">Final Project: MUSA 5500 Geospatial Data Science in Python</a></li><li class="breadcrumb-item"><a href="../analysis/1.2-Exploratory_Plots.html">2. Exploratory Plots</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../analysis/index.html">Disparities in Socioeconomic Conditions Among U.S. States</a></li><li class="breadcrumb-item"><a href="../analysis/1.2-Exploratory_Plots.html">2. Exploratory Plots</a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title">2. Exploratory Plots</h1>
 </div>
@@ -207,7 +253,31 @@ ul.task-list li input[type="checkbox"] {
 <section id="correlation-matrix" class="level3">
 <h3 class="anchored" data-anchor-id="correlation-matrix">3.1 Correlation Matrix</h3>
 <p>We create a correlation matrix to explore how the variables are statistically related. For exploratory purposes, I included variables that were used in intermediate processing steps, in addition to the 10 variables of interest for our modelling.</p>
+<div id="cell-39" class="cell" data-execution_count="38">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <div id="cell-40" class="cell" data-execution_count="39">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of all variables</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>variables <span class="op">=</span> [<span class="st">'MedHHInc'</span>,<span class="st">'TotalPop'</span>, <span class="st">'TotalPop16'</span>, <span class="st">'LabForTotal'</span>, <span class="st">'Unemployed'</span>,<span class="st">'PctBach'</span>, <span class="st">'PovertyRate'</span>, <span class="st">'UnemploymentRate'</span>, <span class="st">'LabForParticipationRate'</span>, <span class="st">'netexport'</span>, <span class="st">'REALGDP'</span>, <span class="st">'life_expectancy'</span>, <span class="st">'Labor_Productivity_2023'</span>, <span class="st">'REALGDPpercapita'</span>]</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a list of selected variables for later analysis</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>selected_variables <span class="op">=</span> [<span class="st">'REALGDPpercapita'</span>,<span class="st">'life_expectancy'</span>,<span class="st">'MedHHInc'</span>,<span class="st">'PctBach'</span>,<span class="st">'UnemploymentRate'</span>,<span class="st">'LabForParticipationRate'</span>, <span class="st">'Labor_Productivity_2023'</span>, <span class="st">'TotalPop'</span>, <span class="st">'PovertyRate'</span>, <span class="st">'netexport'</span>]</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the correlation matrix</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>corr_matrix <span class="op">=</span> us_rescaled_final[variables].corr()</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot the correlation matrix using seaborn</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>plt.figure(figsize<span class="op">=</span>(<span class="dv">10</span>, <span class="dv">8</span>))</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>sns.heatmap(corr_matrix, annot<span class="op">=</span><span class="va">True</span>, cmap<span class="op">=</span><span class="st">'coolwarm'</span>, vmin<span class="op">=-</span><span class="dv">1</span>, vmax<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">'Correlation Matrix'</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
@@ -222,7 +292,41 @@ ul.task-list li input[type="checkbox"] {
 <section id="repeated-chart-and-bubble-plot" class="level3">
 <h3 class="anchored" data-anchor-id="repeated-chart-and-bubble-plot">3.2 Repeated Chart and Bubble Plot</h3>
 <p>We can visualise these relationships further using line charts. I first create a repeated chart for all the variables. From an aesthetic perspective, the visualization can be improved further.</p>
+<div id="cell-44" class="cell" data-execution_count="40">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> altair <span class="im">as</span> alt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
 <div id="cell-45" class="cell" data-execution_count="41">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Setup the selection brush</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>brush <span class="op">=</span> alt.selection_interval()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Repeated chart</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    alt.Chart(us_rescaled_final)</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    .mark_circle()</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    .encode(</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>alt.X(alt.repeat(<span class="st">"column"</span>), <span class="bu">type</span><span class="op">=</span><span class="st">"quantitative"</span>, scale<span class="op">=</span>alt.Scale(zero<span class="op">=</span><span class="va">False</span>)),</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>alt.Y(alt.repeat(<span class="st">"row"</span>), <span class="bu">type</span><span class="op">=</span><span class="st">"quantitative"</span>, scale<span class="op">=</span>alt.Scale(zero<span class="op">=</span><span class="va">False</span>)),</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        color<span class="op">=</span>alt.condition(</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            brush, <span class="st">"NAME_x:N"</span>, alt.value(<span class="st">"lightgray"</span>)</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>        ),  <span class="co"># conditional color</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        tooltip<span class="op">=</span>[<span class="st">'NAME_x'</span>] <span class="op">+</span> variables</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    .properties(</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        width<span class="op">=</span><span class="dv">200</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>        height<span class="op">=</span><span class="dv">200</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    .add_params(brush)</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    .repeat(  <span class="co"># repeat variables across rows and columns</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>        row<span class="op">=</span>variables,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        column<span class="op">=</span>variables,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="41">
 
 <style>
@@ -294,6 +398,54 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <p>We can improve the visualisation by creating an interactive bubble plot inspired by Gapminder: https://www.gapminder.org/tools/#$chart-type=bubbles&amp;url=v2. This allows us to select the variables we are interested in and see their distribution</p>
 <div id="cell-47" class="cell" data-execution_count="42">
+<details open="" class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define dropdown bindings for both x and y axes</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dropdown_x <span class="op">=</span> alt.binding_select(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    options<span class="op">=</span>[<span class="st">'MedHHInc'</span>,<span class="st">'TotalPop'</span>, <span class="st">'TotalPop16'</span>, <span class="st">'LabForTotal'</span>, <span class="st">'Unemployed'</span>,<span class="st">'PctBach'</span>, <span class="st">'PovertyRate'</span>, <span class="st">'UnemploymentRate'</span>, <span class="st">'LabForParticipationRate'</span>, <span class="st">'netexport'</span>, <span class="st">'REALGDP'</span>, <span class="st">'life_expectancy'</span>, <span class="st">'Labor_Productivity_2023'</span>],</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">'X-axis column '</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>dropdown_y <span class="op">=</span> alt.binding_select(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    options<span class="op">=</span>[<span class="st">'MedHHInc'</span>,<span class="st">'TotalPop'</span>, <span class="st">'TotalPop16'</span>, <span class="st">'LabForTotal'</span>, <span class="st">'Unemployed'</span>,<span class="st">'PctBach'</span>, <span class="st">'PovertyRate'</span>, <span class="st">'UnemploymentRate'</span>, <span class="st">'LabForParticipationRate'</span>, <span class="st">'netexport'</span>, <span class="st">'REALGDP'</span>, <span class="st">'life_expectancy'</span>, <span class="st">'Labor_Productivity_2023'</span>],</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">'Y-axis column '</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>dropdown_size <span class="op">=</span> alt.binding_select(</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    options<span class="op">=</span>[<span class="st">'MedHHInc'</span>,<span class="st">'TotalPop'</span>, <span class="st">'TotalPop16'</span>, <span class="st">'LabForTotal'</span>, <span class="st">'Unemployed'</span>,<span class="st">'PctBach'</span>, <span class="st">'PovertyRate'</span>, <span class="st">'UnemploymentRate'</span>, <span class="st">'LabForParticipationRate'</span>, <span class="st">'netexport'</span>, <span class="st">'REALGDP'</span>, <span class="st">'life_expectancy'</span>, <span class="st">'Labor_Productivity_2023'</span>],</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">'Bubble Size '</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Create parameters for x and y axes</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>xcol_param <span class="op">=</span> alt.param(</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    value<span class="op">=</span><span class="st">'MedHHInc'</span>,</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    bind<span class="op">=</span>dropdown_x</span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>ycol_param <span class="op">=</span> alt.param(</span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    value<span class="op">=</span><span class="st">'MedHHInc'</span>,</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    bind<span class="op">=</span>dropdown_y</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>size_param <span class="op">=</span> alt.param(</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    value<span class="op">=</span><span class="st">'MedHHInc'</span>,</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    bind<span class="op">=</span>dropdown_size</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>chart2 <span class="op">=</span> alt.Chart(us_rescaled_final).mark_circle().encode(</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>alt.X(<span class="st">'x:Q'</span>, scale<span class="op">=</span>alt.Scale(zero<span class="op">=</span><span class="va">False</span>, domain<span class="op">=</span><span class="st">'unaggregated'</span>)).title(<span class="st">''</span>),</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span>alt.Y(<span class="st">'y:Q'</span>, scale<span class="op">=</span>alt.Scale(zero<span class="op">=</span><span class="va">False</span>, domain<span class="op">=</span><span class="st">'unaggregated'</span>)).title(<span class="st">''</span>),</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span>alt.Size(<span class="st">'size:Q'</span>, scale<span class="op">=</span>alt.Scale(zero<span class="op">=</span><span class="va">False</span>, domain<span class="op">=</span><span class="st">'unaggregated'</span>)).title(<span class="st">''</span>),</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    color<span class="op">=</span><span class="st">'NAME_x:N'</span>,</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    tooltip<span class="op">=</span>[<span class="st">'NAME_x'</span>] <span class="op">+</span> variables  <span class="co"># Concatenate NAME_x with the existing variables list</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>).transform_calculate(</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="ss">f'datum[</span><span class="sc">{</span>xcol_param<span class="sc">.</span>name<span class="sc">}</span><span class="ss">]'</span>,</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="ss">f'datum[</span><span class="sc">{</span>ycol_param<span class="sc">.</span>name<span class="sc">}</span><span class="ss">]'</span>,</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    size<span class="op">=</span><span class="ss">f'datum[</span><span class="sc">{</span>size_param<span class="sc">.</span>name<span class="sc">}</span><span class="ss">]'</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>).add_params(</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    xcol_param,</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    ycol_param,</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    size_param,</span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>).properties(width<span class="op">=</span><span class="dv">800</span>, height<span class="op">=</span><span class="dv">800</span>)</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>chart2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-display" data-execution_count="42">
 
 <style>
